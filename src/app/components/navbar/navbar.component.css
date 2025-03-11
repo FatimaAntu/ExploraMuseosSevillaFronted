@@ -1,0 +1,111 @@
+/* Navbar base styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  /* Espacio entre el logo y los links */
+  align-items: center;
+  padding: 30px 20px;
+ 
+
+  background: linear-gradient(90deg, #000000, #000000);
+  /*fondo*/
+  padding: 2rem; /* Espaciado interno */
+  border-bottom: 2px solid #ffffff; /* Línea blanca de separación */
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  border-radius: 5px;
+  /* Bordes redondeados para un toque suave */
+  transition: all 0.3s ease;
+  /* Transición suave para el hover */
+}
+/*la manita de los enlaces de cambiod e pagina*/
+.navbar-links a {
+  cursor: pointer;
+}
+
+.navbar:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  /* Sombra mas pronunciada al pasar el raton */
+}
+
+/* Logo styles */
+.navbar-logo .logo {
+  height: 120px;
+  /*tamaño*/
+  width: auto;
+}
+
+/* Links styles */
+.navbar-links {
+  display: flex;
+  gap: 55px;
+  /* Espacio entre los links */
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  /* Color de los links */
+  font-size: 25px;
+  font-weight: 500;
+ 
+  position: relative;
+  /* Necesario para los efectos de hover */
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+  /* Transición suave al pasar el mouse */
+}
+
+/* Estilo cuando el link está activo */
+.navbar-links a.active {
+  color: #a0dfe7;
+  /* Color cuando la ruta está activa */
+  border-bottom: 2px solid #a0dfe7;
+  /* Subrayado en el link activo */
+}
+
+/* Efecto de hover para los links */
+.navbar-links a:hover {
+  color: #f6feff;
+  /* Cambia el color cuando el mouse pasa por encima */
+  padding-bottom: 10px;
+  /* Aumenta el subrayado */
+  border-bottom: 3px solid #f6feff;
+  /* Subrayado más grueso en hover */
+}
+
+/* Responsive - Ajuste en dispositivos móviles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    /* Los elementos se alinean verticalmente en pantallas pequeñas */
+    align-items: flex-start;
+    /* Alinear los elementos al principio */
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    /* Los enlaces se apilan verticalmente */
+    gap: 15px;
+    /* Menos espacio entre los links en móviles */
+    width: 100%;
+  }
+
+  .navbar-links a {
+    font-size: 16px;
+    /* Tamaño de fuente más pequeño en móviles */
+  }
+
+  /* Estilo para los íconos */
+.navbar-icons button {
+  color: #a0a0a0; /* Gris */
+  transition: color 0.3s ease;
+}
+
+.navbar-icons button:hover {
+  color: #ffffff; /* Blanco al pasar el mouse */
+}
+
+}
+  

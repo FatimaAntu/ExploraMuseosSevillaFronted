@@ -1,0 +1,172 @@
+/* Hero Section */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    height: 8rem;
+    position: relative;
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Texto blanco */
+    padding-top: 2rem;
+    
+    
+}
+
+.hero-section .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Filtro oscuro */
+}
+
+.hero-section .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+}
+
+/* Museos Destacados */
+.featured-museums {
+    padding: 2rem 2rem;
+    background-color: #000000; /* Fondo negro */
+    
+}
+
+.featured-museums h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff; 
+    
+}
+
+.museum-card {
+    background-color: rgb(164, 164, 164);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.museum-card:hover {
+    transform: translateY(-10px);
+}
+
+.museum-card img {
+    margin-top: 2rem;
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    max-height: 10rem; 
+}
+
+.museum-card h3 {
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+.museum-card button {
+    margin-top: 0.5rem;
+    text-decoration: none;
+    color: #2c7a7b;
+    font-weight: 600;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Exposiciones Actuales */
+.current-exhibitions {
+    padding: 2rem 2rem;
+    background-color: #000000; 
+    
+}
+
+.current-exhibitions h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff; /* Texto blanco */
+}
+
+.exhibition-card {
+    width: 12rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.exhibition-card:hover {
+    transform: translateY(-5px);
+}
+
+.exhibition-card img {
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.exhibition-card h3 {
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.exhibition-card p {
+    color: #4a5568;
+    margin-top: 0.25rem;
+}
+
+/* Testimonios de Visitantes */
+.testimonials {
+    padding: 2rem 2rem;
+    background-color: #000000; /* Fondo oscuro para la sección */
+}
+
+.testimonials h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.testimonial {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.testimonial p {
+    font-style: italic;
+    font-size: 1rem;
+    color: #2d3748;
+}
+
+.testimonial .font-semibold {
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: block;
+    color: #2c7a7b;
+}
+
+/* Botón Principal */
+button {
+    background-color: #38b2ac;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #2c7a7b;
+}
