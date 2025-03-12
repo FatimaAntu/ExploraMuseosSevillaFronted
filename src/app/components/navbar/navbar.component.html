@@ -3,8 +3,6 @@
         <img src="logo.png" alt="Logo" class="logo">
     </div>
 
-
-    
     <div class="navbar-links">
         <a routerLink="/" routerLinkActive="active">Inicio</a>
         <a routerLink="/museos" routerLinkActive="active">Museos</a>
@@ -12,12 +10,28 @@
         <a routerLink="/mapa" routerLinkActive="active">Mapa</a>
     </div>
 
-    <!-- Íconos de búsqueda y carrito -->
-<div class="flex space-x-4 items-center">
-    <button pButton icon="pi pi-search" class="p-button-text p-2 text-gray-700 hover:text-gray-900"></button>
-    <button pButton icon="pi pi-shopping-cart" class="p-button-text p-2 text-gray-700 hover:text-gray-900"></button>
+    <!-- Íconos sin fondo cuadrado -->
+    <div class="icon-container">
+        <i class="pi pi-search"></i>
+        <i class="pi pi-shopping-cart"></i>
+    </div>
+
+    <!-- Botones de sesión -->
+  
+<div class="navbar-login">
+    <a routerLink="/login" routerLinkActive="active" class="btn-login">
+        Login
+    </a>
+    <a routerLink="/registro" routerLinkActive="active" class="btn-admin">
+        Admin
+    </a>
 </div>
+
+
 </nav>
+
+
+        
 
 
   
