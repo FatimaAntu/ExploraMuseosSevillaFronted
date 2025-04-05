@@ -1,15 +1,36 @@
-<!-- Hero Section 
+<!-- Hero Section-->
 <div class="hero-section bg-cover bg-center h-96 relative" style="background-image: url('hero-image.jpg');">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="relative z-10 text-center text-white">
         <h1 class="text-4xl font-bold">Descubre los mejores museos y exposiciones de Sevilla</h1>
-        <button class="mt-4 px-6 py-2 bg-teal-500 text-white rounded-full">Explorar Museos</button>
     </div>
 </div>
 
 
+<!-- Carrusel de Museos -->
+<section class="p-8">
+    <p-carousel 
+        [value]="museos" 
+        [numVisible]="3" 
+        [numScroll]="1" 
+        [responsiveOptions]="responsiveOptions" 
+        circular="false" 
+        >
+        
+        <ng-template pTemplate="item" let-museo>
+            <div class="museum-card">
+                <img [src]="museo.imagen" alt="{{ museo.nombre }}" class="museum-image">
+                <div class="p-4">
+                    <h3>{{ museo.nombre }}</h3>
+                    <p>{{ museo.descripcion }}</p>
+                    <button (click)="verExposiciones(museo.id)">Ver más</button>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</section>
 
-Exposiciones Actuales 
+<!--Exposiciones Actuales -->
 <section class="current-exhibitions p-8 bg-gray-100">
     <h2 class="text-2xl font-semibold mb-4">Exposiciones Actuales</h2>
     <div class="flex overflow-x-scroll space-x-4">
@@ -31,7 +52,7 @@ Exposiciones Actuales
     </div>
 </section>
 
- Testimonios de Visitantes
+ <!--Testimonios de Visitantes -->
 <section class="testimonials p-8 bg-gray-200">
     <h2 class="text-2xl font-semibold mb-4">Lo que dicen nuestros visitantes</h2>
     <div class="space-y-4">
@@ -42,38 +63,5 @@ Exposiciones Actuales
         <div class="testimonial">
             <p class="italic">" ¡Altamente recomendable!"</p>
             <p class="font-semibold">María García</p>
-        </div> -->
+        </div> 
   
-
-<!-- Hero Section -->
-<div class="hero-section bg-cover bg-center h-96 relative" style="background-image: url('hero-image.jpg');">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="relative z-10 text-center text-white">
-        <h1 class="text-4xl font-bold">Descubre los mejores museos y exposiciones de Sevilla</h1>
-     
-    </div>
-</div>
-
-<!-- Carrusel de Museos -->
-<section class="p-8">
-    <p-carousel 
-        [value]="museos" 
-        [numVisible]="3" 
-        [numScroll]="1" 
-        [responsiveOptions]="responsiveOptions" 
-        circular="false" 
-        autoplayInterval="2000">
-        
-        <ng-template pTemplate="item" let-museo>
-            <div class="museum-card">
-                <img [src]="museo.imagen" alt="{{ museo.nombre }}" class="museum-image">
-                <div class="p-4">
-                    <h3>{{ museo.nombre }}</h3>
-                    <p>{{ museo.descripcion }}</p>
-                    <button (click)="verExposiciones(museo.id)">Ver más</button>
-                </div>
-            </div>
-        </ng-template>
-    </p-carousel>
-</section>
-
