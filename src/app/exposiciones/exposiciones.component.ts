@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';  // Asegúrate de importar CommonModule
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-exposiciones',
+  standalone: true,  // Asegúrate de que este componente sea standalone
+  imports: [CommonModule, RouterModule],  // Importa CommonModule aquí
   templateUrl: './exposiciones.component.html',
   styleUrls: ['./exposiciones.component.css']
+  
 })
 export class ExposicionesComponent implements OnInit {
   museoId: number = 0;
