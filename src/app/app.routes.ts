@@ -1,21 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './components/inicio/inicio.component';
-import { MuseosComponent } from './components/museos/museos.component';
-import { ExposicionesComponent } from './components/exposiciones/exposiciones.component';
-import { DetalleMuseoComponent } from './components/detalle-museo/detalle-museo.component';
-import { LoginComponent } from './auth/login/login.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { MuseosComponent } from './pages/museos/museos.component';
+import { ExposicionesComponent } from './exposiciones/exposiciones.component';
 
 
-
-
-
-export const routes: Routes = [
+const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'museos', component: MuseosComponent },
-  { path: 'exposiciones', component: ExposicionesComponent },
-  { path: 'museos/:id', component: DetalleMuseoComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'exposiciones/:id', component: ExposicionesComponent }, // Solo esta ruta
   { path: '**', redirectTo: '' }
 ];
 
@@ -23,4 +16,6 @@ export const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
+
