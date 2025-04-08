@@ -1,0 +1,9 @@
+<div class="exposiciones">
+    <h2>Exposiciones del Museo (ID: {{ museoId }})</h2>
+    <div *ngFor="let exposicion of exposiciones">
+      <h3>{{ exposicion.nombre }}</h3>
+      <p>Tipo: {{ exposicion.tipo }}</p>
+    </div>
+  </div>
+  
+  

@@ -75,6 +75,48 @@ export class InicioComponent {
     console.log('Navegando a las exposiciones del museo con ID:', museoId); // Verificación en la consola
     this.router.navigate(['/exposiciones', museoId]); // Redirige a las exposiciones con el ID
   }
+
+  exposiciones = [
+    {
+      id: 1,
+      titulo: 'Exposición de Pintura Moderna',
+      museo: 'Museo de Bellas Artes',
+      imagen: 'public/exposiciones/museoBellasArtes/baile por bulerias.jpg',
+      fechaInicio: new Date('2025-04-01'),
+      fechaFin: new Date('2025-04-30'),
+    },
+    {
+      id: 2,
+      titulo: 'Arte Contemporáneo Internacional',
+      museo: 'Centro Andaluz de Arte Contemporáneo',
+      imagen: 'exposicion2.jpg',
+      fechaInicio: new Date('2025-04-01'),
+      fechaFin: new Date('2025-05-15'),
+    },
+    {
+      id: 3,
+      titulo: 'Escultura y Modernidad',
+      museo: 'Museo Arqueológico',
+      imagen: 'exposicion3.jpg',
+      fechaInicio: new Date('2025-05-01'),
+      fechaFin: new Date('2025-06-30'),
+    }
+  ];
+  
+  get exposicionesFiltradas() {
+    const hoy = new Date();
+    return this.exposiciones.filter(exp => hoy >= exp.fechaInicio && hoy <= exp.fechaFin);
+  }
+  
+  comprarEntrada(id: number) {
+    console.log('Comprar entrada para exposición ID:', id);
+    // Aquí podrías redirigir o abrir un modal, etc.
+  }
+  
+  verMas(id: number) {
+    this.router.navigate(['/exposicion', id]);
+  }
+  
 }
 
 
