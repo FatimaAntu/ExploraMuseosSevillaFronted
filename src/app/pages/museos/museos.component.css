@@ -1,0 +1,66 @@
+/* museos.component.css */
+
+/* Estilo general para el contenedor */
+div {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  li strong {
+    font-size: 1.2rem;
+    color: #3a2e2e;
+  }
+  
+  li br {
+    margin: 0.5rem 0;
+  }
+  
+  li:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Estilo para las tarjetas de museo */
+  li:hover {
+    background-color: #fafafa;
+    transform: translateY(-3px);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Para dispositivos móviles */
+  @media (max-width: 600px) {
+    div {
+      padding: 1rem;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    li {
+      padding: 0.8rem;
+    }
+  }
+  

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { throwError } from 'rxjs'; // Para manejar errores
-
 // Definir la estructura del museo directamente en este archivo
 export interface Museo {
   id: number;

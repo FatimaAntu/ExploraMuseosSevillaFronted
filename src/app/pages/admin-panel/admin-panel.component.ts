@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
 export class AdminPanelComponent {
   constructor() {}
 }
-// Métodos para gestionar museos, exposiciones y usuarios se agregarán aquí
+

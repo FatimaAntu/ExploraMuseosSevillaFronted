@@ -5,22 +5,24 @@
   <button type="submit">Iniciar sesión</button>
 </form>-->
 
-<h2>Iniciar sesión</h2>
+<div class="container-login">
+  <h2>Iniciar sesión</h2>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <input formControlName="email" placeholder="Email" type="email" />
-  <input formControlName="password" placeholder="Contraseña" type="password" />
-  <button type="submit">Login</button>
-</form>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <input formControlName="email" placeholder="Email" type="email" />
+    <input formControlName="password" placeholder="Contraseña" type="password" />
+    <button type="submit">Login</button>
+  </form>
 
-<div *ngIf="welcomeMessage">
-  <p>{{ welcomeMessage }}</p> <!-- Muestra el mensaje de bienvenida -->
+  <div *ngIf="welcomeMessage">
+    <p>{{ welcomeMessage }}</p>
+  </div>
+
+  <div *ngIf="mensajeError" class="error">{{ mensajeError }}</div>
+  <div *ngIf="mensajeExito" class="success">{{ mensajeExito }}</div>
+
+  <a href="javascript:void(0);" (click)="toggleRegistro($event)">¿No tienes cuenta? Regístrate</a>
+
+  <app-register *ngIf="mostrarRegistro"></app-register>
+
 </div>
-
-<div *ngIf="mensajeError" class="error">{{ mensajeError }}</div>
-<div *ngIf="mensajeExito" class="success">{{ mensajeExito }}</div>
-
-
-<a href="javascript:void(0);" (click)="toggleRegistro($event)">¿No tienes cuenta? Regístrate</a>
-
-<app-registro *ngIf="mostrarRegistro"></app-registro>

@@ -1,1 +1,11 @@
-<p>museos works!</p>
+<div>
+    <h1>Museos</h1>
+    <ul>
+      <li *ngFor="let museo of museos">
+        <strong>{{ museo.nombre }}</strong><br>
+        {{ museo.descripcion }}<br>
+        {{ museo.direccion }}
+      </li>
+    </ul>
+  </div>
+  

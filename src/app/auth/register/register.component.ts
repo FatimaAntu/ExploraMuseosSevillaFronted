@@ -1,38 +1,48 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgModel } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Importa FormsModule para usar ngModel
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  email = '';
-  password = '';
-  nombre = '';
+  registroForm: FormGroup;
+  mensaje: string | null = null;
+  error: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.registroForm = this.fb.group({
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
   registrar() {
-    const body = {
-      email: this.email,
-      password: this.password,
-      nombre: this.nombre
-    };
+    if (this.registroForm.invalid) return;
+
+    const { nombre, email, password } = this.registroForm.value;
+    const body = { nombre, email, password };
 
     this.http.post('http://localhost:8080/api/auth/register', body).subscribe({
-      next: res => {
-        alert('Usuario registrado correctamente 🎉');
+      next: () => {
+        this.mensaje = '🎉 Usuario registrado con éxito. Ahora puedes iniciar sesión.';
+        this.error = null;
+        this.registroForm.reset();
       },
-      error: err => {
-        alert('Error al registrar usuario');
-        console.error(err);
+      error: (err) => {
+        this.error = err.error?.message || 'Error al registrar usuario';
+        this.mensaje = null;
       }
     });
   }

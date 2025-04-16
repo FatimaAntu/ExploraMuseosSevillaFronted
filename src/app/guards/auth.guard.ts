@@ -14,27 +14,20 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const user = this.authService.getCurrentUser(); // Método que obtienes del servicio para verificar si hay un usuario logueado.
-    
-    /*if (user) {
-      // Verifica el rol del usuario y accede solo si es Admin o User según corresponda
-      if (route.data['role'] && route.data['role'] !== user.rol) {
-        this.router.navigate(['/home']); // Si el rol no coincide, redirige al home
+    const user = this.authService.getCurrentUser();  // Verifica si el usuario está logueado
+
+    if (user) {
+      const expectedRoles = route.data['roles']; 
+  
+      if (expectedRoles && !expectedRoles.includes(user.rol)) {
+        this.router.navigate(['/home']);
         return false;
       }
-      return true; // Si todo es correcto, permite el acceso
+  
+      return true;
     }
-
-    // Si no está logueado, redirige al login
+  
     this.router.navigate(['/login']);
     return false;
-  }*/
-    if (user && user.rol === 'ADMIN') {
-      return true; // El usuario tiene el rol adecuado
-    } else {
-      this.router.navigate(['/login']); // Si no es admin, redirigir al login
-      return false;
-    }
   }
 }
-

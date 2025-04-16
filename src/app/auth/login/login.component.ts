@@ -3,13 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegistroComponent } from '../../components/registro/registro.component'; 
+import { RegisterComponent } from '../register/register.component';
 import { Router } from '@angular/router'; 
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, RegistroComponent],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RegisterComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -59,6 +60,12 @@ export class LoginComponent {
     event.preventDefault(); // Evita la recarga de la página
     this.mostrarRegistro = !this.mostrarRegistro;
   }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
+  }
+  
   
 }
   /*constructor(private authService: AuthService) {}
