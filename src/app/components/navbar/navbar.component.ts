@@ -1,21 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // Importa RouterModule para los enlaces
-import { ButtonModule } from 'primeng/button'; // Solo si usas botones de PrimeNG
-
+import { RouterModule, Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { AuthService } from '../../services/auth.service'; // Ajusta según tu estructura
+import { Usuario } from '../../models/usuario.model'; // Ajusta si tienes una interfaz
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonModule], 
+  imports: [CommonModule, RouterModule, ButtonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-toggleMenu() {
-throw new Error('Method not implemented.');
-}
-  // Puedes agregar lógica aquí en el futuro
-}
+export class NavbarComponent implements OnInit {
+  usuario: Usuario | null = null;
 
+  constructor(private authService: AuthService, private router: Router) {}
 
+  ngOnInit(): void {
+    this.authService.usuario$.subscribe(user => {
+      this.usuario = user;
+    });
+  }
+
+  logout(): void {
+    this.authService.logout(); // Llama a tu lógica de logout
+    this.usuario = null;
+    this.router.navigate(['/']);
+  }
+}

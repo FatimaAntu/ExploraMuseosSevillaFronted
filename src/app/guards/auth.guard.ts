@@ -17,16 +17,18 @@ export class AuthGuard implements CanActivate {
     const user = this.authService.getCurrentUser();  // Verifica si el usuario está logueado
 
     if (user) {
-      const expectedRoles = route.data['roles']; 
-  
+      const expectedRoles = route.data['roles']; // Obtiene los roles requeridos para la ruta
+
       if (expectedRoles && !expectedRoles.includes(user.rol)) {
+        // Si el rol del usuario no es el esperado, redirige a home
         this.router.navigate(['/home']);
         return false;
       }
-  
+
       return true;
     }
-  
+
+    // Si no hay usuario logueado, redirige al login
     this.router.navigate(['/login']);
     return false;
   }

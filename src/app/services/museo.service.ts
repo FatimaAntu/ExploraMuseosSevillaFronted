@@ -13,7 +13,7 @@ export interface Museo {
 @Injectable({
   providedIn: 'root'
 })
-export class MuseosService {
+export class MuseoService {
 
   // URL del backend 
   private apiUrl = 'http://localhost:8080/api/museos';  

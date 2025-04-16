@@ -6,12 +6,10 @@ import { ExposicionesComponent } from './components/exposiciones/exposiciones.co
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component'; // Importa el componente del Dashboard
+import { DashboardComponent } from './pages/dashboard/dashboard.component'; 
 import { RegisterComponent } from './auth/register/register.component';
+import { ExposicionAdminComponent } from './pages/exposicion-admin/exposicion-admin.component';
 
-
-
-// Exporta las rutas
 export const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'museos', component: MuseosComponent },
@@ -22,16 +20,21 @@ export const routes: Routes = [
     path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], // Protege la ruta con un guard
     data: { roles: ['ADMIN'] } // Solo los administradores pueden acceder
   },
-  { path: 'register', component: RegisterComponent }, // Ruta para el registro de usuarios
+  { path: 'register', component: RegisterComponent },
+  { path: 'dashboard', component: DashboardComponent },
 
-  { path: 'dashboard', component: DashboardComponent },    // Ruta para el Dashboard
+  
+  {
+    path: 'admin/exposiciones', 
+    component: ExposicionAdminComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ADMIN'] }
+  },
   { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-

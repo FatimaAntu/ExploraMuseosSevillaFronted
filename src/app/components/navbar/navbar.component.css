@@ -1,14 +1,14 @@
 /* Asegurar que los enlaces sean visibles */
 .navbar-links {
-  display: flex !important; /* Mantener visible */
-  gap: 30px; /* Espacio entre enlaces */
+  display: flex !important;
+  gap: 30px;
   align-items: center;
 }
 
 /* Estilo de los enlaces */
 .navbar-links a {
   text-decoration: none;
-  color: white; /* Color del texto */
+  color: white;
   font-size: 25px;
   font-weight: 500;
   padding: 5px 10px;
@@ -30,9 +30,13 @@
 /* Botones de sesión (Login y Admin) */
 .navbar-login {
   display: flex;
-  gap: 15px; /* Separación entre botones */
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
+/* Estilo de los botones de login */
 .navbar-login a {
   text-decoration: none;
   padding: 8px 15px;
@@ -44,7 +48,7 @@
 
 /* Estilo de Login */
 .btn-login {
-  background-color: #008080; /* Verde azulado */
+  background-color: #008080;
   color: white;
 }
 
@@ -54,7 +58,7 @@
 
 /* Estilo de Admin */
 .btn-admin {
-  background-color: #1a6385; /* Rojo oscuro */
+  background-color: #1a6385;
   color: white;
 }
 
@@ -81,46 +85,92 @@
   transform: scale(1.1);
 }
 
-/* Navbar */
+/* Navbar principal */
 .navbar {
-  padding: 25px 25px; /* Reducir la altura */
-  height: 125px; /* Ajustar la altura */
+  padding: 25px 40px; /* Aumentar padding horizontal */
+  height: auto; /* Altura adaptable */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap; /* Permite que los elementos se acomoden si no hay espacio */
   background: linear-gradient(90deg, #000000, #000000);
-  border-bottom: 3px solid white; /* Línea blanca de separación */
+  border-bottom: 3px solid white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo */
 .navbar-logo .logo {
-  height: 120px; /* Ajustar tamaño del logo */
+  height: 120px;
   width: auto;
+}
+
+/* Mensaje de bienvenida */
+.welcome-msg {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+  white-space: nowrap;
 }
 
 /* Responsive - Ajuste en dispositivos móviles */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    /* Los elementos se alinean verticalmente en pantallas pequeñas */
     align-items: flex-start;
-    /* Alinear los elementos al principio */
   }
 
   .navbar-links {
     flex-direction: column;
-    /* Los enlaces se apilan verticalmente */
     gap: 15px;
-    /* Menos espacio entre los links en móviles */
     width: 100%;
   }
 
   .navbar-links a {
     font-size: 16px;
-    /* Tamaño de fuente más pequeño en móviles */
   }
+
+  .navbar-login {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+/* Para el mensaje de bienvenida */
+.welcome-msg {
+  background-color: #1a6385;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-left: 20px;
+}
+
+/* Efecto hover */
+.welcome-msg:hover {
+  background-color: #00a0b0;
+  transform: scale(1.05);
+}
+
+/* Ajustes para la visibilidad del mensaje en pantallas más grandes */
+.welcome-msg {
+  order: 3; /* Asegura que el mensaje esté después de los enlaces de la navbar */
+}
+  
+.btn-logout {
+  background-color: #68c8ff42; /* Rojo para el botón de cerrar sesión */
+  color: white; /* Texto blanco */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de mano al pasar por encima */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
   
 
-  
-}

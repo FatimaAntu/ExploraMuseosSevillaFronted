@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';  
-import { MuseosService } from './services/museos.service';
+import { MuseoService } from './services/museo.service';
 import { NavbarComponent } from "./components/navbar/navbar.component"; 
 import { TableModule } from 'primeng/table';
 
@@ -61,14 +61,14 @@ interface Museo {
 export class AppComponent implements OnInit {
   museos: Museo[] = []; // Ahora usamos la interfaz `Museo`
 
-  constructor(private museosService: MuseosService) {}
+  constructor(private museoService: MuseoService) {}
 
   ngOnInit(): void {
     this.getMuseos();
   }
 
   getMuseos(): void {
-    this.museosService.getMuseos().subscribe(
+    this.museoService.getMuseos().subscribe(
       (data: Museo[]) => {  // Aquí también usamos `Museo[]`
         this.museos = data;
         console.log('Museos obtenidos:', this.museos);

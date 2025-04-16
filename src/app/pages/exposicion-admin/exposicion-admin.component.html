@@ -1,0 +1,10 @@
+<h2>Gestión de Exposiciones</h2>
+<button routerLink="/admin/exposiciones/nueva">Agregar Exposición</button>
+
+<ul>
+  <li *ngFor="let exposicion of exposiciones">
+    <strong>{{ exposicion.nombre }}</strong> 
+    <button (click)="eliminarExposicion(exposicion.id)">Eliminar</button>
+    <button [routerLink]="['/admin/exposiciones/editar', exposicion.id]">Editar</button>
+  </li>
+</ul>

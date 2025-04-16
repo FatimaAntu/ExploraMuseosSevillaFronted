@@ -36,6 +36,7 @@ export class LoginComponent {
 
     this.authService.login(email, password).subscribe({
       next: (res) => {
+        console.log (res);  // Muestra la respuesta del backend en la consola
         this.authService.setCurrentUser(res);  // Guardamos el usuario logueado
         this.mensajeExito = `Bienvenido ${res.email}`;  // Ajusta según lo que recibas del backend
         this.mensajeError = null;
@@ -43,7 +44,7 @@ export class LoginComponent {
 
         // Redirigimos según el rol del usuario
         if (res.rol === 'ADMIN') {
-          this.router.navigate(['/admin']);  // Si es admin, va al panel de admin
+          this.router.navigate(['/admin/exposiciones']);  // Si es admin, va al panel de admin
         } else {
           this.router.navigate(['/home']);  // Si es usuario, va al dashboard
         }
