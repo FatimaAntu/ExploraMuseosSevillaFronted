@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -15,4 +15,4 @@ export class ExposicionesService {
   getExposicionesPorMuseo(museoId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}?museoId=${museoId}`);
   }
-}
+}*/

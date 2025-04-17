@@ -1,10 +1,42 @@
-<h2>Gestión de Exposiciones</h2>
-<button routerLink="/admin/exposiciones/nueva">Agregar Exposición</button>
+<div>
+  <h1>Administrar Exposiciones</h1>
 
-<ul>
-  <li *ngFor="let exposicion of exposiciones">
-    <strong>{{ exposicion.nombre }}</strong> 
-    <button (click)="eliminarExposicion(exposicion.id)">Eliminar</button>
-    <button [routerLink]="['/admin/exposiciones/editar', exposicion.id]">Editar</button>
-  </li>
-</ul>
+  <!-- Formulario para agregar/editar exposición -->
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" [(ngModel)]="nuevaExposicion.nombre" name="nombre" required>
+    </div>
+  
+    <div>
+      <label for="descripcion">Descripción</label>
+      <input type="text" id="descripcion" [(ngModel)]="nuevaExposicion.descripcion" name="descripcion" required>
+    </div>
+
+    <div>
+      <label for="fechaInicio">Fecha de Inicio</label>
+      <input type="date" id="fechaInicio" [(ngModel)]="nuevaExposicion.fechaInicio" name="fechaInicio" required>
+    </div>
+
+    <div>
+      <label for="fechaFin">Fecha de Fin</label>
+      <input type="date" id="fechaFin" [(ngModel)]="nuevaExposicion.fechaFin" name="fechaFin" required>
+    </div>
+
+    <button type="submit">
+      {{ exposicionEditada ? 'Actualizar Exposición' : 'Agregar Exposición' }}
+    </button>
+  </form>
+
+  <hr>
+
+  <!-- Lista de exposiciones -->
+  <h2>Lista de Exposiciones</h2>
+  <ul>
+    <li *ngFor="let exposicion of exposiciones">
+      <p>{{ exposicion.nombre }}</p>
+      <button (click)="editarExposicion(exposicion)">Editar</button>
+      <button (click)="eliminarExposicion(exposicion.id)">Eliminar</button>
+    </li>
+  </ul>
+</div>

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-museos',
   templateUrl: './museos.component.html',
-  styleUrls: ['./museos.component.css']
+  styleUrls: ['./museos.component.css'],
+  standalone: true,
+  imports: [CommonModule], // Importa CommonModule para usar *ngFor y otras directivas comunes
 })
 export class MuseosComponent {
   museos = [

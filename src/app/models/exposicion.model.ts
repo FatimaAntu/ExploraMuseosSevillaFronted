@@ -8,6 +8,7 @@ export interface Exposicion {
   fechaFin: string;     // o Date
   imagen: string;
   museo: Museo;         // Relación con el museo al que pertenece
+  esTemporal?: boolean; // Indica si es una exposición temporal o permanente
 }
 
   
