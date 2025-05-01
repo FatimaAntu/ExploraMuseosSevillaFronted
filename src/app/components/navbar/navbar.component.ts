@@ -28,4 +28,12 @@ export class NavbarComponent implements OnInit {
     this.usuario = null;
     this.router.navigate(['/']);
   }
+
+  // Función que primero lleva al inicio y luego a la gestión de exposiciones
+  navigateToAdminDashboard(): void {
+    this.router.navigate(['/home']);  // Redirige al inicio
+    setTimeout(() => {
+      this.router.navigate(['/admin/exposiciones']);  // Después de un pequeño delay, lleva a la gestión de exposiciones
+    }, 300);
+  }
 }

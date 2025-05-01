@@ -30,27 +30,23 @@
 <!-- Zona de login/logout -->
 <div class="navbar-login">
     <ng-container *ngIf="usuario; else loginLink">
-
-        <span class="welcome-msg">Bienvenido, {{ usuario.nombre }}</span>
-
-        <a *ngIf="usuario.rol === 'ADMIN'" routerLink="/admin" class="btn-admin">
-            Admin
-        </a>
-
-    
-        <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
-    
+      <span class="welcome-msg">Bienvenido, {{ usuario.nombre }}</span>
+  
+      <!-- Botón Admin: si es admin, lleva a la página principal y luego a la gestión -->
+      <a *ngIf="usuario.rol === 'ADMIN'" (click)="navigateToAdminDashboard()" class="btn-admin">
+        Admin
+      </a>
+  
+      <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
     </ng-container>
+  
     <ng-template #loginLink>
-        <a routerLink="/login" routerLinkActive="active" class="btn-login">
-            Login
-        </a>
-       
+      <a routerLink="/login" routerLinkActive="active" class="btn-login">
+        Login
+      </a>
     </ng-template>
-
-    
- 
-</div>
+  </div>
+</nav>  
 
 
 

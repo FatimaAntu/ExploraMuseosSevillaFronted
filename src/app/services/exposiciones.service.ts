@@ -50,8 +50,9 @@ export class ExposicionesService {
   }
 
   // Actualizar una exposición
-  updateExposicion(id: number, exposicion: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, exposicion);
+  updateExposicion(exposicion: any): Observable<any> {
+    
+    return this.http.post('http://localhost:8080/api/exposiciones', exposicion);
   }
 
   deleteExposicion(id: number): Observable<void> {

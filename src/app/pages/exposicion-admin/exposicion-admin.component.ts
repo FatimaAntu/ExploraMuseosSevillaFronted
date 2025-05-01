@@ -1,82 +1,160 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ExposicionesService } from '../../services/exposiciones.service';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { MuseoService } from 'app/services/museo.service';
+import { Museo } from 'app/models/museo.model';
 
 @Component({
   selector: 'app-exposicion-admin',
   templateUrl: './exposicion-admin.component.html',
   styleUrls: ['./exposicion-admin.component.css'],
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule]
+  providers: [MessageService],
+  imports: [
+    RouterModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
+    CardModule,
+    DividerModule,
+    DropdownModule,
+    CalendarModule,
+    ToastModule
+  ]
 })
 export class ExposicionAdminComponent implements OnInit {
   exposiciones: any[] = [];
-  nuevaExposicion = { nombre: '', descripcion: '', fechaInicio: '', fechaFin: '' };
+  exposicionForm: FormGroup;
   exposicionEditada: any = null;
 
-  constructor(private exposicionService: ExposicionesService) {}
+  museos: any[] = [];
 
-  ngOnInit(): void {
-    this.getExposiciones();
+  constructor(
+    private exposicionService: ExposicionesService,
+    private fb: FormBuilder,
+    private messageService: MessageService,
+    private museoService: MuseoService
+  ) {
+    this.exposicionForm = this.fb.group({
+      id: [null],
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      fechaInicio: ['', Validators.required],
+      fechaFin: ['', Validators.required],
+      museoId: [null, Validators.required]
+    });
   }
 
-  // Obtener todas las exposiciones
+  
+  ngOnInit(): void {
+    this.getExposiciones();
+    this.obtenerMuseos();
+  }
+
+  obtenerMuseos(): void {
+    this.museoService.getMuseos().subscribe(
+      (data: any[]) => {
+        this.museos = data;
+      },
+      (error) => {
+        console.error('Error al obtener museos', error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudieron cargar los museos' });
+      }
+    );}
+
   getExposiciones() {
     this.exposicionService.getExposiciones().subscribe(data => {
       this.exposiciones = data;
     });
   }
 
-  // Crear una nueva exposición
   onSubmit() {
+    console.log(this.exposicionEditada);
+    
+    if (this.exposicionForm.invalid) return;
+
+    const exposicionFormValue = this.exposicionForm.value;
+    const exposicion = {
+      nombre: exposicionFormValue.nombre,
+      descripcion: exposicionFormValue.descripcion,
+      fechaInicio: exposicionFormValue.fechaInicio,
+      fechaFin: exposicionFormValue.fechaFin,
+      museo: {
+        id: exposicionFormValue.museoId
+      }
+    };
+    const id = exposicionFormValue.id;
+
     if (this.exposicionEditada) {
-      // Si estamos editando, actualizamos la exposición
-      this.exposicionService.updateExposicion(this.exposicionEditada.id, this.nuevaExposicion).subscribe({
+      this.exposicionService.createExposicion(exposicion).subscribe({
         next: () => {
-          console.log('Exposición actualizada');
-          this.getExposiciones();  // Refrescar la lista
-          this.resetFormulario();  // Limpiar el formulario
+          this.messageService.add({ severity: 'success', summary: 'Actualizada', detail: 'Exposición actualizada con éxito' });
+          this.getExposiciones();
+          this.resetFormulario();
         },
         error: (err) => {
           console.error('Error al actualizar exposición', err);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar' });
         }
       });
     } else {
-      // Si no estamos editando, creamos una nueva exposición
-      this.exposicionService.createExposicion(this.nuevaExposicion).subscribe({
+      this.exposicionService.createExposicion(exposicion).subscribe({
         next: () => {
-          console.log('Exposición creada');
-          this.getExposiciones();  // Refrescar la lista
-          this.resetFormulario();  // Limpiar el formulario
+          this.messageService.add({ severity: 'success', summary: 'Creada', detail: 'Exposición agregada correctamente' });
+          this.getExposiciones();
+          this.resetFormulario();
         },
         error: (err) => {
           console.error('Error al agregar exposición', err);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar' });
         }
       });
     }
   }
 
-  // Editar una exposición
   editarExposicion(exposicion: any) {
     this.exposicionEditada = exposicion;
-    this.nuevaExposicion = { ...exposicion };  // Cargar los datos de la exposición en el formulario
+    this.exposicionForm.patchValue({
+      id: exposicion.id,
+      nombre: exposicion.nombre,
+      descripcion: exposicion.descripcion,
+      fechaInicio: exposicion.fechaInicio,
+      fechaFin: exposicion.fechaFin,
+      museoId: exposicion.museo?.id
+    });
   }
 
-  // Eliminar una exposición
   eliminarExposicion(id: number) {
     const confirmar = window.confirm('¿Estás seguro de que deseas eliminar esta exposición?');
     if (confirmar) {
       this.exposicionService.deleteExposicion(id).subscribe(() => {
-        this.getExposiciones();  // Refrescar la lista después de la eliminación
+        this.messageService.add({ severity: 'warn', summary: 'Eliminada', detail: 'Exposición eliminada' });
+        this.getExposiciones();
       });
     }
   }
 
-  // Resetear el formulario
   resetFormulario() {
-    this.nuevaExposicion = { nombre: '', descripcion: '', fechaInicio: '', fechaFin: '' };
+    this.exposicionForm.reset();
     this.exposicionEditada = null;
   }
+
+  isInvalid(campo: string): boolean {
+    const control = this.exposicionForm.get(campo);
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+
+
 }
