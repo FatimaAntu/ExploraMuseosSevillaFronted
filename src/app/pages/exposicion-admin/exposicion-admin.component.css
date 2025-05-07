@@ -34,7 +34,6 @@
   margin-bottom: 1rem;
   color: #2b5db4;
   text-align: center;
-  
 }
 
 /* Estilo del formulario */
@@ -193,7 +192,7 @@ input[type="date"] {
   margin-top: 1rem;
 }
 
-/* Estilo de los botones de acción (editar y eliminar) */
+/* Estilo común para los botones de acción (editar y eliminar) */
 .acciones button {
   min-width: 2.5rem;
   height: 2.5rem;
@@ -208,12 +207,10 @@ input[type="date"] {
   padding: 0.5rem; 
 }
 
-
 /* Estilo para el botón de editar (verde) */
 .btn-editar {
   background-color: #28a745; /* Verde */
   color: white;
-  
 }
 
 .btn-editar:hover {
@@ -227,8 +224,7 @@ input[type="date"] {
 /* Estilo para el botón de eliminar (rojo) */
 .btn-eliminar {
   background-color: #dc3545; /* Rojo */
-  color: white; /* Asegura que el texto sea blanco */
-  
+  color: white;
 }
 
 .btn-eliminar:hover {
@@ -295,7 +291,6 @@ td {
 }
 
 /* Estilo de la tabla con encabezados y filas alternas */
-
 th {
   padding: 0.75rem;
   color: black;
@@ -303,11 +298,60 @@ th {
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  
 }
 
 td {
   padding: 0.75rem;
   color: #2d3748;
   background-color: #f7fafc;
+}
+
+/* Personalización del Toast */
+.ui-toast {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.ui-toast-success {
+  background-color: #4caf50; /* Verde para éxito */
+  color: white;
+}
+
+.ui-toast-error {
+  background-color: #f44336; /* Rojo para error */
+  color: white;
+}
+
+.ui-toast-warn {
+  background-color: #ff9800; /* Naranja para advertencias */
+  color: white;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .admin-exposiciones {
+    padding: 1rem;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-exposiciones {
+    grid-template-columns: 1fr;
+  }
+
+  .titulo, .titulo-lista {
+    font-size: 1.25rem;
+  }
+
+  .ui-dialog {
+    z-index: 9999 !important;
+  }
+  
+  .ui-overlay {
+    z-index: 9998 !important;
+  }
+  
 }

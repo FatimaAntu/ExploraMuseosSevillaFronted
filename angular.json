@@ -28,11 +28,11 @@
             ],
             "styles": [
               
+            
               "src/styles.css"
             ],
             "scripts": []
           },
-          
           "configurations": {
             "production": {
               "budgets": [
@@ -55,7 +55,6 @@
                 }
               ]
             },
-          
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -94,16 +93,12 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeflex/primeflex.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+             
+              
+              "src/styles.css"
             ],
             "scripts": []
           }
-          
         }
       }
     }

@@ -1,4 +1,8 @@
 <div class="admin-exposiciones">
+  <!-- Diálogos globales -->
+  <p-confirmDialog></p-confirmDialog>
+  <p-toast>position="top-right" key="main"></p-toast>
+
   <!-- Título principal -->
   <h2 class="titulo">Administrar Exposiciones</h2>
 
@@ -8,13 +12,13 @@
     <div class="campo">
       <label for="nombre" class="label">Nombre</label>
       <input pInputText id="nombre" formControlName="nombre" [ngClass]="{ 'p-invalid': isInvalid('nombre') }" class="input-rectangulo"/>
-      <small class="p-error" *ngIf="isInvalid('nombre')"></small>
+      <small class="p-error" *ngIf="isInvalid('nombre')">El nombre es obligatorio</small>
     </div>
 
     <div class="campo">
       <label for="descripcion" class="label">Descripción</label>
       <input pInputText id="descripcion" formControlName="descripcion" [ngClass]="{ 'p-invalid': isInvalid('descripcion') }" class="input-rectangulo"/>
-      <small class="p-error" *ngIf="isInvalid('descripcion')"></small>
+      <small class="p-error" *ngIf="isInvalid('descripcion')">La descripción es obligatoria</small>
     </div>
 
     <div class="campo">
@@ -29,19 +33,19 @@
         appendTo="body"
         [ngClass]="{ 'p-invalid': isInvalid('museoId') }">
       </p-dropdown>
-      <small class="p-error" *ngIf="isInvalid('museoId')"></small>
+      <small class="p-error" *ngIf="isInvalid('museoId')">Debe seleccionar un museo</small>
     </div>
 
     <div class="campo">
       <label for="fechaInicio" class="label">Fecha de Inicio</label>
       <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio" [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo"/>
-      <small class="p-error" *ngIf="isInvalid('fechaInicio')"></small>
+      <small class="p-error" *ngIf="isInvalid('fechaInicio')">Fecha de inicio requerida</small>
     </div>
 
     <div class="campo">
       <label for="fechaFin" class="label">Fecha de Fin</label>
       <input type="date" pInputText id="fechaFin" formControlName="fechaFin" [ngClass]="{ 'p-invalid': isInvalid('fechaFin') }" class="input-rectangulo"/>
-      <small class="p-error" *ngIf="isInvalid('fechaFin')"></small>
+      <small class="p-error" *ngIf="isInvalid('fechaFin')">Fecha de fin requerida</small>
     </div>
 
     <!-- Botón Agregar/Actualizar -->
@@ -54,8 +58,6 @@
 
   <!-- Lista de exposiciones -->
   <h3 class="titulo-lista">Lista de Exposiciones</h3>
-
-
 
   <div class="lista-exposiciones">
     <table class="table-auto w-full border-separate border-spacing-2">
@@ -79,10 +81,10 @@
           </td>
           <td class="acciones">
             <button pButton icon="pi pi-pencil" label="Editar" (click)="editarExposicion(exposicion)" class="btn-editar"></button>
-            <button pButton icon="pi pi-trash" label="Eliminar" (click)="eliminarExposicion(exposicion.id)" class="btn-eliminar"></button>
-            
+            <button pButton icon="pi pi-trash" label="Eliminar" (click)="eliminarExposicion(exposicion.id)" class="btn-eliminar p-button-danger"></button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>

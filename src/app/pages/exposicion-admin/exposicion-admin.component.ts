@@ -12,14 +12,15 @@ import { CalendarModule } from 'primeng/calendar';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { MuseoService } from 'app/services/museo.service';
-import { Museo } from 'app/models/museo.model';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-exposicion-admin',
   templateUrl: './exposicion-admin.component.html',
   styleUrls: ['./exposicion-admin.component.css'],
   standalone: true,
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   imports: [
     RouterModule,
     CommonModule,
@@ -31,21 +32,22 @@ import { Museo } from 'app/models/museo.model';
     DividerModule,
     DropdownModule,
     CalendarModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ]
 })
 export class ExposicionAdminComponent implements OnInit {
   exposiciones: any[] = [];
   exposicionForm: FormGroup;
   exposicionEditada: any = null;
-
   museos: any[] = [];
 
   constructor(
     private exposicionService: ExposicionesService,
     private fb: FormBuilder,
     private messageService: MessageService,
-    private museoService: MuseoService
+    private museoService: MuseoService,
+    private confirmationService: ConfirmationService
   ) {
     this.exposicionForm = this.fb.group({
       id: [null],
@@ -57,7 +59,6 @@ export class ExposicionAdminComponent implements OnInit {
     });
   }
 
-  
   ngOnInit(): void {
     this.getExposiciones();
     this.obtenerMuseos();
@@ -70,19 +71,25 @@ export class ExposicionAdminComponent implements OnInit {
       },
       (error) => {
         console.error('Error al obtener museos', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudieron cargar los museos' });
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'No se pudieron cargar los museos',
+          life: 3000,
+          closable: true
+        });
       }
-    );}
+    );
+  }
 
   getExposiciones() {
     this.exposicionService.getExposiciones().subscribe(data => {
       this.exposiciones = data;
+      console.log('Exposiciones obtenidas:', this.exposiciones);
     });
   }
 
   onSubmit() {
-    console.log(this.exposicionEditada);
-    
     if (this.exposicionForm.invalid) return;
 
     const exposicionFormValue = this.exposicionForm.value;
@@ -98,27 +105,51 @@ export class ExposicionAdminComponent implements OnInit {
     const id = exposicionFormValue.id;
 
     if (this.exposicionEditada) {
-      this.exposicionService.createExposicion(exposicion).subscribe({
+      this.exposicionService.updateExposicion(this.exposicionForm.value.id, exposicion).subscribe({
         next: () => {
-          this.messageService.add({ severity: 'success', summary: 'Actualizada', detail: 'Exposición actualizada con éxito' });
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Actualizada',
+            detail: 'Exposición actualizada con éxito',
+            life: 3000,
+            closable: true
+          });
           this.getExposiciones();
           this.resetFormulario();
         },
         error: (err) => {
           console.error('Error al actualizar exposición', err);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'No se pudo actualizar',
+            life: 3000,
+            closable: true
+          });
         }
       });
     } else {
       this.exposicionService.createExposicion(exposicion).subscribe({
         next: () => {
-          this.messageService.add({ severity: 'success', summary: 'Creada', detail: 'Exposición agregada correctamente' });
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Creada',
+            detail: 'Exposición agregada correctamente',
+            life: 3000,
+            closable: true
+          });
           this.getExposiciones();
           this.resetFormulario();
         },
         error: (err) => {
           console.error('Error al agregar exposición', err);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'No se pudo agregar',
+            life: 3000,
+            closable: true
+          });
         }
       });
     }
@@ -137,13 +168,23 @@ export class ExposicionAdminComponent implements OnInit {
   }
 
   eliminarExposicion(id: number) {
-    const confirmar = window.confirm('¿Estás seguro de que deseas eliminar esta exposición?');
-    if (confirmar) {
-      this.exposicionService.deleteExposicion(id).subscribe(() => {
-        this.messageService.add({ severity: 'warn', summary: 'Eliminada', detail: 'Exposición eliminada' });
-        this.getExposiciones();
-      });
-    }
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que deseas eliminar esta exposición?',
+      header: 'Confirmación',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.exposicionService.deleteExposicion(id).subscribe(() => {
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Eliminada',
+            detail: 'Exposición eliminada',
+            life: 3000,
+            closable: true
+          });
+          this.getExposiciones();
+        });
+      }
+    });
   }
 
   resetFormulario() {
@@ -155,6 +196,4 @@ export class ExposicionAdminComponent implements OnInit {
     const control = this.exposicionForm.get(campo);
     return !!(control && control.invalid && (control.dirty || control.touched));
   }
-
-
 }

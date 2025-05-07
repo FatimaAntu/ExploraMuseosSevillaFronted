@@ -49,4 +49,10 @@ export class AuthService {
   logout() {
     this.usuarioSubject.next(null);
   }
+
+  // Devuelve true si hay un usuario logueado
+isAuthenticated(): boolean {
+  return this.usuarioSubject.value !== null;
+}
+
 }

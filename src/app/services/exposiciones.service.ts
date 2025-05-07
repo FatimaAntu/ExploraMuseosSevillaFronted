@@ -21,45 +21,51 @@ export interface Exposicion {
   providedIn: 'root',
 })
 export class ExposicionesService {
-  private apiUrl = 'http://localhost:8080/api/exposiciones';  // Asegúrate de que esta URL es correcta
+  private apiUrl = 'http://localhost:8080/api/exposiciones';
 
   constructor(private http: HttpClient) {}
 
-   // Obtener todas las exposiciones
   getExposiciones(): Observable<Exposicion[]> {
     return this.http.get<Exposicion[]>(this.apiUrl).pipe(
-      catchError((error) => {
+      catchError(error => {
         console.error('Error al obtener exposiciones:', error);
-        return throwError(() => new Error('Error al obtener exposiciones. Inténtalo nuevamente.'));
+        return throwError(() => new Error('Error al obtener exposiciones'));
       })
     );
   }
 
-  // Obtener exposiciones por museo
   getExposicionesPorMuseo(museoId: number): Observable<Exposicion[]> {
     return this.http.get<Exposicion[]>(`${this.apiUrl}/museo/${museoId}`).pipe(
-      catchError((error) => {
+      catchError(error => {
         console.error('Error al obtener exposiciones del museo:', error);
-        return throwError(() => new Error('Error al obtener exposiciones por museo.'));
+        return throwError(() => new Error('Error al obtener exposiciones por museo'));
       })
     );
   }
-   // Crear una nueva exposición
-   createExposicion(exposicion: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/exposiciones', exposicion);
+
+  createExposicion(exposicion: any): Observable<any> {
+    return this.http.post(this.apiUrl, exposicion).pipe(
+      catchError(error => {
+        console.error('Error al crear exposición:', error);
+        return throwError(() => new Error('Error al crear exposición'));
+      })
+    );
   }
 
-  // Actualizar una exposición
-  updateExposicion(exposicion: any): Observable<any> {
-    
-    return this.http.post('http://localhost:8080/api/exposiciones', exposicion);
+  updateExposicion(id: number, exposicion: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, exposicion).pipe(
+      catchError(error => {
+        console.error('Error al actualizar exposición:', error);
+        return throwError(() => new Error('Error al actualizar exposición'));
+      })
+    );
   }
 
   deleteExposicion(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
-      catchError((error) => {
-        console.error(`Error al eliminar la exposición con ID ${id}:`, error);
-        return throwError(() => new Error('Error al eliminar la exposición.'));
+      catchError(error => {
+        console.error(`Error al eliminar exposición con ID ${id}:`, error);
+        return throwError(() => new Error('Error al eliminar exposición'));
       })
     );
   }
