@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { AuthService } from '../../services/auth.service'; // Ajusta según tu estructura
-import { Usuario } from '../../models/usuario.model'; // Ajusta si tienes una interfaz
+import { AuthService } from '../../services/auth.service'; 
+import { Usuario } from '../../models/usuario.model'; 
 
 @Component({
   selector: 'app-navbar',
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(): void {
-    this.authService.logout(); // Llama a tu lógica de logout
+    this.authService.logout(); 
     this.usuario = null;
     this.router.navigate(['/']);
   }

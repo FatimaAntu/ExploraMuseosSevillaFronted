@@ -24,6 +24,9 @@
           <button (click)="verExposiciones(museo.id)" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Ver más
           </button>
+          <button (click)="abrirEnGoogleMaps(museo.nombre)" class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700">
+            Ver en Google Maps
+          </button>
         </div>
       </div>
     </ng-template>
@@ -48,16 +51,19 @@
           Del {{ exposicion.fechaInicio | date:'dd/MM/yyyy' }} al {{ exposicion.fechaFin | date:'dd/MM/yyyy' }}
         </p>
 
-        <div class="mt-4 flex justify-end" *ngIf="estaLogueado()">
+        <div class="mt-4 flex justify-end">
           <button 
             (click)="comprarEntrada(exposicion.id)" 
             class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700">
             Comprar Entrada
           </button>
+      
         </div>
       </div>
     </div>
   </div>
+  <input formControlName="imagen" type="text" placeholder="URL de la imagen" class="p-inputtext" />
+
 </section>
 
 <!-- Testimonios de Visitantes -->

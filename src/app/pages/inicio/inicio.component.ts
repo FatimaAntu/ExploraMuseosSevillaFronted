@@ -62,14 +62,26 @@ export class InicioComponent {
     return this.authService.isAuthenticated(); // Verifica si el usuario está autenticado
   }
 
-  comprarEntrada(id: number) {
-    if (this.estaLogueado()) {
-      this.router.navigate(['/comprar', id]); // Navegar al formulario de compra de entradas
+  comprarEntrada(exposicionId: number) {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/comprar-entrada', exposicionId]);
+    } else {
+      // Puedes guardar el ID temporalmente para usarlo tras el registro
+      localStorage.setItem('entradaPendiente', exposicionId.toString());
+      this.router.navigate(['/register']);
     }
   }
+  
 
   // Método para ver las exposiciones de un museo
   verExposiciones(museoId: number): void {
     this.router.navigate([`/exposiciones/${museoId}`]); // Navegar a la página de exposiciones del museo
   }
+
+  abrirEnGoogleMaps(nombreMuseo: string): void {
+    const query = encodeURIComponent(nombreMuseo + ' Sevilla');
+    const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    window.open(url, '_blank');
+  }
+  
 }

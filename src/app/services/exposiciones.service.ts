@@ -9,7 +9,7 @@ export interface Exposicion {
   descripcion: string;
   fechaInicio: string;
   fechaFin: string;
-  imagen: string;
+  imagen?: string;
   esTemporal: boolean;
   museo: {
     id: number;
@@ -69,4 +69,17 @@ export class ExposicionesService {
       })
     );
   }
+  getExposicionById(id: number): Observable<Exposicion> {
+    return this.http.get<Exposicion>(`${this.apiUrl}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error al obtener la exposición:', error);
+        return throwError(() => new Error('Error al obtener la exposición'));
+      })
+    );
+  }
+  
+ 
+  
+  
+  
 }

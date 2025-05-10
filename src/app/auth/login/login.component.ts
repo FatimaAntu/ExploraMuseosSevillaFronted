@@ -4,8 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterComponent } from '../register/register.component';
-import { Router } from '@angular/router'; 
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +14,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  //email = '';
-  //password = '';
   loginForm: FormGroup;
   mostrarRegistro = false;
   mensajeError: string | null = null;
   mensajeExito: string | null = null;
   welcomeMessage: string = ''; // Mensaje de bienvenida
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute // Para acceder al query param 'returnUrl'
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-    
     });
   }
 
@@ -36,17 +37,27 @@ export class LoginComponent {
 
     this.authService.login(email, password).subscribe({
       next: (res) => {
-        console.log (res);  // Muestra la respuesta del backend en la consola
+        console.log(res);  // Muestra la respuesta del backend en la consola
         this.authService.setCurrentUser(res);  // Guardamos el usuario logueado
         this.mensajeExito = `Bienvenido ${res.email}`;  // Ajusta según lo que recibas del backend
         this.mensajeError = null;
         this.loginForm.reset();
 
-        // Redirigimos según el rol del usuario
-        if (res.rol === 'ADMIN') {
-          this.router.navigate(['/admin/exposiciones']);  // Si es admin, va al panel de admin
+        // Verifica si hay una entrada pendiente de compra
+        const entradaPendiente = localStorage.getItem('entradaPendiente');
+        if (entradaPendiente) {
+          localStorage.removeItem('entradaPendiente');
+          this.router.navigate(['/comprar-entrada', entradaPendiente]);  // Redirige al proceso de compra de entradas
         } else {
-          this.router.navigate(['/home']);  // Si es usuario, va al dashboard
+          // Obtiene la URL original a la que el usuario quería acceder (si existe)
+          const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/home';
+          
+          // Redirige según el rol del usuario
+          if (res.rol === 'ADMIN') {
+            this.router.navigate([returnUrl]);  // Si es admin, redirige a la URL original o a '/admin/exposiciones'
+          } else {
+            this.router.navigate([returnUrl]);  // Si es usuario, redirige a la URL original o a '/home'
+          }
         }
       },
       error: (err) => {
@@ -66,22 +77,4 @@ export class LoginComponent {
     this.authService.logout();
     this.router.navigate(['/home']);
   }
-  
-  
 }
-  /*constructor(private authService: AuthService) {}
-
-  login() {
-    this.authService.login(this.email, this.password).subscribe({
-      next: (res) => {
-        alert('Login correcto');
-        console.log(res);
-        // Puedes guardar el token o navegar a otra página aquí si lo deseas
-      },
-      error: (err) => {
-        alert('Login fallido');
-        console.error(err);
-      }
-    });
-  }
-}*/

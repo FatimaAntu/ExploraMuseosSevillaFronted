@@ -1,0 +1,190 @@
+/* Contenedor principal */
+.compra-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2a2a2a; /* Fondo gris oscuro */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+    font-family: 'Poppins', sans-serif; /* Tipografía más moderna */
+    color: #f7fafc; /* Texto blanco para contraste */
+}
+
+/* Estilos para los mensajes de error y éxito */
+.mensaje-error, .mensaje-exito {
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Color de mensaje de error */
+.mensaje-error {
+    color: #ff4d4f;
+    background-color: #fff1f0;
+}
+
+/* Color de mensaje de éxito */
+.mensaje-exito {
+    color: #52c41a;
+    background-color: #f6ffed;
+}
+
+/* Estilo para la tarjeta de la exposición */
+.exposicion-card {
+    background-color: #333; /* Fondo oscuro para las tarjetas */
+    border-radius: 15px;  /* Bordes más redondeados */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  /* Sombra más suave */
+    padding: 2rem;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff; /* Texto blanco para las tarjetas */
+}
+
+/* Hover para la tarjeta de exposición */
+.exposicion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de la exposición */
+.exposicion-img {
+    width: 100%;
+    height: 220px;  /* Controla la altura de la imagen */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Añadir un hover para las imágenes */
+.exposicion-img:hover {
+    opacity: 0.9;
+}
+
+/* Información de la exposición */
+.exposicion-info {
+    margin-bottom: 1rem;  /* Separación entre el contenido */
+}
+.exposicion-info p {
+    font-size: 1rem;
+    color: #ddd;  /* Gris claro para los textos */
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para el precio de las entradas */
+.precio-entrada {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffbf00; /* Color dorado para destacar el precio */
+    margin-top: 1rem;
+}
+
+/* Botón de compra */
+button.p-button-success {
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    border: none;
+    background-color: #4caf50; /* Verde para botón */
+    color: #fff; /* Texto blanco */
+}
+
+/* Hover para el botón */
+button.p-button-success:hover, button.p-button-success:focus {
+    background-color: #388e3c; /* Verde más oscuro en hover */
+    border-color: #388e3c;
+    outline: none;
+    transform: scale(1.05);
+}
+
+/* Estilo de los títulos */
+h2 {
+    color: #f7fafc; /* Títulos en blanco */
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Subtítulo del museo */
+span.text-sm {
+    font-size: 0.9rem;
+    color: #999; /* Gris oscuro para subtítulos */
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Caja de Ticket de Exito */
+.ticket-success {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #e8f5e9;
+    border: 2px dashed #4caf50;
+    border-radius: 12px;
+}
+
+.ticket-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #388e3c;
+    margin-bottom: 1rem;
+}
+
+.ticket-box {
+    font-size: 1.1rem;
+    color: #2e7d32;
+}
+
+/* Contenedor del botón */
+.boton-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+/* Fondo global de la web */
+body {
+    background-color: #d1d5db; /* Fondo gris claro para toda la página */
+    font-family: 'Poppins', sans-serif;
+    color: #333; /* Texto oscuro para contraste */
+}
+
+/* Input de cantidad */
+input[type="number"] {
+    font-size: 1rem;
+    padding: 0.60rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 10%;
+    margin-top: 2rem;
+    background-color: #444; /* Fondo oscuro en el input */
+    color: #fff; /* Texto blanco */
+
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+/* Estilo para los iconos de los botones */
+.pi-ticket {
+    margin-right: 0.5rem;
+}

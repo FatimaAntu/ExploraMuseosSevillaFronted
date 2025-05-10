@@ -9,6 +9,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component'; 
 import { RegisterComponent } from './auth/register/register.component';
 import { ExposicionAdminComponent } from './pages/exposicion-admin/exposicion-admin.component';
+import { ComprarEntradaComponent } from './pages/comprar-entrada/comprar-entrada.component'; // Asegúrate de importar tu componente de compra de entrada
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [
     path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], // Protege la ruta con un guard
     data: { roles: ['ADMIN'] } // Solo los administradores pueden acceder
   },
+  { path: 'comprar-entrada/:id', component: ComprarEntradaComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
 

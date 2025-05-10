@@ -1,0 +1,43 @@
+<div class="compra-container">
+
+  <p-message *ngIf="mensajeError" severity="error" [text]="mensajeError"></p-message>
+
+  <!-- Tarjeta de exposición -->
+  <p-card *ngIf="exposicion && !mensajeExito" class="exposicion-card">
+    <ng-template pTemplate="header">
+      <img *ngIf="exposicion.imagen" [src]="exposicion.imagen" alt="Imagen de la exposición" class="exposicion-img" />
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      {{ exposicion.nombre }}
+    </ng-template>
+
+    <ng-template pTemplate="subtitle">
+      Museo: {{ exposicion.museo?.nombre }}
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>{{ exposicion.descripcion }}</p>
+      <p><strong>Fecha de inicio:</strong> {{ exposicion.fechaInicio | date:'longDate' }}</p>
+      <p><strong>Fecha de fin:</strong> {{ exposicion.fechaFin | date:'longDate' }}</p>
+      <div class="boton-container">
+        <button pButton label="Comprar Entrada(s)" icon="pi pi-ticket" class="p-button-success" (click)="comprarEntrada()"></button>
+      </div>
+    </ng-template>
+  </p-card>
+
+   <!-- Selector de cantidad de entradas -->
+   <div class="mt-4">
+    <label for="cantidad">Cantidad de Entradas:</label>
+    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" max="10" class="p-inputtext p-component" />
+  </div>
+  <!-- Ticket de éxito -->
+  <div *ngIf="mensajeExito" class="ticket-success animate-fade-in">
+    <p class="ticket-title">🎉 ¡Gracias por tu compra!</p>
+    <div class="ticket-box">
+      <p><strong>Entrada para:</strong> {{ exposicion?.nombre }}</p>
+      <p>📧 Revisa tu correo para más detalles.</p>
+    </div>
+  </div>
+
+</div>
