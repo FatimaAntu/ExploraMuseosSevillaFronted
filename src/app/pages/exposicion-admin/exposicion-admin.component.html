@@ -36,17 +36,21 @@
       <small class="p-error" *ngIf="isInvalid('museoId')">Debe seleccionar un museo</small>
     </div>
 
-    <div class="campo">
-      <label for="fechaInicio" class="label">Fecha de Inicio</label>
-      <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio" [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo"/>
-      <small class="p-error" *ngIf="isInvalid('fechaInicio')">Fecha de inicio requerida</small>
-    </div>
+   <div class="campo">
+  <label for="fechaInicio" class="label">Fecha de Inicio</label>
+  <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio" [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo"/>
+  <small class="p-error" *ngIf="isInvalid('fechaInicio')">
+    La fecha de inicio no puede ser anterior a la fecha actual
+  </small>
+</div>
+
 
     <div class="campo">
       <label for="fechaFin" class="label">Fecha de Fin</label>
       <input type="date" pInputText id="fechaFin" formControlName="fechaFin" [ngClass]="{ 'p-invalid': isInvalid('fechaFin') }" class="input-rectangulo"/>
       <small class="p-error" *ngIf="isInvalid('fechaFin')">Fecha de fin requerida</small>
     </div>
+    
 
     <!-- Botón Agregar/Actualizar -->
     <div class="boton">
@@ -76,8 +80,8 @@
           <td>{{ exposicion?.descripcion }}</td>
           <td>{{ exposicion?.museo?.nombre }}</td>
           <td>
-            Desde: {{ exposicion?.fechaInicio | date:'shortDate' }} |
-            Hasta: {{ exposicion?.fechaFin | date:'shortDate' }}
+            Desde: {{ exposicion?.fechaInicio | date:'dd/MM/yyyy' }} |
+            Hasta: {{ exposicion?.fechaFin | date:'dd/MM/yyyy' }}
           </td>
           <td class="acciones">
             <button pButton icon="pi pi-pencil" label="Editar" (click)="editarExposicion(exposicion)" class="btn-editar"></button>

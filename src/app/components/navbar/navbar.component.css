@@ -1,73 +1,52 @@
-/* Asegurar que los enlaces sean visibles */
+/* NAVBAR GENERAL */
+.navbar {
+  padding: 25px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: linear-gradient(90deg, #000000, #000000);
+  border-bottom: 3px solid white;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+   padding: 30px 60px; /* Aumenta el padding lateral */
+  width: 100%; /* Asegura que el navbar ocupe todo el ancho disponible */
+  box-sizing: border-box; 
+}
+
+/* LOGO */
+.navbar-logo .logo {
+  height: 100px;
+  width: auto;
+}
+
+/* ENLACES */
 .navbar-links {
-  display: flex !important;
+  display: flex;
   gap: 30px;
   align-items: center;
 }
 
-/* Estilo de los enlaces */
 .navbar-links a {
   text-decoration: none;
   color: white;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 500;
   padding: 5px 10px;
   transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
 }
 
-/* Estilo cuando el link está activo */
 .navbar-links a.active {
   color: #a0dfe7;
   border-bottom: 2px solid #a0dfe7;
 }
 
-/* Efecto hover */
 .navbar-links a:hover {
   color: #f6feff;
   border-bottom: 2px solid #f6feff;
 }
 
-/* Botones de sesión (Login y Admin) */
-.navbar-login {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* Estilo de los botones de login */
-.navbar-login a {
-  text-decoration: none;
-  padding: 8px 15px;
-  font-size: 18px;
-  font-weight: 500;
-  border-radius: 5px;
-  margin-right: 40px;
-  transition: all 0.3s ease;
-}
-
-/* Estilo de Login */
-.btn-login {
-  background-color: #008080;
-  color: white;
-}
-
-.btn-login:hover {
-  background-color: #009b9b;
-}
-
-/* Estilo de Admin */
-.btn-admin {
-  background-color: #1a6385;
-  color: white;
-}
-
-.btn-admin:hover {
-  background-color: #000000;
-}
-
-/* Íconos */
+/* ICONOS */
 .icon-container {
   display: flex;
   gap: 15px;
@@ -86,93 +65,80 @@
   transform: scale(1.1);
 }
 
-/* Navbar principal */
-.navbar {
-  padding: 25px 40px; /* Aumentar padding horizontal */
-  height: auto; /* Altura adaptable */
+/* MENSAJE BIENVENIDA */
+.welcome-msg {
+  background-color: #1a6385;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-right: 10px;
+}
+
+.welcome-msg:hover {
+  background-color: #00a0b0;
+  transform: scale(1.05);
+}
+
+/* GRUPOS CON SEPARACIÓN */
+.navbar-login {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap; /* Permite que los elementos se acomoden si no hay espacio */
-  background: linear-gradient(90deg, #000000, #000000);
-  border-bottom: 3px solid white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* Logo */
-.navbar-logo .logo {
-  height: 120px;
-  width: auto;
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* Mensaje de bienvenida */
-.welcome-msg {
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 30px;
-  white-space: nowrap;
-  
-}
-
-/* Responsive - Ajuste en dispositivos móviles */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
   }
 
   .navbar-links {
     flex-direction: column;
-    gap: 15px;
     width: 100%;
+    gap: 10px;
+    
   }
 
   .navbar-links a {
-    font-size: 16px;
+    font-size: 18px;
+  }
+
+  .navbar-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
   }
 
   .navbar-login {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+  
   }
-}
-/* Para el mensaje de bienvenida */
-.welcome-msg {
-  background-color: #1a6385;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 18px;
-  font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-left: 20px;
-}
 
-/* Efecto hover */
-.welcome-msg:hover {
-  background-color: #00a0b0;
-  transform: scale(1.05);
-}
+  .welcome-msg {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 
-/* Ajustes para la visibilidad del mensaje en pantallas más grandes */
-.welcome-msg {
-  order: 3; /* Asegura que el mensaje esté después de los enlaces de la navbar */
-}
-  
-.btn-logout {
-  background-color: #68c8ff42; /* Rojo para el botón de cerrar sesión */
-  color: white; /* Texto blanco */
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  border: none; /* Sin bordes */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cursor de mano al pasar por encima */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
-}
   
 
+  
+}

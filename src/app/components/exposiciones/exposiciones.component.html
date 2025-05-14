@@ -1,21 +1,30 @@
 <div class="exposiciones p-8">
-  <h2 class="text-2xl font-bold mb-4">Exposiciones del Museo</h2>
+    
+    <h2 class="nombre-museo text-3xl font-bold mb-4 text-center">
+    Exposiciones: {{ nombreMuseo }}
+  </h2>
 
   <div *ngIf="exposiciones.length > 0; else sinExposiciones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bg-white p-4 rounded-lg shadow" *ngFor="let expo of exposiciones">
-      <img [src]="expo.imagen" alt="{{ expo.nombre }}" class="h-48 w-full object-cover rounded-md mb-2">
-      <h3 class="text-lg font-semibold">{{ expo.nombre }}</h3>
-      <p class="text-sm text-gray-700">{{ expo.descripcion }}</p>
-      <p class="text-sm text-gray-500 mt-2">
+    <p-card *ngFor="let expo of exposiciones" class="shadow-md">
+      <ng-template pTemplate="header">
+        <p-image [src]="expo.imagen" [alt]="expo.nombre" styleClass="w-full h-48 object-cover" preview></p-image>
+      </ng-template>
+
+      <ng-template pTemplate="title">
+        {{ expo.nombre }}
+      </ng-template>
+
+      <ng-template pTemplate="subtitle">
         {{ expo.fechaInicio | date:'dd/MM/yyyy' }} - {{ expo.fechaFin | date:'dd/MM/yyyy' }}
-      </p>
-    </div>
+      </ng-template>
+
+      <ng-template pTemplate="content">
+        <p>{{ expo.descripcion }}</p>
+      </ng-template>
+    </p-card>
   </div>
 
   <ng-template #sinExposiciones>
     <p class="text-gray-600">Este museo no tiene exposiciones actualmente.</p>
   </ng-template>
 </div>
-
-  
-  

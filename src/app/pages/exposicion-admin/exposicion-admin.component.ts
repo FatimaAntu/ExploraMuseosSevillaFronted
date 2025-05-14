@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -53,7 +54,7 @@ export class ExposicionAdminComponent implements OnInit {
       id: [null],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fechaInicio: ['', Validators.required],
+      fechaInicio: ['', [Validators.required, Validators.min(this.getTodayDate())]],
       fechaFin: ['', Validators.required],
       museoId: [null, Validators.required]
     });
@@ -62,6 +63,17 @@ export class ExposicionAdminComponent implements OnInit {
   ngOnInit(): void {
     this.getExposiciones();
     this.obtenerMuseos();
+    this.exposicionForm.get('fechaInicio')?.valueChanges.subscribe(value => {
+  if (value) {
+    const fechaSeleccionada = new Date(value).setHours(0, 0, 0, 0);
+    const hoy = new Date().setHours(0, 0, 0, 0);
+
+    if (fechaSeleccionada < hoy) {
+      this.exposicionForm.get('fechaInicio')?.reset();
+      this.exposicionForm.get('fechaInicio')?.markAsTouched();
+    }
+  }
+});
   }
 
   obtenerMuseos(): void {
@@ -81,6 +93,11 @@ export class ExposicionAdminComponent implements OnInit {
       }
     );
   }
+   // Método para obtener la fecha de hoy en formato yyyy-MM-dd
+   private getTodayDate(): number {
+    const today = new Date();
+    return Date.parse(today.toISOString().split('T')[0]);
+   }
 
   getExposiciones() {
     this.exposicionService.getExposiciones().subscribe(data => {

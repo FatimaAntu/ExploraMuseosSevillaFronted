@@ -1,57 +1,55 @@
 <nav class="navbar">
-    <div class="navbar-logo">
-        <img src="logo.png" alt="Logo" class="logo">
-    </div>
-
-    <div class="navbar-links">
-        <a routerLink="/" routerLinkActive="active">Inicio</a>
-        <a routerLink="/museos" routerLinkActive="active">Museos</a>
-        <a routerLink="/exposiciones" routerLinkActive="active">Exposiciones</a>
-        <a routerLink="/mapa" routerLinkActive="active">Mapa</a>
-    </div>
-
-
-    <!-- Íconos sin fondo cuadrado -->
-    <div class="icon-container">
-        <i class="pi pi-search"></i>
-        <i class="pi pi-shopping-cart"></i>
-    </div>
-
- 
-  
-<!-- Botón de login 
-<div class="navbar-login">
-    <a routerLink="/login" routerLinkActive="active" class="btn-login">
-        Login
-    </a>
-</div>
-</nav>-->
-
-<!-- Zona de login/logout -->
-<div class="navbar-login">
-    <ng-container *ngIf="usuario; else loginLink">
-      <span class="welcome-msg">Bienvenido, {{ usuario.nombre }}</span>
-  
-      <!-- Botón Admin: si es admin, lleva a la página principal y luego a la gestión -->
-      <a *ngIf="usuario.rol === 'ADMIN'" (click)="navigateToAdminDashboard()" class="btn-admin">
-        Admin
-      </a>
-  
-      <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
-    </ng-container>
-  
-    <ng-template #loginLink>
-      <a routerLink="/login" routerLinkActive="active" class="btn-login">
-        Login
-      </a>
-    </ng-template>
+  <!-- Logo -->
+  <div class="navbar-logo">
+    <img src="logo.png" alt="Logo" class="logo" />
   </div>
-</nav>  
 
+  <!-- Enlaces -->
+  <div class="navbar-links">
+    <a pRipple routerLink="/" routerLinkActive="active">Inicio</a>
+    <a pRipple routerLink="/exposiciones" routerLinkActive="active">Exposiciones</a>
+  </div>
 
+  <!-- Acciones: Íconos + botones -->
+  <div class="navbar-actions flex align-items-center gap-4 flex-wrap">
+    <!-- Íconos -->
+    <div class="icon-container">
+      <i class="pi pi-search"></i>
+      <i class="pi pi-shopping-cart"></i>
+    </div>
 
+    <!-- Área de usuario / login -->
+    <div class="navbar-login flex align-items-center gap-3">
+      <ng-container *ngIf="usuario; else loginLink">
+        <span class="welcome-msg">Bienvenido, {{ usuario.nombre }}</span>
 
-        
+        <button
+          *ngIf="usuario.rol === 'ADMIN'"
+          pButton
+          label="Admin"
+          icon="pi pi-cog"
+          class="p-button-sm p-button-info"
+          (click)="navigateToAdminDashboard()"
+        ></button>
 
+        <button
+          pButton
+          label="Cerrar sesión"
+          icon="pi pi-sign-out"
+          class="p-button-sm p-button-secondary"
+          (click)="logout()"
+        ></button>
+      </ng-container>
 
-  
+      <ng-template #loginLink>
+        <a
+          pButton
+          routerLink="/login"
+          class="p-button-sm p-button-primary"
+          label="Iniciar Sesión"
+          style="text-decoration: none"
+        ></a>
+      </ng-template>
+    </div>
+  </div>
+</nav>

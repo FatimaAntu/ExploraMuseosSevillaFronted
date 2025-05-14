@@ -1,1 +1,51 @@
+:host ::ng-deep .p-card {
+  background-color: #f2f2f2; /* fondo gris claro */
+  color: #1a1a1a; /* texto oscuro */
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
 
+
+
+:host ::ng-deep .p-card .p-image img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 3px solid #38b2ac; /* borde inferior en color turquesa */
+}
+
+:host ::ng-deep .p-card .p-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #222;
+  margin-top: 0.5rem;
+}
+
+:host ::ng-deep .p-card .p-card-subtitle {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+:host ::ng-deep .p-card .p-card-content p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.4;
+  padding-bottom: 0.5rem;
+}
+
+/* Nuevo estilo para el nombre del museo */
+:host ::ng-deep .nombre-museo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #28aca5; /* Color turquesa para destacarlo */
+  margin-top: 1.5rem;
+  text-align: center; /* Centrar el nombre */
+  text-transform: uppercase; /* Poner el nombre en mayúsculas */
+  letter-spacing: 1px;
+  background-color: black;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
