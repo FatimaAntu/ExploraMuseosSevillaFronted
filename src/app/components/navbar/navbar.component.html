@@ -6,7 +6,7 @@
 
   <!-- Enlaces -->
   <div class="navbar-links">
-    <a pRipple routerLink="/" routerLinkActive="active">Inicio</a>
+    <a pRipple routerLink="/" routerLinkActive="active">Página Principal</a>
     <a pRipple routerLink="/exposiciones" routerLinkActive="active">Exposiciones</a>
   </div>
 
@@ -21,34 +21,37 @@
     <!-- Área de usuario / login -->
     <div class="navbar-login flex align-items-center gap-3">
       <ng-container *ngIf="usuario; else loginLink">
-        <span class="welcome-msg">Bienvenido, {{ usuario.nombre }}</span>
+        <span class="welcome-msg" *ngIf="usuario.rol !== 'ADMIN'">
+          Bienvenido/a, {{ usuario.nombre }}
+        </span>
 
         <button
           *ngIf="usuario.rol === 'ADMIN'"
           pButton
           label="Admin"
           icon="pi pi-cog"
-          class="p-button-sm p-button-info"
+          class="p-button-sm custom-login-button"
           (click)="navigateToAdminDashboard()"
         ></button>
 
         <button
           pButton
-          label="Cerrar sesión"
-          icon="pi pi-sign-out"
-          class="p-button-sm p-button-secondary"
+          class="p-button-sm custom-login-button"
           (click)="logout()"
-        ></button>
+        >
+          Cerrar Sesión
+        </button>
       </ng-container>
 
       <ng-template #loginLink>
         <a
           pButton
           routerLink="/login"
-          class="p-button-sm p-button-primary"
-          label="Iniciar Sesión"
+          class="p-button-sm custom-login-button"
           style="text-decoration: none"
-        ></a>
+        >
+          Iniciar Sesión
+        </a>
       </ng-template>
     </div>
   </div>

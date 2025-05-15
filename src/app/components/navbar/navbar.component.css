@@ -1,6 +1,6 @@
 /* NAVBAR GENERAL */
 .navbar {
-  padding: 25px 40px;
+  padding: 30px 60px; /* Aumenta el padding lateral */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,14 +8,13 @@
   background: linear-gradient(90deg, #000000, #000000);
   border-bottom: 3px solid white;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-   padding: 30px 60px; /* Aumenta el padding lateral */
-  width: 100%; /* Asegura que el navbar ocupe todo el ancho disponible */
-  box-sizing: border-box; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* LOGO */
 .navbar-logo .logo {
-  height: 100px;
+  height: 150px;
   width: auto;
 }
 
@@ -29,7 +28,8 @@
 .navbar-links a {
   text-decoration: none;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   padding: 5px 10px;
   transition: all 0.3s ease;
@@ -67,7 +67,7 @@
 
 /* MENSAJE BIENVENIDA */
 .welcome-msg {
-  background-color: #1a6385;
+  background-color: #4e7e94;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -77,6 +77,7 @@
   display: inline-block;
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-right: 10px;
+  cursor: default; /* El puntero NO cambia */
 }
 
 .welcome-msg:hover {
@@ -99,6 +100,26 @@
   flex-wrap: wrap;
 }
 
+/* BOTONES ADMIN, INICIAR SESIÓN Y CERRAR SESIÓN */
+::ng-deep .custom-login-button.p-button {
+  background-color: #1a6385 !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+::ng-deep .custom-login-button.p-button:hover {
+  background-color: #00a0b0 !important;
+  transform: scale(1.05);
+  color: white !important;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .navbar {
@@ -112,7 +133,6 @@
     flex-direction: column;
     width: 100%;
     gap: 10px;
-    
   }
 
   .navbar-links a {
@@ -130,15 +150,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-  
   }
 
   .welcome-msg {
     font-size: 14px;
     padding: 6px 12px;
   }
-
-  
-
-  
 }
