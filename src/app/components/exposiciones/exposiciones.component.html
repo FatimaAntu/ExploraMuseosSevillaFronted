@@ -21,6 +21,12 @@
       <ng-template pTemplate="content">
         <p>{{ expo.descripcion }}</p>
       </ng-template>
+      <ng-template pTemplate="content">
+  <p>{{ expo.descripcion }}</p>
+  <p class="mt-2 font-semibold">Precio: €{{ expo.precio | number:'1.2-2' }}</p>
+</ng-template>
+
+      
     </p-card>
   </div>
 

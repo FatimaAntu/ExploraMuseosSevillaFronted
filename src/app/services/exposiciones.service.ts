@@ -15,6 +15,7 @@ export interface Exposicion {
     id: number;
     nombre: string;
   };
+  precio: number; 
 }
 
 @Injectable({

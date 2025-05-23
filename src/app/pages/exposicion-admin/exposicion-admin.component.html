@@ -36,13 +36,12 @@
       <small class="p-error" *ngIf="isInvalid('museoId')">Debe seleccionar un museo</small>
     </div>
 
-   <div class="campo">
+    <div class="campo">
   <label for="fechaInicio" class="label">Fecha de Inicio</label>
   <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio" [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo"/>
-  <small class="p-error" *ngIf="isInvalid('fechaInicio')">
-    La fecha de inicio no puede ser anterior a la fecha actual
-  </small>
+ 
 </div>
+
 
 
     <div class="campo">
@@ -51,6 +50,13 @@
       <small class="p-error" *ngIf="isInvalid('fechaFin')">Fecha de fin requerida</small>
     </div>
     
+    <div class="campo">
+  <label for="precio" class="label">Precio (€)</label>
+  <input type="number" pInputText id="precio" formControlName="precio" min="0" step="0.01"
+         [ngClass]="{ 'p-invalid': isInvalid('precio') }" class="input-rectangulo"/>
+  <small class="p-error" *ngIf="isInvalid('precio')">El precio es obligatorio y debe ser mayor o igual a 0</small>
+</div>
+
 
     <!-- Botón Agregar/Actualizar -->
     <div class="boton">
@@ -71,6 +77,7 @@
           <th class="text-xl font-bold text-gray-800">Descripción</th>
           <th class="text-xl font-bold text-gray-800">Museo</th>
           <th class="text-xl font-bold text-gray-800">Fechas</th>
+          <th class="text-xl font-bold text-gray-800">Precio (€)</th>
           <th class="text-xl font-bold text-gray-800">Acciones</th>
         </tr>
       </thead>
@@ -83,6 +90,7 @@
             Desde: {{ exposicion?.fechaInicio | date:'dd/MM/yyyy' }} |
             Hasta: {{ exposicion?.fechaFin | date:'dd/MM/yyyy' }}
           </td>
+           <td>{{ exposicion?.precio | number:'1.2-2' }} €</td> 
           <td class="acciones">
             <button pButton icon="pi pi-pencil" label="Editar" (click)="editarExposicion(exposicion)" class="btn-editar"></button>
             <button pButton icon="pi pi-trash" label="Eliminar" (click)="eliminarExposicion(exposicion.id)" class="btn-eliminar p-button-danger"></button>

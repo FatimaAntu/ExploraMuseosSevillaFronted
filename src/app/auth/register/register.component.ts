@@ -46,19 +46,22 @@ export class RegisterComponent {
          // Abrimos sesión del usuario
          this.authService.setCurrentUser(user);  
 
-        // Verificar si había un intento de compra pendiente
-        const pendiente = localStorage.getItem('entradaPendiente');
+     // Verificar si había un intento de compra pendiente
+      const pendiente = localStorage.getItem('entradaPendiente');
+
+      // Esperar 2 segundos antes de redirigir
+      setTimeout(() => {
         if (pendiente) {
           localStorage.removeItem('entradaPendiente');
-          this.router.navigate(['/comprar-entrada', pendiente]);  // Redirige a la página de compra de entradas
+          this.router.navigate(['/comprar-entrada', pendiente]);
         } else {
-          this.router.navigate(['/comprar-entrada']);  // O cualquier otra página por defecto
+          this.router.navigate(['/comprar-entrada']);
         }
-      },
-      error: (err) => {
-        this.error = err.error?.message || 'Error al registrar usuario';
-        this.mensaje = null;
-      }
-    });
-  }
-}
+      }, 2000); // 2 segundos para que el mensaje se vea
+    },
+    error: (err) => {
+      this.error = err.error?.message || 'Error al registrar usuario';
+      this.mensaje = null;
+    }
+  });
+}}

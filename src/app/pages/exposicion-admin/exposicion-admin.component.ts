@@ -1,9 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ExposicionesService } from '../../services/exposiciones.service';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -54,26 +53,17 @@ export class ExposicionAdminComponent implements OnInit {
       id: [null],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fechaInicio: ['', [Validators.required, Validators.min(this.getTodayDate())]],
+      fechaInicio: ['', [Validators.required, this.fechaNoPasadaValidator]],
       fechaFin: ['', Validators.required],
-      museoId: [null, Validators.required]
+      museoId: [null, Validators.required],
+      precio: [null, [Validators.required, Validators.min(0)]],
+     
     });
   }
 
   ngOnInit(): void {
     this.getExposiciones();
     this.obtenerMuseos();
-    this.exposicionForm.get('fechaInicio')?.valueChanges.subscribe(value => {
-  if (value) {
-    const fechaSeleccionada = new Date(value).setHours(0, 0, 0, 0);
-    const hoy = new Date().setHours(0, 0, 0, 0);
-
-    if (fechaSeleccionada < hoy) {
-      this.exposicionForm.get('fechaInicio')?.reset();
-      this.exposicionForm.get('fechaInicio')?.markAsTouched();
-    }
-  }
-});
   }
 
   obtenerMuseos(): void {
@@ -93,11 +83,19 @@ export class ExposicionAdminComponent implements OnInit {
       }
     );
   }
-   // Método para obtener la fecha de hoy en formato yyyy-MM-dd
-   private getTodayDate(): number {
-    const today = new Date();
-    return Date.parse(today.toISOString().split('T')[0]);
-   }
+
+  // Validador personalizado para fechaInicio
+  fechaNoPasadaValidator(control: AbstractControl): ValidationErrors | null {
+    if (!control.value) return null;
+
+    const fechaSeleccionada = new Date(control.value);
+    const hoy = new Date();
+    // Limpiamos la hora para comparar solo fechas
+    fechaSeleccionada.setHours(0, 0, 0, 0);
+    hoy.setHours(0, 0, 0, 0);
+
+    return fechaSeleccionada < hoy ? { fechaPasada: true } : null;
+  }
 
   getExposiciones() {
     this.exposicionService.getExposiciones().subscribe(data => {
@@ -115,6 +113,7 @@ export class ExposicionAdminComponent implements OnInit {
       descripcion: exposicionFormValue.descripcion,
       fechaInicio: exposicionFormValue.fechaInicio,
       fechaFin: exposicionFormValue.fechaFin,
+      precio: exposicionFormValue.precio,
       museo: {
         id: exposicionFormValue.museoId
       }
@@ -122,7 +121,7 @@ export class ExposicionAdminComponent implements OnInit {
     const id = exposicionFormValue.id;
 
     if (this.exposicionEditada) {
-      this.exposicionService.updateExposicion(this.exposicionForm.value.id, exposicion).subscribe({
+      this.exposicionService.updateExposicion(id, exposicion).subscribe({
         next: () => {
           this.messageService.add({
             severity: 'success',
@@ -180,7 +179,8 @@ export class ExposicionAdminComponent implements OnInit {
       descripcion: exposicion.descripcion,
       fechaInicio: exposicion.fechaInicio,
       fechaFin: exposicion.fechaFin,
-      museoId: exposicion.museo?.id
+      museoId: exposicion.museo?.id,
+      precio: exposicion.precio
     });
   }
 

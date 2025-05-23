@@ -9,7 +9,8 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component'; 
 import { RegisterComponent } from './auth/register/register.component';
 import { ExposicionAdminComponent } from './pages/exposicion-admin/exposicion-admin.component';
-import { ComprarEntradaComponent } from './pages/comprar-entrada/comprar-entrada.component'; // Asegúrate de importar tu componente de compra de entrada
+import { ComprarEntradaComponent } from './pages/comprar-entrada/comprar-entrada.component'; 
+
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -33,6 +34,7 @@ export const routes: Routes = [
     data: { roles: ['ADMIN'] }
   },
   { path: '**', redirectTo: '' }
+
 ];
 
 @NgModule({

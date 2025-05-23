@@ -22,6 +22,7 @@ export class ExposicionesComponent implements OnInit {
   museoId: number = 0;
   exposiciones: Exposicion[] = [];
    nombreMuseo: string = '';
+   
 
   constructor(
     private route: ActivatedRoute,

@@ -21,16 +21,23 @@
       <p><strong>Fecha de inicio:</strong> {{ exposicion.fechaInicio | date:'longDate' }}</p>
       <p><strong>Fecha de fin:</strong> {{ exposicion.fechaFin | date:'longDate' }}</p>
       <div class="boton-container">
-        <button pButton label="Comprar Entrada(s)" icon="pi pi-ticket" class="p-button-success" (click)="comprarEntrada()"></button>
+        <button pButton label="Comprar Entrada(s)" icon="pi pi-ticket" class="p-button-success"
+          (click)="comprarEntrada()" [disabled]="mostrarPaypal"></button>
       </div>
+      <!-- Contenedor para renderizar el botón PayPal -->
+      <div id="paypal-button-container" [hidden]="!mostrarPaypal" class="mt-4"></div>
+
+
     </ng-template>
   </p-card>
 
-   <!-- Selector de cantidad de entradas -->
-   <div class="mt-4">
+  <!-- Selector de cantidad de entradas -->
+  <div class="mt-4">
     <label for="cantidad">Cantidad de Entradas:</label>
-    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" max="10" class="p-inputtext p-component" />
+    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" max="10" class="p-inputtext p-component"
+      [disabled]="mostrarPaypal" />
   </div>
+
   <!-- Ticket de éxito -->
   <div *ngIf="mensajeExito" class="ticket-success animate-fade-in">
     <p class="ticket-title">🎉 ¡Gracias por tu compra!</p>
