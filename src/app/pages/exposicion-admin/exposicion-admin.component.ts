@@ -10,10 +10,11 @@ import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
 import { MuseoService } from 'app/services/museo.service';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
+
+
 
 @Component({
   selector: 'app-exposicion-admin',
@@ -41,6 +42,9 @@ export class ExposicionAdminComponent implements OnInit {
   exposicionForm: FormGroup;
   exposicionEditada: any = null;
   museos: any[] = [];
+  imagenFile: File | null = null;
+  imagenError: string | null = null;
+  imagenPreview: string | null = null;
 
   constructor(
     private exposicionService: ExposicionesService,
@@ -57,8 +61,7 @@ export class ExposicionAdminComponent implements OnInit {
       fechaFin: ['', Validators.required],
       museoId: [null, Validators.required],
       precio: [null, [Validators.required, Validators.min(0)]],
-     
-    });
+    }, { validators: this.rangoFechasValidator });
   }
 
   ngOnInit(): void {
@@ -67,112 +70,94 @@ export class ExposicionAdminComponent implements OnInit {
   }
 
   obtenerMuseos(): void {
-    this.museoService.getMuseos().subscribe(
-      (data: any[]) => {
-        this.museos = data;
-      },
-      (error) => {
+    this.museoService.getMuseos().subscribe({
+      next: (data: any[]) => this.museos = data,
+      error: (error) => {
         console.error('Error al obtener museos', error);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
           detail: 'No se pudieron cargar los museos',
-          life: 3000,
-          closable: true
+          life: 3000
         });
       }
-    );
+    });
   }
 
-  // Validador personalizado para fechaInicio
   fechaNoPasadaValidator(control: AbstractControl): ValidationErrors | null {
     if (!control.value) return null;
-
     const fechaSeleccionada = new Date(control.value);
     const hoy = new Date();
-    // Limpiamos la hora para comparar solo fechas
     fechaSeleccionada.setHours(0, 0, 0, 0);
     hoy.setHours(0, 0, 0, 0);
-
     return fechaSeleccionada < hoy ? { fechaPasada: true } : null;
+  }
+
+  rangoFechasValidator(group: AbstractControl): ValidationErrors | null {
+    const inicio = group.get('fechaInicio')?.value;
+    const fin = group.get('fechaFin')?.value;
+    if (!inicio || !fin) return null;
+    return new Date(fin) >= new Date(inicio) ? null : { fechaFinInvalida: true };
   }
 
   getExposiciones() {
     this.exposicionService.getExposiciones().subscribe(data => {
       this.exposiciones = data;
-      console.log('Exposiciones obtenidas:', this.exposiciones);
     });
   }
 
+
+
   onSubmit() {
-    if (this.exposicionForm.invalid) return;
-
-    const exposicionFormValue = this.exposicionForm.value;
-    const exposicion = {
-      nombre: exposicionFormValue.nombre,
-      descripcion: exposicionFormValue.descripcion,
-      fechaInicio: exposicionFormValue.fechaInicio,
-      fechaFin: exposicionFormValue.fechaFin,
-      precio: exposicionFormValue.precio,
-      museo: {
-        id: exposicionFormValue.museoId
-      }
-    };
-    const id = exposicionFormValue.id;
-
-    if (this.exposicionEditada) {
-      this.exposicionService.updateExposicion(id, exposicion).subscribe({
-        next: () => {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Actualizada',
-            detail: 'Exposición actualizada con éxito',
-            life: 3000,
-            closable: true
-          });
-          this.getExposiciones();
-          this.resetFormulario();
-        },
-        error: (err) => {
-          console.error('Error al actualizar exposición', err);
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'No se pudo actualizar',
-            life: 3000,
-            closable: true
-          });
-        }
-      });
-    } else {
-      this.exposicionService.createExposicion(exposicion).subscribe({
-        next: () => {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Creada',
-            detail: 'Exposición agregada correctamente',
-            life: 3000,
-            closable: true
-          });
-          this.getExposiciones();
-          this.resetFormulario();
-        },
-        error: (err) => {
-          console.error('Error al agregar exposición', err);
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'No se pudo agregar',
-            life: 3000,
-            closable: true
-          });
-        }
-      });
+    if (this.exposicionForm.invalid) {
+      this.exposicionForm.markAllAsTouched();
+      return;
     }
+
+    const exposicionData = {
+      ...this.exposicionForm.value,
+      museo: { id: this.exposicionForm.value.museoId }
+    };
+
+    const formData = new FormData();
+    formData.append('exposicion', new Blob([JSON.stringify(exposicionData)], { type: 'application/json' }));
+
+    if (this.imagenFile) {
+      formData.append('file', this.imagenFile);
+    }
+
+    const request$ = this.exposicionEditada
+      ? this.exposicionService.updateExposicion(exposicionData.id, formData)
+      : this.exposicionService.createExposicion(formData);
+
+    request$.subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: this.exposicionEditada ? 'Exposición actualizada' : 'Exposición creada',
+          life: 3000
+        });
+        this.getExposiciones();
+        this.resetFormulario();
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Error al guardar la exposición',
+          life: 3000
+        });
+        console.error(error);
+      }
+    });
   }
 
   editarExposicion(exposicion: any) {
     this.exposicionEditada = exposicion;
+    this.imagenFile = null;
+    this.imagenError = null;
+    //rellenamos el formulario con los datos de la exposición
     this.exposicionForm.patchValue({
       id: exposicion.id,
       nombre: exposicion.nombre,
@@ -182,6 +167,13 @@ export class ExposicionAdminComponent implements OnInit {
       museoId: exposicion.museo?.id,
       precio: exposicion.precio
     });
+
+    // Mostrar la imagen actual como vista previa si existe
+    if (exposicion.imagen) {
+      this.imagenPreview = `http://localhost:8080/uploads/${exposicion.imagen}`;
+    } else {
+      this.imagenPreview = null;
+    }
   }
 
   eliminarExposicion(id: number) {
@@ -195,8 +187,7 @@ export class ExposicionAdminComponent implements OnInit {
             severity: 'warn',
             summary: 'Eliminada',
             detail: 'Exposición eliminada',
-            life: 3000,
-            closable: true
+            life: 3000
           });
           this.getExposiciones();
         });
@@ -206,6 +197,9 @@ export class ExposicionAdminComponent implements OnInit {
 
   resetFormulario() {
     this.exposicionForm.reset();
+    this.imagenFile = null;
+    this.imagenError = null;
+    this.imagenPreview = null;
     this.exposicionEditada = null;
   }
 
@@ -213,4 +207,39 @@ export class ExposicionAdminComponent implements OnInit {
     const control = this.exposicionForm.get(campo);
     return !!(control && control.invalid && (control.dirty || control.touched));
   }
+
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        this.imagenError = 'El archivo debe ser una imagen';
+        this.imagenFile = null;
+        this.imagenPreview = null;
+        return;
+      }
+      this.imagenFile = file;
+      this.imagenError = null;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagenPreview = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    const maxSizeMB = 2;
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      this.imagenError = `La imagen no puede superar los ${maxSizeMB} MB`;
+      this.imagenFile = null;
+      return;
+    }
+
+    this.imagenError = null;
+    this.imagenFile = file;
+
+    const reader = new FileReader();
+    reader.onload = () => this.imagenPreview = reader.result as string;
+    reader.readAsDataURL(file);
+  }
 }
+

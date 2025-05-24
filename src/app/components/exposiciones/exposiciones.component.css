@@ -1,51 +1,143 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f7f5, #a0d9d6);
+  color: #1a1a1a;
+}
+
+
+
 :host ::ng-deep .p-card {
-  background-color: #f2f2f2; /* fondo gris claro */
-  color: #1a1a1a; /* texto oscuro */
+  display: flex;
+  background-color: #f2f2f2;
+  color: #1a1a1a;
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 1rem;
+  gap: 1rem;
+
+  max-width: 900px;
+  width: 90%;
+  margin: 1rem auto;
 }
 
-
+:host ::ng-deep .p-card .p-image {
+  flex: 0 0 280px;
+  max-width: 280px;
+  margin-right: 1rem;
+}
 
 :host ::ng-deep .p-card .p-image img {
   height: 200px;
   width: 100%;
   object-fit: cover;
-  border-bottom: 3px solid #38b2ac; /* borde inferior en color turquesa */
+  border-radius: 12px 12px 0 0;
+  border-bottom: 3px solid #38b2ac;
+}
+
+:host ::ng-deep .p-card .p-card-content {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 :host ::ng-deep .p-card .p-card-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #222;
-  margin-top: 0.5rem;
+  margin: 0 0 0.25rem 0;
 }
 
 :host ::ng-deep .p-card .p-card-subtitle {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
 :host ::ng-deep .p-card .p-card-content p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333;
-  line-height: 1.4;
-  padding-bottom: 0.5rem;
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
 }
 
-/* Nuevo estilo para el nombre del museo */
+:host ::ng-deep .p-card .p-button {
+  margin-top: 1rem;
+  width: auto;
+  align-self: flex-start;
+  padding: 0.6rem 1.5rem;
+  background-color: #38b2ac;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  cursor: pointer;
+  border: none;
+}
+
+:host ::ng-deep .p-card .p-button:hover {
+  background-color: #2c9f8a;
+}
+
+:host ::ng-deep .p-card .p-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.5);
+}
+
+:host ::ng-deep .p-card .p-button:active {
+  background-color: #2c9f8a;
+  transform: scale(0.98);
+}
+
+:host ::ng-deep .p-card .p-button:disabled {
+  background-color: #b2e0dc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+:host ::ng-deep .p-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Opcional: estilos para el nombre del museo */
+
 :host ::ng-deep .nombre-museo {
   font-size: 2rem;
   font-weight: bold;
-  color: #28aca5; /* Color turquesa para destacarlo */
+  color: #28aca5;
   margin-top: 1.5rem;
-  text-align: center; /* Centrar el nombre */
-  text-transform: uppercase; /* Poner el nombre en mayúsculas */
+  text-align: center;
+  text-transform: uppercase;
   letter-spacing: 1px;
   background-color: black;
   padding: 0.5rem;
   border-radius: 8px;
+}
+
+/* Contenedor principal y grid */
+
+.exposiciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:host ::ng-deep .grid {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }

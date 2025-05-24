@@ -7,7 +7,9 @@
   <div *ngIf="exposiciones.length > 0; else sinExposiciones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <p-card *ngFor="let expo of exposiciones" class="shadow-md">
       <ng-template pTemplate="header">
-        <p-image [src]="expo.imagen" [alt]="expo.nombre" styleClass="w-full h-48 object-cover" preview></p-image>
+        <p-image [src]="'http://localhost:8080/uploads/' + expo.imagen" [alt]="expo.nombre" styleClass="w-full h-48 object-cover" preview></p-image>
+
+       
       </ng-template>
 
       <ng-template pTemplate="title">

@@ -5,6 +5,7 @@
   <!-- Tarjeta de exposición -->
   <p-card *ngIf="exposicion && !mensajeExito" class="exposicion-card">
     <ng-template pTemplate="header">
+      
       <img *ngIf="exposicion.imagen" [src]="exposicion.imagen" alt="Imagen de la exposición" class="exposicion-img" />
     </ng-template>
 

@@ -1,7 +1,9 @@
 <div class="admin-exposiciones">
   <!-- Diálogos globales -->
   <p-confirmDialog></p-confirmDialog>
-  <p-toast>position="top-right" key="main"></p-toast>
+  <p-toast position="top-right" key="main"></p-toast>
+  
+<p-toast></p-toast>
 
   <!-- Título principal -->
   <h2 class="titulo">Administrar Exposiciones</h2>
@@ -58,9 +60,26 @@
 </div>
 
 
+<div class="campo">
+  <label for="imagen" class="label">Imagen</label>
+  <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*" />
+  <small class="p-error" *ngIf="imagenError">{{ imagenError }}</small>
+  
+
+  <!-- Vista previa de la imagen -->
+  <div *ngIf="imagenPreview" class="preview-container">
+    <p class="label mt-2">Vista previa:</p>
+    <img [src]="imagenPreview" alt="Vista previa de la imagen" 
+         style="max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+  </div>
+</div>
+
+
     <!-- Botón Agregar/Actualizar -->
     <div class="boton">
-      <button pButton type="submit" [label]="exposicionEditada ? 'Actualizar Exposición' : 'Agregar Exposición'" [disabled]="exposicionForm.invalid" class="p-button-success boton-enviar"></button>
+      <button pButton type="submit" 
+      [label]="exposicionEditada ? 'Actualizar Exposición' : 'Agregar Exposición'" 
+      [disabled]="exposicionForm.invalid" class="p-button-success boton-enviar"></button>
     </div>
   </form>
 
@@ -78,6 +97,7 @@
           <th class="text-xl font-bold text-gray-800">Museo</th>
           <th class="text-xl font-bold text-gray-800">Fechas</th>
           <th class="text-xl font-bold text-gray-800">Precio (€)</th>
+          <th class="text-xl font-bold text-gray-800">Imagen</th>
           <th class="text-xl font-bold text-gray-800">Acciones</th>
         </tr>
       </thead>
@@ -90,8 +110,17 @@
             Desde: {{ exposicion?.fechaInicio | date:'dd/MM/yyyy' }} |
             Hasta: {{ exposicion?.fechaFin | date:'dd/MM/yyyy' }}
           </td>
+          <td>
+ <img *ngIf="exposicion?.imagen" 
+     [src]="'http://localhost:8080/uploads/' + exposicion.imagen" 
+     alt="Imagen de la exposición" 
+       style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+     
+
+</td>
            <td>{{ exposicion?.precio | number:'1.2-2' }} €</td> 
           <td class="acciones">
+           
             <button pButton icon="pi pi-pencil" label="Editar" (click)="editarExposicion(exposicion)" class="btn-editar"></button>
             <button pButton icon="pi pi-trash" label="Eliminar" (click)="eliminarExposicion(exposicion.id)" class="btn-eliminar p-button-danger"></button>
           </td>

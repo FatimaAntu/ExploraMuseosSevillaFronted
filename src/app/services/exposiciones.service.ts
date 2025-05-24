@@ -44,23 +44,24 @@ export class ExposicionesService {
     );
   }
 
-  createExposicion(exposicion: any): Observable<any> {
-    return this.http.post(this.apiUrl, exposicion).pipe(
-      catchError(error => {
-        console.error('Error al crear exposición:', error);
-        return throwError(() => new Error('Error al crear exposición'));
-      })
-    );
-  }
+ createExposicion(exposicionFormData: FormData): Observable<any> {
+  // No se establece Content-Type para que el navegador maneje multipart/form-data
+  return this.http.post(this.apiUrl, exposicionFormData).pipe(
+    catchError(error => {
+      console.error('Error al crear exposición:', error);
+      return throwError(() => new Error('Error al crear exposición'));
+    })
+  );
+}
 
-  updateExposicion(id: number, exposicion: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, exposicion).pipe(
-      catchError(error => {
-        console.error('Error al actualizar exposición:', error);
-        return throwError(() => new Error('Error al actualizar exposición'));
-      })
-    );
-  }
+updateExposicion(id: number, exposicionFormData: FormData): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${id}`, exposicionFormData).pipe(
+    catchError(error => {
+      console.error('Error al actualizar exposición:', error);
+      return throwError(() => new Error('Error al actualizar exposición'));
+    })
+  );
+}
 
   deleteExposicion(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
@@ -80,7 +81,15 @@ export class ExposicionesService {
   }
   
  
-  
+  selectedImage: File | null = null;
+
+onFileChange(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    this.selectedImage = file;
+  }
+}
+
   
   
 }
