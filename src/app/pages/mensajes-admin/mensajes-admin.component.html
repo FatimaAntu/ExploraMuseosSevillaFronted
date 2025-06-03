@@ -1,0 +1,43 @@
+<div class="p-6 bg-gray-900 text-white rounded-lg shadow-lg max-w-4xl mx-auto respuesta-form">
+  <h2 class="text-7xl font-semibold mb-6 mensaje-titulo">Mensajes de Contacto</h2>
+
+  <div *ngIf="cargando" class="texto-estado text-center py-4 italic text-gray-400">
+    Cargando mensajes...
+  </div>
+
+  <div *ngIf="!cargando && mensajes.length === 0" class="texto-estado text-center py-4 text-gray-500">
+    No hay mensajes por el momento.
+  </div>
+
+  <div *ngFor="let msg of mensajes" class="mensaje mb-6">
+    <div class="mensaje-header flex justify-between items-center mb-2">
+      <h3 class="mensaje-nombre font-bold text-lg text-cyan-400">{{ msg.nombre }}</h3>
+      <span class="mensaje-email text-sm text-gray-400">{{ msg.email }}</span>
+    </div>
+
+    <p class="mensaje-texto text-gray-200 mb-4">{{ msg.mensaje }}</p>
+
+    <div *ngIf="msg.respuesta" class="respuesta-admin">
+      <strong>Respuesta:</strong>
+      <br />
+      {{ msg.respuesta }}
+    </div>
+
+    <!-- Textarea para responder -->
+    <textarea
+      [(ngModel)]="msg.respuestaTemporal"
+      placeholder="Escribe tu respuesta aquí..."
+      rows="3"
+      class="respuesta-form-textarea"
+    ></textarea>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="msg.errorRespuesta" class="text-red-500 text-sm mb-2">
+      {{ msg.errorRespuesta }}
+    </div>
+
+    <button (click)="enviarRespuesta(msg)" class="respuesta-form-button">
+      Enviar Respuesta
+    </button>
+  </div>
+</div>

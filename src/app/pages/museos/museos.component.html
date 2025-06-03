@@ -1,11 +1,20 @@
-<div>
-    <h1>Museos</h1>
-    <ul>
-      <li *ngFor="let museo of museos">
-        <strong>{{ museo.nombre }}</strong><br>
-        {{ museo.descripcion }}<br>
-        {{ museo.direccion }}
-      </li>
-    </ul>
+<div class="contenedor-museos">
+  <div
+    *ngFor="let museo of museos"
+    class="museo-tarjeta"
+  >
+    <div class="museo-img-container">
+      <img [src]="museo.imagen" alt="{{ museo.nombre }}" />
+    </div>
+
+    <div class="museo-contenido">
+      <h2>{{ museo.nombre }}</h2>
+      <p>{{ museo.descripcion }}</p>
+
+      <div class="museo-footer">
+        <p><strong>Dirección:</strong> {{ museo.direccion }}</p>
+        <p><strong>Horario:</strong> {{ museo.horario }}</p>
+      </div>
+    </div>
   </div>
-  
+</div>

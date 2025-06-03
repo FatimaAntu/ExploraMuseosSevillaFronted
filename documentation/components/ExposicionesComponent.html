@@ -1,0 +1,1071 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>explora-museos-sevilla-fronted documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">explora-museos-sevilla-fronted documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ExposicionesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/exposiciones/exposiciones.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente ExposicionesComponent</p>
+<p>Muestra la lista de exposiciones de un museo específico.
+Obtiene el ID del museo desde la URL y carga sus exposiciones.
+También carga y muestra el nombre del museo.
+Utiliza PrimeNG para mostrar las exposiciones en tarjetas con imágenes.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-exposiciones</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterModule</code>
+                            <code>CardModule</code>
+                            <code>ImageModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./exposiciones.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./exposiciones.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#exposiciones" >exposiciones</a>
+                            </li>
+                            <li>
+                                <a href="#museoId" >museoId</a>
+                            </li>
+                            <li>
+                                <a href="#nombreMuseo" >nombreMuseo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cargarExposiciones" >cargarExposiciones</a>
+                            </li>
+                            <li>
+                                <a href="#cargarMuseo" >cargarMuseo</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, exposicionesService: <a href="../injectables/ExposicionesService.html" target="_self">ExposicionesService</a>, museoService: <a href="../injectables/MuseoService.html" target="_self">MuseoService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Para acceder a parámetros de la ruta activa (museoId)</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>exposicionesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExposicionesService.html" target="_self" >ExposicionesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para obtener datos de exposiciones</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>museoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MuseoService.html" target="_self" >MuseoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para obtener datos de museos</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarExposiciones"></a>
+                    <span class="name">
+                        <span ><b>cargarExposiciones</b></span>
+                        <a href="#cargarExposiciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarExposiciones(museoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga las exposiciones del museo mediante el servicio de exposiciones</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>museoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>ID del museo para filtrar las exposiciones</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarMuseo"></a>
+                    <span class="name">
+                        <span ><b>cargarMuseo</b></span>
+                        <a href="#cargarMuseo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarMuseo(museoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga el museo por ID para obtener su nombre mediante el servicio de museos</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>museoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>ID del museo a cargar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método que se ejecuta al inicializar el componente
+Obtiene el ID del museo de la URL, carga las exposiciones y el nombre del museo</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exposiciones"></a>
+                    <span class="name">
+                        <span ><b>exposiciones</b></span>
+                        <a href="#exposiciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Exposicion[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de exposiciones del museo</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="museoId"></a>
+                    <span class="name">
+                        <span ><b>museoId</b></span>
+                        <a href="#museoId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ID del museo obtenido de la URL</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nombreMuseo"></a>
+                    <span class="name">
+                        <span ><b>nombreMuseo</b></span>
+                        <a href="#nombreMuseo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/exposiciones/exposiciones.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Nombre del museo para mostrar en la interfaz</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;  
+import { RouterModule } from &#x27;@angular/router&#x27;;
+import { ExposicionesService, Exposicion } from &#x27;app/services/exposiciones.service&#x27;;
+import { CardModule } from &#x27;primeng/card&#x27;;
+import { ImageModule } from &#x27;primeng/image&#x27;;
+import { MuseoService, Museo } from &#x27;app/services/museo.service&#x27;;
+
+/**
+ * Componente ExposicionesComponent
+ * 
+ * Muestra la lista de exposiciones de un museo específico.
+ * Obtiene el ID del museo desde la URL y carga sus exposiciones.
+ * También carga y muestra el nombre del museo.
+ * Utiliza PrimeNG para mostrar las exposiciones en tarjetas con imágenes.
+ * 
+ * @standalone
+ * @selector app-exposiciones
+ * @imports CommonModule, RouterModule, CardModule, ImageModule
+ */
+@Component({
+  selector: &#x27;app-exposiciones&#x27;,
+  standalone: true, 
+  imports: [CommonModule, RouterModule, CardModule, ImageModule], 
+  templateUrl: &#x27;./exposiciones.component.html&#x27;,
+  styleUrls: [&#x27;./exposiciones.component.css&#x27;]
+})
+export class ExposicionesComponent implements OnInit {
+  /** ID del museo obtenido de la URL */
+  museoId: number &#x3D; 0;
+
+  /** Lista de exposiciones del museo */
+  exposiciones: Exposicion[] &#x3D; [];
+
+  /** Nombre del museo para mostrar en la interfaz */
+  nombreMuseo: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * Constructor del componente
+   * 
+   * @param route Para acceder a parámetros de la ruta activa (museoId)
+   * @param exposicionesService Servicio para obtener datos de exposiciones
+   * @param museoService Servicio para obtener datos de museos
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private exposicionesService: ExposicionesService,
+    private museoService: MuseoService 
+  ) {}
+
+  /**
+   * Método que se ejecuta al inicializar el componente
+   * Obtiene el ID del museo de la URL, carga las exposiciones y el nombre del museo
+   */
+  ngOnInit(): void {
+    this.museoId &#x3D; Number(this.route.snapshot.paramMap.get(&#x27;id&#x27;));
+    this.cargarMuseo(this.museoId);
+    this.cargarExposiciones(this.museoId);
+  }
+
+  /**
+   * Carga las exposiciones del museo mediante el servicio de exposiciones
+   * @param museoId ID del museo para filtrar las exposiciones
+   */
+  cargarExposiciones(museoId: number): void {
+    this.exposicionesService.getExposicionesPorMuseo(museoId).subscribe({
+      next: expos &#x3D;&gt; {
+        this.exposiciones &#x3D; expos;
+        console.log(&#x27;Exposiciones cargadas:&#x27;, expos);
+      },
+      error: err &#x3D;&gt; console.error(err.message)
+    });
+  }
+  
+  /**
+   * Carga el museo por ID para obtener su nombre mediante el servicio de museos
+   * @param museoId ID del museo a cargar
+   */
+  cargarMuseo(museoId: number): void {
+    this.museoService.getMuseoById(museoId).subscribe({
+      next: museo &#x3D;&gt; {
+        this.nombreMuseo &#x3D; museo.nombre;
+        console.log(&#x27;Museo cargado:&#x27;, museo);
+      },
+      error: err &#x3D;&gt; console.error(err.message)
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;exposiciones p-8&quot;&gt;
+    
+    &lt;h2 class&#x3D;&quot;nombre-museo text-3xl font-bold mb-4 text-center&quot;&gt;
+    Exposiciones: {{ nombreMuseo }}
+  &lt;/h2&gt;
+
+  &lt;div *ngIf&#x3D;&quot;exposiciones.length &gt; 0; else sinExposiciones&quot; class&#x3D;&quot;grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6&quot;&gt;
+    &lt;p-card *ngFor&#x3D;&quot;let expo of exposiciones&quot; class&#x3D;&quot;shadow-md&quot;&gt;
+      &lt;ng-template pTemplate&#x3D;&quot;header&quot;&gt;
+        &lt;p-image [src]&#x3D;&quot;&#x27;http://localhost:8080/uploads/&#x27; + expo.imagen&quot; [alt]&#x3D;&quot;expo.nombre&quot; styleClass&#x3D;&quot;w-full h-48 object-cover&quot; preview&gt;&lt;/p-image&gt;
+
+       
+      &lt;/ng-template&gt;
+
+      &lt;ng-template pTemplate&#x3D;&quot;title&quot;&gt;
+        {{ expo.nombre }}
+      &lt;/ng-template&gt;
+
+      &lt;ng-template pTemplate&#x3D;&quot;subtitle&quot;&gt;
+        {{ expo.fechaInicio | date:&#x27;dd/MM/yyyy&#x27; }} - {{ expo.fechaFin | date:&#x27;dd/MM/yyyy&#x27; }}
+      &lt;/ng-template&gt;
+
+      &lt;ng-template pTemplate&#x3D;&quot;content&quot;&gt;
+        &lt;p&gt;{{ expo.descripcion }}&lt;/p&gt;
+      &lt;/ng-template&gt;
+      &lt;ng-template pTemplate&#x3D;&quot;content&quot;&gt;
+  &lt;p&gt;{{ expo.descripcion }}&lt;/p&gt;
+  &lt;p class&#x3D;&quot;mt-2 font-semibold&quot;&gt;Precio: €{{ expo.precio | number:&#x27;1.2-2&#x27; }}&lt;/p&gt;
+&lt;/ng-template&gt;
+
+      
+    &lt;/p-card&gt;
+  &lt;/div&gt;
+
+  &lt;ng-template #sinExposiciones&gt;
+    &lt;p class&#x3D;&quot;text-gray-600&quot;&gt;Este museo no tiene exposiciones actualmente.&lt;/p&gt;
+  &lt;/ng-template&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./exposiciones.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f7f5, #a0d9d6);
+  color: #1a1a1a;
+}
+
+
+
+:host ::ng-deep .p-card {
+  display: flex;
+  background-color: #f2f2f2;
+  color: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 1rem;
+  gap: 1rem;
+
+  max-width: 900px;
+  width: 90%;
+  margin: 1rem auto;
+}
+
+:host ::ng-deep .p-card .p-image {
+  flex: 0 0 280px;
+  max-width: 280px;
+  margin-right: 1rem;
+}
+
+:host ::ng-deep .p-card .p-image img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 3px solid #38b2ac;
+}
+
+:host ::ng-deep .p-card .p-card-content {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:host ::ng-deep .p-card .p-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  margin: 0 0 0.25rem 0;
+}
+
+:host ::ng-deep .p-card .p-card-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 0 0.5rem 0;
+}
+
+:host ::ng-deep .p-card .p-card-content p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
+}
+
+:host ::ng-deep .p-card .p-button {
+  margin-top: 1rem;
+  width: auto;
+  align-self: flex-start;
+  padding: 0.6rem 1.5rem;
+  background-color: #38b2ac;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  cursor: pointer;
+  border: none;
+}
+
+:host ::ng-deep .p-card .p-button:hover {
+  background-color: #2c9f8a;
+}
+
+:host ::ng-deep .p-card .p-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.5);
+}
+
+:host ::ng-deep .p-card .p-button:active {
+  background-color: #2c9f8a;
+  transform: scale(0.98);
+}
+
+:host ::ng-deep .p-card .p-button:disabled {
+  background-color: #b2e0dc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+:host ::ng-deep .p-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Opcional: estilos para el nombre del museo */
+
+:host ::ng-deep .nombre-museo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #28aca5;
+  margin-top: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: black;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Contenedor principal y grid */
+
+.exposiciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:host ::ng-deep .grid {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="exposiciones p-8">        <h2 class="nombre-museo text-3xl font-bold mb-4 text-center">    Exposiciones: {{ nombreMuseo }}  </h2>  <div *ngIf="exposiciones.length > 0; else sinExposiciones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    <p-card *ngFor="let expo of exposiciones" class="shadow-md">      <ng-template pTemplate="header">        <p-image [src]="\'http://localhost:8080/uploads/\' + expo.imagen" [alt]="expo.nombre" styleClass="w-full h-48 object-cover" preview></p-image>             </ng-template>      <ng-template pTemplate="title">        {{ expo.nombre }}      </ng-template>      <ng-template pTemplate="subtitle">        {{ expo.fechaInicio | date:\'dd/MM/yyyy\' }} - {{ expo.fechaFin | date:\'dd/MM/yyyy\' }}      </ng-template>      <ng-template pTemplate="content">        <p>{{ expo.descripcion }}</p>      </ng-template>      <ng-template pTemplate="content">  <p>{{ expo.descripcion }}</p>  <p class="mt-2 font-semibold">Precio: €{{ expo.precio | number:\'1.2-2\' }}</p></ng-template>          </p-card>  </div>  <ng-template #sinExposiciones>    <p class="text-gray-600">Este museo no tiene exposiciones actualmente.</p>  </ng-template></div></div>'
+    var COMPONENTS = [{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ComprarEntradaComponent', 'selector': 'app-comprar-entrada'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ExposicionAdminComponent', 'selector': 'app-exposicion-admin'},{'name': 'ExposicionesComponent', 'selector': 'app-exposiciones'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MensajesAdminComponent', 'selector': 'app-mensajes-admin'},{'name': 'MuseosComponent', 'selector': 'app-museos'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ExposicionesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExposicionesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,30 +1,29 @@
-/* Fondo negro para toda la página */
+/* Fondo general oscuro y fuente base */
 html, body {
-    background-color: #000000; /* Fondo negro */
+    background-color: #2e2e2e;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
     width: 100%;
+    color: #ffffff;
 }
 
 /* Hero Section */
 .hero-section {
-  padding: 4rem 2rem;
-  text-align: center;
-  color: #0e0e0e;
-  margin-bottom: 4rem;
-  background: linear-gradient(to bottom right, #2c2c2c, #1a1a1a);
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: all 0.3s ease-in-out;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 4rem;
+    background: linear-gradient(to bottom right, #3a3a3a, #1f1f1f);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
 }
 
-/* Carrusel y museos */
+/* Carrusel y sección de museos destacados */
 .featured-museums {
-    background-color: transparent; /* Mantener transparencia en museos */
     padding: 2rem;
-    margin-top: 2rem; /* Espacio entre el Hero y el carrusel */
+    margin-top: 2rem;
 }
 
 /* Estilos del Carrusel */
@@ -34,63 +33,62 @@ html, body {
     align-items: center;
 }
 
-/* Estilos de las tarjetas de los museos */
+/* Tarjetas de museos */
 .museum-card {
-    background-color: #1a1a1a; /* Fondo más oscuro para un toque más elegante */
-    border-radius: 15px; /* Bordes más redondeados */
+    background-color: #1a1a1a;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Sombras más profundas y suaves */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, border-color 0.3s ease;
     text-align: center;
     width: 100%;
-    max-width: 320px; /* Aumento del tamaño máximo para mayor presencia */
-    border: 1px solid transparent; /* Borde sutil */
-    margin-right: 20px; /* Espacio entre tarjetas */
+    max-width: 320px;
+    border: 1px solid transparent;
+    margin-right: 20px;
 }
 
-/* Efecto hover para las tarjetas */
 .museum-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); /* Efecto de sombra más marcado */
-    border-color: #38b2ac; /* Agregar borde colorido al pasar el mouse */
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    border-color: #38b2ac;
 }
 
-/* Estilo para la imagen dentro de las tarjetas */
+/* Imagen del museo */
 .museum-image {
     width: 100%;
-    height: 220px; /* Aumento en la altura de la imagen para mayor visibilidad */
+    height: 220px;
     object-fit: cover;
-    transition: transform 0.3s ease-in-out; /* Añadir transición suave en la imagen */
+    transition: transform 0.3s ease-in-out;
 }
 
 .museum-card:hover .museum-image {
-    transform: scale(1.1); /* Imagen ligeramente más grande en el hover */
+    transform: scale(1.1);
 }
 
-/* Espaciado interno de las tarjetas */
+/* Padding interno de la tarjeta */
 .p-4 {
-    padding: 1rem;
-    padding-top: 1.5rem; /* Aumento en el espaciado superior para más aire en la tarjeta */
+    padding: 2rem;
+    padding-top: 1.5rem;
 }
 
-/* Estilos para los encabezados */
+/* Encabezados generales */
 h3 {
-    font-size: 1.50rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #ffffff;
 }
 
-/* Estilos para los párrafos dentro de las tarjetas */
+/* Párrafos dentro de tarjetas */
 p {
-    color: #ffffff;
-    font-size: 1.2rem;
+    color: #dcdcdc;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
     line-height: 1.5;
 }
 
-/* Estilos para el botón */
+/* Botones generales */
 button {
     background-color: #079a93;
     color: white;
@@ -103,147 +101,134 @@ button {
     margin-top: 1rem;
 }
 
-/* Efecto hover para el botón */
 button:hover {
     background-color: #2c7a7b;
     transform: scale(1.05);
 }
-.exposiciones-actuales {
-    background-color: #1a1a1a; /* fondo distinto al carrusel */
-  }
-  
-  .exposicion-card {
-    border: 1px solid #2d3748;
-  }
 
-  /* Sección de exposiciones con fondo diferente */
+/* Exposiciones actuales */
 .exposiciones-actuales {
-    background: linear-gradient(180deg, #0f0f0f, #1a1a1a); /* degradado sutil */
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-    margin-top: 2rem; /* Espacio entre el carrusel y la sección de exposiciones */
-   
-   
-    
+    background-color: #1a1a1a;
+    padding: 4rem 2rem;
 }
 
 .exposiciones-actuales h2 {
-    color: #38b2ac; /* Color verde agua para mantener consistencia con los botones */
+    color: #38b2ac;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
-    font-weight: bold; /* Asegura que el título resalte */
-    text-transform: uppercase; /* Añade un toque moderno con mayúsculas */
-    letter-spacing: 2px; /* Espaciado entre letras para dar un toque más elegante */
 }
 
-/* Tarjetas de exposiciones */
+/* Tarjeta de exposición */
 .exposicion-card {
-    background-color: #808080; /* más claro que el fondo base para contraste */
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background-color: #444;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(105, 105, 105, 0.3);
+    margin: 0 auto 3rem auto;
+    height: 250px;
+    max-width: 1500px;
+}
+
+.exposicion-card img {
+    width: 35%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-left: 4px solid #38b2ac;
+    border-radius: 15px 0 0 15px;
+}
+
+/* Contenido textual de la exposición */
+.exposicion-card-content {
+    width: 65%;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative; /* Asegurarnos de que el contenido se coloque bien */
-    margin-bottom: 1rem; /* Espacio entre tarjetas */
-    padding: 1rem; /* Espacio interno */
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
-   
+    justify-content: center;
 }
 
-/* Título de la exposición sin fondo oscuro */
-.exposicion-card h3 {
-    font-size: 1.5rem;
-    color: #ffffff; /* Blanco para el texto */
-    margin-bottom: 0.25rem;
-    background-color: transparent; /* Asegurar que no haya fondo */
-    z-index: 10; /* Asegurarnos que el texto quede por encima */
-    padding: 0.5rem; /* Espaciado interno para el texto */
-    margin-top: -12rem; /* Espacio superior para separación letras del contenedor */
+.exposicion-card-content h3 {
+    color: #38b2ac;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Estilo para el contenedor de la imagen */
-.exposicion-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 4px solid #38b2ac; /* Border para separación visual */
-    z-index: -1; /* Para que la imagen quede detrás del contenido */
-}
-
-/* Estilos para los párrafos debajo del título */
-.exposicion-card p {
-    font-size: 0.95rem;
-    margin-bottom: 0.3rem;
+.exposicion-card-content p {
     color: #e0e0e0;
-    background-color: transparent; /* Asegurarnos de que no se repita el fondo */
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Sección de la Galería de Obras Destacadas */
+.exposicion-card-content button {
+    align-self: start;
+}
+
+/* Galería de obras destacadas */
 .gallery {
-  background-color: #f7f7f7; /* Fondo más claro para la galería */
-  padding-top: 2rem;
-  padding-bottom: 4rem;
-  border-radius: 10px; /* Bordes redondeados suaves */
+    background-color: #f7f7f7;
+    padding: 3rem 2rem;
+    border-radius: 10px;
 }
 
 .gallery h2 {
-  color: #2c3e50; /* Título en color oscuro para buen contraste */
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
+/* Grid de obras */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
 }
 
+/* Tarjeta individual de obra */
 .gallery-item {
-  background-color: #ffffff;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Aumentamos el ancho mínimo para que se vea más grande en pantallas grandes */
-  min-width: 300px;
-  /* Podemos limitar el max-width para que no se estire demasiado */
-  max-width: 350px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 300px;
+    max-width: 350px;
+    text-align: center;
 }
 
 .gallery-item img {
-  object-fit: cover;
-  object-position: center top; /* Centrado horizontal, arriba vertical */
-  height: 280px;  /* o la altura que quieras */
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  cursor: pointer;
+    object-fit: cover;
+    object-position: center top;
+    height: 280px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .gallery-item img:hover {
-  transform: scale(1.05); /* Zoom suave al pasar el ratón */
+    transform: scale(1.05);
 }
 
 .gallery-item h3 {
-  font-size: 1.5rem;
-  color: #2c3e50; /* Título de la obra en color oscuro */
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .gallery-item p {
-  font-size: 1rem;
-  color: #656969; /* Color gris suave para la descripción */
-  margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #656969;
+    margin-bottom: 1rem;
 }
 
 .gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Efecto hover más suave */
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }

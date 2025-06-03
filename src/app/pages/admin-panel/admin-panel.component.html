@@ -1,9 +1,15 @@
-<div>
-  <h2>Gestionar Museos</h2>
-  <button routerLink="/admin/museos">Ir a Gestión de Museos</button>
+<div class="admin-panel">
+  <h2>Panel de Administración</h2>
+
+  <div class="admin-section">
+    <h3>Gestionar Exposiciones</h3>
+    <button routerLink="/admin/exposiciones">Ir</button>
+  </div>
+
+  <div class="admin-section">
+    <h3>Bandeja de Mensajes</h3>
+    <button routerLink="/admin/mensajes">Ver</button>
+  </div>
 </div>
 
-<div>
-  <h2>Gestionar Exposiciones</h2>
-  <button routerLink="/admin/exposiciones">Ir a Gestión de Exposiciones</button>
-</div>
+<router-outlet></router-outlet>

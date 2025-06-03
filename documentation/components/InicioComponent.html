@@ -1,0 +1,1638 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>explora-museos-sevilla-fronted documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">explora-museos-sevilla-fronted documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InicioComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/inicio/inicio.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente que representa la página de inicio de la aplicación.
+Muestra un carrusel con museos destacados y una selección filtrada
+de exposiciones actuales, con opciones para comprar entradas o ver detalles.</p>
+<p>Utiliza servicios para autenticación y obtención de exposiciones.
+Incluye lógica para mostrar botones de compra solo si el usuario está autenticado.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-inicio</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>CarouselModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./inicio.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./inicio.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#authService" >authService</a>
+                            </li>
+                            <li>
+                                <a href="#exposiciones" >exposiciones</a>
+                            </li>
+                            <li>
+                                <a href="#museos" >museos</a>
+                            </li>
+                            <li>
+                                <a href="#responsiveOptions" >responsiveOptions</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirEnGoogleMaps" >abrirEnGoogleMaps</a>
+                            </li>
+                            <li>
+                                <a href="#cargarExposiciones" >cargarExposiciones</a>
+                            </li>
+                            <li>
+                                <a href="#comprarEntrada" >comprarEntrada</a>
+                            </li>
+                            <li>
+                                <a href="#estaLogueado" >estaLogueado</a>
+                            </li>
+                            <li>
+                                <a href="#getImagenUrl" >getImagenUrl</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#verExposiciones" >verExposiciones</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#exposicionesFiltradas" >exposicionesFiltradas</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, exposicionesService: <a href="../injectables/ExposicionesService.html" target="_self">ExposicionesService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/inicio/inicio.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con inyección de dependencias para Router, servicios de autenticación y exposiciones.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para navegación entre rutas</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para gestión de autenticación y estado del usuario</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>exposicionesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExposicionesService.html" target="_self" >ExposicionesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para obtener datos de exposiciones desde backend</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirEnGoogleMaps"></a>
+                    <span class="name">
+                        <span ><b>abrirEnGoogleMaps</b></span>
+                        <a href="#abrirEnGoogleMaps"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirEnGoogleMaps(nombreMuseo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre una nueva pestaña con la búsqueda del museo en Google Maps.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nombreMuseo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre del museo para búsqueda en Maps</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarExposiciones"></a>
+                    <span class="name">
+                        <span ><b>cargarExposiciones</b></span>
+                        <a href="#cargarExposiciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarExposiciones()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Solicita al servicio las exposiciones y las almacena en la propiedad local.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="comprarEntrada"></a>
+                    <span class="name">
+                        <span ><b>comprarEntrada</b></span>
+                        <a href="#comprarEntrada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>comprarEntrada(exposicionId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navega a la ruta de compra de entrada para la exposición dada.
+Si el usuario no está autenticado, lo redirige al registro y guarda la compra pendiente.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>exposicionId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Identificador de la exposición para la compra</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estaLogueado"></a>
+                    <span class="name">
+                        <span ><b>estaLogueado</b></span>
+                        <a href="#estaLogueado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>estaLogueado()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método para comprobar si el usuario está autenticado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>true si el usuario está logueado, false en caso contrario.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getImagenUrl"></a>
+                    <span class="name">
+                        <span ><b>getImagenUrl</b></span>
+                        <a href="#getImagenUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getImagenUrl(imagen?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la URL completa de la imagen del museo o un placeholder si no existe.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>imagen</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre del archivo de imagen</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>URL absoluta de la imagen para mostrar en la interfaz</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método del ciclo de vida OnInit que carga las exposiciones al iniciar el componente.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verExposiciones"></a>
+                    <span class="name">
+                        <span ><b>verExposiciones</b></span>
+                        <a href="#verExposiciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verExposiciones(museoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="121"
+                                    class="link-to-prism">src/app/pages/inicio/inicio.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navega a la página con las exposiciones de un museo específico.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>museoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Identificador del museo</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>authService</b></span>
+                        <a href="#authService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/pages/inicio/inicio.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Servicio para gestión de autenticación y estado del usuario</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exposiciones"></a>
+                    <span class="name">
+                        <span ><b>exposiciones</b></span>
+                        <a href="#exposiciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/inicio/inicio.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Array dinámico que almacena las exposiciones obtenidas del backend.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="museos"></a>
+                    <span class="name">
+                        <span ><b>museos</b></span>
+                        <a href="#museos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { id: 1, nombre: &#x27;Museo de Bellas Artes&#x27;, descripcion: &#x27;Colección de arte moderno.&#x27;, imagen: &#x27;museoBellasArtes.jpg&#x27; },
+    { id: 2, nombre: &#x27;Centro Andaluz de Arte Contemporáneo CAAC&#x27;, descripcion: &#x27;Colección de pintura renacentista.&#x27;, imagen: &#x27;caac.jpeg&#x27; },
+    { id: 3, nombre: &#x27;Casa Pilatos&#x27;, descripcion: &#x27;Historia antigua de Sevilla.&#x27;, imagen: &#x27;casaPilatos.jpg&#x27; },
+    { id: 4, nombre: &#x27;Museo Arqueológico&#x27;, descripcion: &#x27;Historia antigua y arqueología.&#x27;, imagen: &#x27;museoArqueologico.jpg&#x27; },
+    { id: 5, nombre: &#x27;Museo de Artes y Costumbres Populares&#x27;, descripcion: &#x27;Cultura y tradiciones.&#x27;, imagen: &#x27;museoArtesCostumbres.jpeg&#x27; },
+    { id: 6, nombre: &#x27;Archivo de Indias&#x27;, descripcion: &#x27;Documentos históricos de América.&#x27;, imagen: &#x27;archivoIndias.jpg&#x27; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/inicio/inicio.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista estática de museos destacados con nombre, descripción e imagen.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="responsiveOptions"></a>
+                    <span class="name">
+                        <span ><b>responsiveOptions</b></span>
+                        <a href="#responsiveOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { breakpoint: &#x27;1024px&#x27;, numVisible: 2, numScroll: 1 },
+    { breakpoint: &#x27;768px&#x27;, numVisible: 1, numScroll: 1 }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/inicio/inicio.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opciones responsivas para el carrusel, definiendo visibilidad y scroll según ancho de pantalla.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="exposicionesFiltradas"></a>
+                        <span class="name"><b>exposicionesFiltradas</b><a href="#exposicionesFiltradas"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>exposicionesFiltradas()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/pages/inicio/inicio.component.ts:82</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtiene las exposiciones filtradas para mostrar solo las que están activas
+dentro de un rango de fecha desde hoy hasta 20 días adelante.
+Devuelve un máximo de 4 exposiciones para mostrar.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { CarouselModule } from &#x27;primeng/carousel&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+import { ExposicionesService } from &#x27;../../services/exposiciones.service&#x27;;
+
+/**
+ * Componente que representa la página de inicio de la aplicación.
+ * Muestra un carrusel con museos destacados y una selección filtrada
+ * de exposiciones actuales, con opciones para comprar entradas o ver detalles.
+ * 
+ * Utiliza servicios para autenticación y obtención de exposiciones.
+ * Incluye lógica para mostrar botones de compra solo si el usuario está autenticado.
+ */
+@Component({
+  selector: &#x27;app-inicio&#x27;,
+  standalone: true,
+  imports: [CommonModule, CarouselModule],
+  templateUrl: &#x27;./inicio.component.html&#x27;,
+  styleUrls: [&#x27;./inicio.component.css&#x27;]
+})
+export class InicioComponent {
+  /**
+   * Lista estática de museos destacados con nombre, descripción e imagen.
+   */
+  museos &#x3D; [
+    { id: 1, nombre: &#x27;Museo de Bellas Artes&#x27;, descripcion: &#x27;Colección de arte moderno.&#x27;, imagen: &#x27;museoBellasArtes.jpg&#x27; },
+    { id: 2, nombre: &#x27;Centro Andaluz de Arte Contemporáneo CAAC&#x27;, descripcion: &#x27;Colección de pintura renacentista.&#x27;, imagen: &#x27;caac.jpeg&#x27; },
+    { id: 3, nombre: &#x27;Casa Pilatos&#x27;, descripcion: &#x27;Historia antigua de Sevilla.&#x27;, imagen: &#x27;casaPilatos.jpg&#x27; },
+    { id: 4, nombre: &#x27;Museo Arqueológico&#x27;, descripcion: &#x27;Historia antigua y arqueología.&#x27;, imagen: &#x27;museoArqueologico.jpg&#x27; },
+    { id: 5, nombre: &#x27;Museo de Artes y Costumbres Populares&#x27;, descripcion: &#x27;Cultura y tradiciones.&#x27;, imagen: &#x27;museoArtesCostumbres.jpeg&#x27; },
+    { id: 6, nombre: &#x27;Archivo de Indias&#x27;, descripcion: &#x27;Documentos históricos de América.&#x27;, imagen: &#x27;archivoIndias.jpg&#x27; }
+  ];
+
+  /**
+   * Opciones responsivas para el carrusel, definiendo visibilidad y scroll según ancho de pantalla.
+   */
+  responsiveOptions &#x3D; [
+    { breakpoint: &#x27;1024px&#x27;, numVisible: 2, numScroll: 1 },
+    { breakpoint: &#x27;768px&#x27;, numVisible: 1, numScroll: 1 }
+  ];
+
+  /**
+   * Array dinámico que almacena las exposiciones obtenidas del backend.
+   */
+  exposiciones: any[] &#x3D; [];
+
+  /**
+   * Constructor con inyección de dependencias para Router, servicios de autenticación y exposiciones.
+   * @param router Servicio para navegación entre rutas
+   * @param authService Servicio para gestión de autenticación y estado del usuario
+   * @param exposicionesService Servicio para obtener datos de exposiciones desde backend
+   */
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    private exposicionesService: ExposicionesService
+  ) {}
+
+  /**
+   * Método del ciclo de vida OnInit que carga las exposiciones al iniciar el componente.
+   */
+  ngOnInit() {
+    this.cargarExposiciones();
+  }
+
+  /**
+   * Solicita al servicio las exposiciones y las almacena en la propiedad local.
+   */
+  cargarExposiciones() {
+    this.exposicionesService.getExposiciones().subscribe(exposiciones &#x3D;&gt; {
+      this.exposiciones &#x3D; exposiciones;
+    });
+  }
+
+  /**
+   * Obtiene las exposiciones filtradas para mostrar solo las que están activas
+   * dentro de un rango de fecha desde hoy hasta 20 días adelante.
+   * Devuelve un máximo de 4 exposiciones para mostrar.
+   */
+  get exposicionesFiltradas() {
+    const hoy &#x3D; new Date();
+    const fechaLimite &#x3D; new Date();
+    fechaLimite.setDate(hoy.getDate() + 20);
+
+    return this.exposiciones
+      .filter(exp &#x3D;&gt;
+        (new Date(exp.fechaInicio) &gt;&#x3D; hoy &amp;&amp; new Date(exp.fechaInicio) &lt;&#x3D; fechaLimite) ||
+        (new Date(exp.fechaFin) &gt;&#x3D; hoy &amp;&amp; new Date(exp.fechaFin) &lt;&#x3D; fechaLimite)
+      )
+      .slice(0, 4);
+  }
+
+  /**
+   * Método para comprobar si el usuario está autenticado.
+   * @returns true si el usuario está logueado, false en caso contrario.
+   */
+  estaLogueado(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  /**
+   * Navega a la ruta de compra de entrada para la exposición dada.
+   * Si el usuario no está autenticado, lo redirige al registro y guarda la compra pendiente.
+   * @param exposicionId Identificador de la exposición para la compra
+   */
+  comprarEntrada(exposicionId: number) {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate([&#x27;/comprar-entrada&#x27;, exposicionId]);
+    } else {
+      localStorage.setItem(&#x27;entradaPendiente&#x27;, exposicionId.toString());
+      this.router.navigate([&#x27;/register&#x27;]);
+    }
+  }
+
+  /**
+   * Navega a la página con las exposiciones de un museo específico.
+   * @param museoId Identificador del museo
+   */
+  verExposiciones(museoId: number): void {
+    this.router.navigate([&#x60;/exposiciones/${museoId}&#x60;]);
+  }
+
+  /**
+   * Abre una nueva pestaña con la búsqueda del museo en Google Maps.
+   * @param nombreMuseo Nombre del museo para búsqueda en Maps
+   */
+  abrirEnGoogleMaps(nombreMuseo: string): void {
+    const query &#x3D; encodeURIComponent(nombreMuseo + &#x27; Sevilla&#x27;);
+    const url &#x3D; &#x60;https://www.google.com/maps/search/?api&#x3D;1&amp;query&#x3D;${query}&#x60;;
+    window.open(url, &#x27;_blank&#x27;);
+  }
+
+  /**
+   * Obtiene la URL completa de la imagen del museo o un placeholder si no existe.
+   * @param imagen Nombre del archivo de imagen
+   * @returns URL absoluta de la imagen para mostrar en la interfaz
+   */
+  getImagenUrl(imagen?: string): string {
+    if (!imagen) return &#x27;assets/placeholder.jpg&#x27;;
+    return &#x60;http://localhost:8080/uploads/${imagen}&#x60;;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Hero Section --&gt;
+&lt;div class&#x3D;&quot;hero-section bg-cover bg-center h-96 relative&quot; style&#x3D;&quot;background-image: url(&#x27;hero-image.jpg&#x27;);&quot;&gt;
+  &lt;div class&#x3D;&quot;absolute inset-0 bg-black opacity-50&quot;&gt;&lt;/div&gt;
+  &lt;div class&#x3D;&quot;relative z-10 text-center text-white&quot;&gt;
+    &lt;h1 class&#x3D;&quot;text-4xl font-bold&quot;&gt;¡DESCUBRE EL ARTE QUE VIVE EN SEVILLA!&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Carrusel de Museos --&gt;
+&lt;section class&#x3D;&quot;p-8 bg-gray-100 dark:bg-gray-900&quot;&gt;
+  &lt;p-carousel 
+    [value]&#x3D;&quot;museos&quot; 
+    [numVisible]&#x3D;&quot;3&quot; 
+    [numScroll]&#x3D;&quot;1&quot; 
+    [responsiveOptions]&#x3D;&quot;responsiveOptions&quot; 
+    circular&#x3D;&quot;false&quot;&gt;
+
+    &lt;ng-template pTemplate&#x3D;&quot;item&quot; let-museo&gt;
+      &lt;div class&#x3D;&quot;museum-card shadow-lg rounded-2xl overflow-hidden bg-white dark:bg-gray-800 transition hover:scale-105&quot;&gt;
+        &lt;img [src]&#x3D;&quot;museo.imagen&quot; alt&#x3D;&quot;{{ museo.nombre }}&quot; class&#x3D;&quot;museum-image w-full h-60 object-cover&quot;&gt;
+        &lt;div class&#x3D;&quot;p-4&quot;&gt;
+          &lt;h3 class&#x3D;&quot;text-xl font-semibold mb-2 text-gray-800 dark:text-white&quot;&gt;{{ museo.nombre }}&lt;/h3&gt;
+          &lt;p class&#x3D;&quot;text-gray-600 dark:text-gray-300 mb-4&quot;&gt;{{ museo.descripcion }}&lt;/p&gt;
+          &lt;div class&#x3D;&quot;flex flex-wrap gap-2&quot;&gt;
+            &lt;button 
+              (click)&#x3D;&quot;verExposiciones(museo.id)&quot; 
+              class&#x3D;&quot;bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition&quot; style&#x3D;&quot;font-size: 0.95rem;&quot;&gt;
+              🎨 Ver exposiciones
+            &lt;/button&gt;
+            &lt;button 
+              (click)&#x3D;&quot;abrirEnGoogleMaps(museo.nombre)&quot; 
+              class&#x3D;&quot;bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition &quot; style&#x3D;&quot;font-size: 0.95rem;&quot;&gt;
+              📍 Google Maps
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
+  &lt;/p-carousel&gt;
+&lt;/section&gt;
+
+&lt;!-- Exposiciones Actuales --&gt;
+&lt;section id&#x3D;&quot;exposiciones&quot; class&#x3D;&quot;exposiciones-actuales p-8&quot;&gt;
+  &lt;h2 class&#x3D;&quot;text-3xl font-bold text-white mb-6&quot;&gt;Exposiciones Actuales&lt;/h2&gt;
+
+  &lt;div class&#x3D;&quot;grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6&quot;&gt;
+    &lt;div 
+      class&#x3D;&quot;exposicion-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105&quot; 
+      *ngFor&#x3D;&quot;let exposicion of exposicionesFiltradas&quot;&gt;
+
+      &lt;!-- Solo mostrar una imagen por exposición --&gt;
+      &lt;img 
+        [src]&#x3D;&quot;getImagenUrl(exposicion.imagen)&quot; 
+        [alt]&#x3D;&quot;exposicion.nombre&quot; 
+        class&#x3D;&quot;w-full h-48 object-cover&quot; 
+      /&gt;
+    
+
+
+      &lt;div class&#x3D;&quot;p-4&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-xl font-semibold text-black&quot;&gt;{{ exposicion.nombre }}&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-gray-700 text-sm mb-2&quot;&gt;{{ exposicion.museo.nombre }}&lt;/p&gt;
+        &lt;p class&#x3D;&quot;text-gray-500 text-sm&quot;&gt;
+          Del {{ exposicion.fechaInicio | date:&#x27;dd/MM/yyyy&#x27; }} al {{ exposicion.fechaFin | date:&#x27;dd/MM/yyyy&#x27; }}
+        &lt;/p&gt;
+        &lt;p class&#x3D;&quot;text-gray-600 mt-2&quot;&gt;{{ exposicion.descripcion }}&lt;/p&gt;
+
+        &lt;div class&#x3D;&quot;mt-4 flex justify-end&quot;&gt;
+          &lt;button 
+            (click)&#x3D;&quot;comprarEntrada(exposicion.id)&quot; 
+            class&#x3D;&quot;bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700&quot;&gt;
+            Comprar Entrada
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+
+&lt;!-- Mini Galería de Obras Destacadas --&gt;
+&lt;section class&#x3D;&quot;gallery p-8 bg-gray-900&quot;&gt;
+  &lt;h2 class&#x3D;&quot;text-3xl font-bold text-white text-center mb-6&quot;&gt;Obras Destacadas&lt;/h2&gt;
+
+  &lt;div class&#x3D;&quot;gallery-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8&quot;&gt;
+    &lt;div class&#x3D;&quot;gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105&quot;&gt;
+      &lt;img src&#x3D;&quot;miniGaleria/cigarreras.jpg&quot; alt&#x3D;&quot;Las Cigarreras&quot; class&#x3D;&quot;w-full h-60 object-contain&quot;&gt;
+      &lt;div class&#x3D;&quot;p-4&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-xl font-semibold text-black&quot;&gt;LAS CIGARRERAS - Museo Bellas Artes&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-gray-600&quot;&gt;Obra de Gonzalo de Bilbao que retrata con realismo y sensibilidad a las trabajadoras de la fábrica de tabacos de Sevilla.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105&quot;&gt;
+      &lt;img src&#x3D;&quot;miniGaleria/documentomagallanes.jpg&quot; alt&#x3D;&quot;Docuemntpo original de Magallanes&quot; class&#x3D;&quot;w-full h-60 object-cover&quot;&gt;
+      &lt;div class&#x3D;&quot;p-4&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-xl font-semibold text-black&quot;&gt;DOCUMENTO MAGALLANES - Archivo de Indias&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-gray-600&quot;&gt;Este documento relata los detalles de su expedición, incluyendo rutas, descubrimientos y acuerdos con la Corona, y es clave para entender la primera vuelta al mundo.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105&quot;&gt;
+      &lt;img src&#x3D;&quot;miniGaleria/arqueologicoDiana.jpg&quot; alt&#x3D;&quot;Diana&quot; class&#x3D;&quot;w-full h-60 object-cover&quot;&gt;
+      &lt;div class&#x3D;&quot;p-4&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-xl font-semibold text-black&quot;&gt;DIANA - Museo Arqueológico&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-gray-600&quot;&gt;La escultura de Diana, en el Museo Arqueológico de Sevilla, representa a la diosa romana de la caza con gran detalle y elegancia, destacando por su estado de conservación y belleza clásica.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+      &lt;div class&#x3D;&quot;gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105&quot;&gt;
+      &lt;img src&#x3D;&quot;miniGaleria/patio.jpg&quot; alt&#x3D;&quot;Patio Principal&quot; class&#x3D;&quot;w-full h-60  object-contain&quot;&gt;
+      &lt;div class&#x3D;&quot;p-4&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-xl font-semibold text-black&quot;&gt;PATIO PRINCIPAL - Casa Pilatos&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-gray-600&quot;&gt;Combina elementos mudéjares, góticos y renacentistas. Destaca por su armoniosa arquitectura, con arcos de medio punto, azulejos sevillanos y una fuente central que aporta serenidad y frescura, convirtiéndolo en un espacio emblemático de la nobleza sevillana y un referente del patrimonio histórico-artístico de la ciudad.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+     &lt;div class&#x3D;&quot;gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105&quot;&gt;
+      &lt;img src&#x3D;&quot;miniGaleria/CAAC.jpg&quot; alt&#x3D;&quot;Alicia&quot; class&#x3D;&quot;w-full h-60 object-cover&quot;&gt;
+      &lt;div class&#x3D;&quot;p-4&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-xl font-semibold text-black&quot;&gt;ALICIA - CAAC&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-gray-600&quot;&gt;Escultura en dos piezas de grandes dimensiones,inspirada en el famoso personaje literario de Lewis Carroll, fue creada expresamente para la exposición colectiva El patio de mi casa.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./inicio.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Fondo negro para toda la página */
+html, body {
+    background-color: #2e2e2e; /* Fondo negro */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #0e0e0e;
+  margin-bottom: 4rem;
+  background: linear-gradient(to bottom right, #2c2c2c, #1a1a1a);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Carrusel y museos */
+.featured-museums {
+    background-color: transparent; /* Mantener transparencia en museos */
+    padding: 2rem;
+    margin-top: 2rem; /* Espacio entre el Hero y el carrusel */
+}
+
+/* Estilos del Carrusel */
+.p-carousel .p-carousel-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos de las tarjetas de los museos */
+.museum-card {
+    background-color: #1a1a1a; /* Fondo más oscuro para un toque más elegante */
+    border-radius: 15px; /* Bordes más redondeados */
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Sombras más profundas y suaves */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 320px; /* Aumento del tamaño máximo para mayor presencia */
+    border: 1px solid transparent; /* Borde sutil */
+    margin-right: 20px; /* Espacio entre tarjetas */
+}
+
+/* Efecto hover para las tarjetas */
+.museum-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); /* Efecto de sombra más marcado */
+    border-color: #38b2ac; /* Agregar borde colorido al pasar el mouse */
+}
+
+/* Estilo para la imagen dentro de las tarjetas */
+.museum-image {
+    width: 100%;
+    height: 220px; /* Aumento en la altura de la imagen para mayor visibilidad */
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out; /* Añadir transición suave en la imagen */
+}
+
+.museum-card:hover .museum-image {
+    transform: scale(1.1); /* Imagen ligeramente más grande en el hover */
+}
+
+/* Espaciado interno de las tarjetas */
+.p-4 {
+    padding: 2rem;
+    padding-top: 1.5rem; /* Aumento en el espaciado superior para más aire en la tarjeta */
+}
+
+/* Estilos para los encabezados */
+h3 {
+    font-size: 1.50rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+/* Estilos para los párrafos dentro de las tarjetas */
+p {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Estilos para el botón */
+button {
+    background-color: #079a93;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    margin-top: 1rem;
+}
+
+/* Efecto hover para el botón */
+button:hover {
+    background-color: #2c7a7b;
+    transform: scale(1.05);
+}
+.exposiciones-actuales {
+    background-color: #1a1a1a; /* fondo distinto al carrusel */
+  }
+  .exposiciones-actuales h2 {
+  color: #38b2ac; /* Color blanco para que se vea sobre fondo oscuro */
+  text-align: center; /* Centrado horizontal */
+  font-size: 3.0rem;
+  margin-bottom: 2rem;
+    margin-top: 4rem;
+}
+
+  
+  .exposicion-card {
+  display: flex;
+  flex-direction: row; /* Imagen a la izquierda, contenido a la derecha */
+  align-items: stretch;
+  background-color: #555555;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(105, 105, 105, 0.3);
+  margin-bottom: 3rem;
+  height: 250px;
+    max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exposicion-card img {
+  width: 35%; /* antes 45% */
+  height: 220px; /* altura fija para uniformidad */
+  object-fit: cover;
+   object-position: center center; 
+  border-left: 4px solid #38b2ac;
+  border-radius: 15px 0 0 15px; /* redondeo solo en el borde izquierdo */
+}
+
+
+.exposicion-card-content {
+  width: 55%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exposicion-card-content h3 {
+  color: #38b2ac;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.exposicion-card-content p {
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.exposicion-card-content button {
+  align-self: start;
+}
+
+
+/* Sección de la Galería de Obras Destacadas */
+.gallery {
+  background-color: #f7f7f7; /* Fondo más claro para la galería */
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  border-radius: 10px; /* Bordes redondeados suaves */
+}
+
+.gallery h2 {
+  color: #2c3e50; /* Título en color oscuro para buen contraste */
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Aumentamos el ancho mínimo para que se vea más grande en pantallas grandes */
+  min-width: 300px;
+  /* Podemos limitar el max-width para que no se estire demasiado */
+  max-width: 350px;
+}
+
+.gallery-item img {
+  object-fit: cover;
+  object-position: center top; /* Centrado horizontal, arriba vertical */
+  height: 280px;  /* o la altura que quieras */
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05); /* Zoom suave al pasar el ratón */
+}
+
+.gallery-item h3 {
+  font-size: 1.5rem;
+  color: #2c3e50; /* Título de la obra en color oscuro */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-item p {
+  font-size: 1rem;
+  color: #656969; /* Color gris suave para la descripción */
+  margin-bottom: 1rem;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Efecto hover más suave */
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Hero Section --><div class="hero-section bg-cover bg-center h-96 relative" style="background-image: url(\'hero-image.jpg\');">  <div class="absolute inset-0 bg-black opacity-50"></div>  <div class="relative z-10 text-center text-white">    <h1 class="text-4xl font-bold">¡DESCUBRE EL ARTE QUE VIVE EN SEVILLA!</h1>  </div></div><!-- Carrusel de Museos --><section class="p-8 bg-gray-100 dark:bg-gray-900">  <p-carousel     [value]="museos"     [numVisible]="3"     [numScroll]="1"     [responsiveOptions]="responsiveOptions"     circular="false">    <ng-template pTemplate="item" let-museo>      <div class="museum-card shadow-lg rounded-2xl overflow-hidden bg-white dark:bg-gray-800 transition hover:scale-105">        <img [src]="museo.imagen" alt="{{ museo.nombre }}" class="museum-image w-full h-60 object-cover">        <div class="p-4">          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">{{ museo.nombre }}</h3>          <p class="text-gray-600 dark:text-gray-300 mb-4">{{ museo.descripcion }}</p>          <div class="flex flex-wrap gap-2">            <button               (click)="verExposiciones(museo.id)"               class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition" style="font-size: 0.95rem;">              🎨 Ver exposiciones            </button>            <button               (click)="abrirEnGoogleMaps(museo.nombre)"               class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition " style="font-size: 0.95rem;">              📍 Google Maps            </button>          </div>        </div>      </div>    </ng-template>  </p-carousel></section><!-- Exposiciones Actuales --><section id="exposiciones" class="exposiciones-actuales p-8">  <h2 class="text-3xl font-bold text-white mb-6">Exposiciones Actuales</h2>  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    <div       class="exposicion-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105"       *ngFor="let exposicion of exposicionesFiltradas">      <!-- Solo mostrar una imagen por exposición -->      <img         [src]="getImagenUrl(exposicion.imagen)"         [alt]="exposicion.nombre"         class="w-full h-48 object-cover"       />          <div class="p-4">        <h3 class="text-xl font-semibold text-black">{{ exposicion.nombre }}</h3>        <p class="text-gray-700 text-sm mb-2">{{ exposicion.museo.nombre }}</p>        <p class="text-gray-500 text-sm">          Del {{ exposicion.fechaInicio | date:\'dd/MM/yyyy\' }} al {{ exposicion.fechaFin | date:\'dd/MM/yyyy\' }}        </p>        <p class="text-gray-600 mt-2">{{ exposicion.descripcion }}</p>        <div class="mt-4 flex justify-end">          <button             (click)="comprarEntrada(exposicion.id)"             class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700">            Comprar Entrada          </button>        </div>      </div>    </div>  </div></section><!-- Mini Galería de Obras Destacadas --><section class="gallery p-8 bg-gray-900">  <h2 class="text-3xl font-bold text-white text-center mb-6">Obras Destacadas</h2>  <div class="gallery-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">    <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">      <img src="miniGaleria/cigarreras.jpg" alt="Las Cigarreras" class="w-full h-60 object-contain">      <div class="p-4">        <h3 class="text-xl font-semibold text-black">LAS CIGARRERAS - Museo Bellas Artes</h3>        <p class="text-gray-600">Obra de Gonzalo de Bilbao que retrata con realismo y sensibilidad a las trabajadoras de la fábrica de tabacos de Sevilla.</p>      </div>    </div>    <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">      <img src="miniGaleria/documentomagallanes.jpg" alt="Docuemntpo original de Magallanes" class="w-full h-60 object-cover">      <div class="p-4">        <h3 class="text-xl font-semibold text-black">DOCUMENTO MAGALLANES - Archivo de Indias</h3>        <p class="text-gray-600">Este documento relata los detalles de su expedición, incluyendo rutas, descubrimientos y acuerdos con la Corona, y es clave para entender la primera vuelta al mundo.</p>      </div>    </div>    <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">      <img src="miniGaleria/arqueologicoDiana.jpg" alt="Diana" class="w-full h-60 object-cover">      <div class="p-4">        <h3 class="text-xl font-semibold text-black">DIANA - Museo Arqueológico</h3>        <p class="text-gray-600">La escultura de Diana, en el Museo Arqueológico de Sevilla, representa a la diosa romana de la caza con gran detalle y elegancia, destacando por su estado de conservación y belleza clásica.</p>      </div>    </div>      <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">      <img src="miniGaleria/patio.jpg" alt="Patio Principal" class="w-full h-60  object-contain">      <div class="p-4">        <h3 class="text-xl font-semibold text-black">PATIO PRINCIPAL - Casa Pilatos</h3>        <p class="text-gray-600">Combina elementos mudéjares, góticos y renacentistas. Destaca por su armoniosa arquitectura, con arcos de medio punto, azulejos sevillanos y una fuente central que aporta serenidad y frescura, convirtiéndolo en un espacio emblemático de la nobleza sevillana y un referente del patrimonio histórico-artístico de la ciudad.</p>      </div>    </div>     <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">      <img src="miniGaleria/CAAC.jpg" alt="Alicia" class="w-full h-60 object-cover">      <div class="p-4">        <h3 class="text-xl font-semibold text-black">ALICIA - CAAC</h3>        <p class="text-gray-600">Escultura en dos piezas de grandes dimensiones,inspirada en el famoso personaje literario de Lewis Carroll, fue creada expresamente para la exposición colectiva El patio de mi casa.</p>      </div>    </div>  </div>  </section></div>'
+    var COMPONENTS = [{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ComprarEntradaComponent', 'selector': 'app-comprar-entrada'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ExposicionAdminComponent', 'selector': 'app-exposicion-admin'},{'name': 'ExposicionesComponent', 'selector': 'app-exposiciones'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MensajesAdminComponent', 'selector': 'app-mensajes-admin'},{'name': 'MuseosComponent', 'selector': 'app-museos'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'InicioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InicioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

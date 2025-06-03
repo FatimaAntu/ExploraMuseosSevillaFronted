@@ -157,3 +157,48 @@
     padding: 6px 12px;
   }
 }
+.navbar::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(to right, #00f5ff, #00a0b0, #00f5ff);
+  animation: lineGlow 5s linear infinite;
+}
+
+@keyframes lineGlow {
+  0% { background-position: 0% }
+  100% { background-position: 100% }
+}
+
+.pi {
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.pi:hover {
+  color: #a0dfe7;
+  transform: rotate(5deg) scale(1.1);
+}
+::ng-deep .custom-login-button.p-button {
+  backdrop-filter: blur(6px);
+  background: rgba(26, 99, 133, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+.navbar {
+  animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+

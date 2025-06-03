@@ -6,17 +6,11 @@
 
   <!-- Enlaces -->
   <div class="navbar-links">
-    <a pRipple routerLink="/" routerLinkActive="active">Página Principal</a>
-  <!--  <a pRipple routerLink="/exposiciones" routerLinkActive="active">Exposiciones</a> -->
+    <a pRipple routerLink="/" routerLinkActive="active">Inicio</a>
+    <a pRipple routerLink="/museos" routerLinkActive="active">Museos</a>
+    <a pRipple routerLink="/contacto" routerLinkActive="active">Contacto</a>
   </div>
 
-  <!-- Acciones: Íconos + botones -->
-  <div class="navbar-actions flex align-items-center gap-4 flex-wrap">
-    <!-- Íconos -->
-    <div class="icon-container">
-      <i class="pi pi-search"></i>
-      <i class="pi pi-shopping-cart"></i>
-    </div>
 
     <!-- Área de usuario / login -->
     <div class="navbar-login flex align-items-center gap-3">
@@ -25,34 +19,19 @@
           Bienvenido/a, {{ usuario.nombre }}
         </span>
 
-        <button
-          *ngIf="usuario.rol === 'ADMIN'"
-          pButton
-          label="Admin"
-          icon="pi pi-cog"
-          class="p-button-sm custom-login-button"
-          (click)="navigateToAdminDashboard()"
-        ></button>
+        <button *ngIf="usuario.rol === 'ADMIN'" pButton label="Admin" icon="pi pi-cog"
+          class="p-button-sm custom-login-button" (click)="navigateToAdminDashboard()"></button>
 
-        <button
-          pButton
-          class="p-button-sm custom-login-button"
-          (click)="logout()"
-        >
+        <button pButton class="p-button-sm custom-login-button" (click)="logout()">
           Cerrar Sesión
         </button>
       </ng-container>
 
       <ng-template #loginLink>
-        <a
-          pButton
-          routerLink="/login"
-          class="p-button-sm custom-login-button"
-          style="text-decoration: none"
-        >
+        <a pButton routerLink="/login" class="p-button-sm custom-login-button" style="text-decoration: none">
           Iniciar Sesión
         </a>
       </ng-template>
     </div>
-  </div>
+ 
 </nav>

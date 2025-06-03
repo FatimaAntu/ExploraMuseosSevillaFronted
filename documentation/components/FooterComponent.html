@@ -1,0 +1,495 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>explora-museos-sevilla-fronted documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">explora-museos-sevilla-fronted documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FooterComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/footer/footer.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente FooterComponent</p>
+<p>Pie de página simple y estático de la aplicación.
+Muestra contenido fijo como créditos o información general.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-footer</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./footer.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./footer.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+/**
+ * Componente FooterComponent
+ * 
+ * Pie de página simple y estático de la aplicación.
+ * Muestra contenido fijo como créditos o información general.
+ * 
+ * @selector app-footer
+ */
+@Component({
+  selector: &#x27;app-footer&#x27;,
+  templateUrl: &#x27;./footer.component.html&#x27;,
+  styleUrls: [&#x27;./footer.component.css&#x27;] 
+})
+export class FooterComponent {}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;footer class&#x3D;&quot;footer&quot; role&#x3D;&quot;contentinfo&quot;&gt;
+  &lt;div class&#x3D;&quot;footer-container&quot;&gt;
+
+   
+
+    &lt;div class&#x3D;&quot;footer-contact&quot;&gt;
+      &lt;h4&gt;Contacto&lt;/h4&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Teléfono: +34 955 123 456&lt;/li&gt;
+        &lt;li&gt;Dirección: Sevilla, España&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;footer-social&quot;&gt;
+      &lt;h4&gt;Síguenos&lt;/h4&gt;
+      &lt;div class&#x3D;&quot;social-links&quot; role&#x3D;&quot;navigation&quot; aria-label&#x3D;&quot;Redes sociales&quot;&gt;
+        &lt;a href&#x3D;&quot;https://www.facebook.com/ExploraMuseosSevilla&quot; aria-label&#x3D;&quot;Facebook&quot; title&#x3D;&quot;Facebook&quot; class&#x3D;&quot;footer-link&quot; target&#x3D;&quot;_blank&quot; rel&#x3D;&quot;noopener noreferrer&quot;&gt;
+          &lt;!-- Facebook SVG --&gt;
+          &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill&#x3D;&quot;currentColor&quot; class&#x3D;&quot;icon&quot; viewBox&#x3D;&quot;0 0 24 24&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; aria-hidden&#x3D;&quot;true&quot; focusable&#x3D;&quot;false&quot;&gt;
+            &lt;path d&#x3D;&quot;M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.196 2.238.196v2.466h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z&quot;/&gt;
+          &lt;/svg&gt;
+        &lt;/a&gt;
+        &lt;a href&#x3D;&quot;https://www.instagram.com/ExploraMuseosSevilla&quot; aria-label&#x3D;&quot;Instagram&quot; title&#x3D;&quot;Instagram&quot; class&#x3D;&quot;footer-link&quot; target&#x3D;&quot;_blank&quot; rel&#x3D;&quot;noopener noreferrer&quot;&gt;
+          &lt;!-- Instagram SVG --&gt;
+          &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill&#x3D;&quot;currentColor&quot; class&#x3D;&quot;icon&quot; viewBox&#x3D;&quot;0 0 24 24&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; aria-hidden&#x3D;&quot;true&quot; focusable&#x3D;&quot;false&quot;&gt;
+            &lt;path d&#x3D;&quot;M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm8.5 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-3.5 1.5a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z&quot;/&gt;
+          &lt;/svg&gt;
+        &lt;/a&gt;
+        &lt;a href&#x3D;&quot;https://twitter.com/ExploraMuseosSev&quot; aria-label&#x3D;&quot;Twitter&quot; title&#x3D;&quot;Twitter&quot; class&#x3D;&quot;footer-link&quot; target&#x3D;&quot;_blank&quot; rel&#x3D;&quot;noopener noreferrer&quot;&gt;
+          &lt;!-- Twitter SVG --&gt;
+          &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; fill&#x3D;&quot;currentColor&quot; class&#x3D;&quot;icon&quot; viewBox&#x3D;&quot;0 0 24 24&quot; width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; aria-hidden&#x3D;&quot;true&quot; focusable&#x3D;&quot;false&quot;&gt;
+            &lt;path d&#x3D;&quot;M22.46 6c-.77.35-1.6.58-2.46.69a4.301 4.301 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04 4.28 4.28 0 00-7.29 3.9A12.15 12.15 0 013 5.15a4.28 4.28 0 001.32 5.7 4.27 4.27 0 01-1.94-.54v.05a4.28 4.28 0 003.44 4.2 4.3 4.3 0 01-1.93.07 4.28 4.28 0 003.99 2.97A8.59 8.59 0 012 19.54 12.11 12.11 0 008.29 21c7.54 0 11.67-6.25 11.67-11.66 0-.18 0-.37-.01-.55A8.36 8.36 0 0022.46 6z&quot;/&gt;
+          &lt;/svg&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+
+  &lt;div class&#x3D;&quot;footer-bottom&quot; role&#x3D;&quot;contentinfo&quot;&gt;
+    &amp;copy; 2025 ExploraMuseos Sevilla. Todos los derechos reservados.
+  &lt;/div&gt;
+&lt;/footer&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./footer.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.footer {
+  background-color: #1a1a1a; /* Gris muy oscuro */
+  color: #f1f1f1;
+  font-family: &#x27;Georgia&#x27;, serif;
+  padding: 3rem 2rem 2rem;
+  font-size: 1rem;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-about {
+  flex: 2 1 300px;
+}
+
+.footer-about h3 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.footer-about p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 400px;
+  color: #ccc;
+}
+
+.footer-contact,
+.footer-social {
+  flex: 1 1 200px;
+}
+
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #bbb;
+}
+
+.footer-contact li {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  color: #bbb;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #5dd3f4; 
+  outline: none;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  border-top: 1px solid #333;
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-about {
+    max-width: 100%;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><footer class="footer" role="contentinfo">  <div class="footer-container">       <div class="footer-contact">      <h4>Contacto</h4>      <ul>        <li>Teléfono: +34 955 123 456</li>        <li>Dirección: Sevilla, España</li>      </ul>    </div>    <div class="footer-social">      <h4>Síguenos</h4>      <div class="social-links" role="navigation" aria-label="Redes sociales">        <a href="https://www.facebook.com/ExploraMuseosSevilla" aria-label="Facebook" title="Facebook" class="footer-link" target="_blank" rel="noopener noreferrer">          <!-- Facebook SVG -->          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">            <path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.196 2.238.196v2.466h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>          </svg>        </a>        <a href="https://www.instagram.com/ExploraMuseosSevilla" aria-label="Instagram" title="Instagram" class="footer-link" target="_blank" rel="noopener noreferrer">          <!-- Instagram SVG -->          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">            <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm8.5 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-3.5 1.5a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/>          </svg>        </a>        <a href="https://twitter.com/ExploraMuseosSev" aria-label="Twitter" title="Twitter" class="footer-link" target="_blank" rel="noopener noreferrer">          <!-- Twitter SVG -->          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">            <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.301 4.301 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04 4.28 4.28 0 00-7.29 3.9A12.15 12.15 0 013 5.15a4.28 4.28 0 001.32 5.7 4.27 4.27 0 01-1.94-.54v.05a4.28 4.28 0 003.44 4.2 4.3 4.3 0 01-1.93.07 4.28 4.28 0 003.99 2.97A8.59 8.59 0 012 19.54 12.11 12.11 0 008.29 21c7.54 0 11.67-6.25 11.67-11.66 0-.18 0-.37-.01-.55A8.36 8.36 0 0022.46 6z"/>          </svg>        </a>      </div>    </div>  </div>  <div class="footer-bottom" role="contentinfo">    &copy; 2025 ExploraMuseos Sevilla. Todos los derechos reservados.  </div></footer></div>'
+    var COMPONENTS = [{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ComprarEntradaComponent', 'selector': 'app-comprar-entrada'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ExposicionAdminComponent', 'selector': 'app-exposicion-admin'},{'name': 'ExposicionesComponent', 'selector': 'app-exposiciones'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MensajesAdminComponent', 'selector': 'app-mensajes-admin'},{'name': 'MuseosComponent', 'selector': 'app-museos'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FooterComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FooterComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

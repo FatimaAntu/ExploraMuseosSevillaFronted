@@ -5,7 +5,18 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterComponent } from '../register/register.component';
 import { Router, ActivatedRoute } from '@angular/router';
-
+/**
+ * Componente LoginComponent
+ * 
+ * Componente para la gestión del inicio de sesión de usuarios.
+ * Permite autenticarse con email y contraseña, mostrar mensajes de error o éxito,
+ * y redirigir a la página correspondiente tras el login.
+ * También ofrece la opción de mostrar/ocultar el formulario de registro.
+ * 
+ * @standalone
+ * @selector app-login
+ * @imports FormsModule, CommonModule, ReactiveFormsModule, RegisterComponent
+ */
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,23 +25,41 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  /** Formulario reactivo para login con validaciones */
   loginForm: FormGroup;
+  /** Control para mostrar u ocultar el formulario de registro */
   mostrarRegistro = false;
+  /** Mensaje para mostrar errores de login */
   mensajeError: string | null = null;
+  /** Mensaje para mostrar confirmación de login correcto */
   mensajeExito: string | null = null;
-  welcomeMessage: string = ''; // Mensaje de bienvenida
+  /** Mensaje de bienvenida personalizado */
+  welcomeMessage: string = '';
 
+  /**
+ * Constructor del componente
+ * 
+ * @param fb FormBuilder para crear el formulario reactivo
+ * @param authService Servicio de autenticación para login/logout
+ * @param router Router para navegación programada
+ * @param route ActivatedRoute para obtener query params (returnUrl)
+ */
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute // Para acceder al query param 'returnUrl'
   ) {
+    // Inicializa el formulario con controles y validaciones
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
+  /**
+  * Método para realizar login con los datos del formulario.
+  * Gestiona la respuesta del backend, muestra mensajes y redirige según rol y estado.
+  */
 
   login() {
     const { email, password } = this.loginForm.value;
@@ -51,7 +80,7 @@ export class LoginComponent {
         } else {
           // Obtiene la URL original a la que el usuario quería acceder (si existe)
           const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/home';
-          
+
           // Redirige según el rol del usuario
           if (res.rol === 'ADMIN') {
             this.router.navigate([returnUrl]);  // Si es admin, redirige a la URL original o a '/admin/exposiciones'
@@ -67,11 +96,19 @@ export class LoginComponent {
       }
     });
   }
+  /**
+ * Alterna la visibilidad del formulario de registro.
+ * 
+ * @param event Evento click para evitar el comportamiento por defecto
+ */
 
   toggleRegistro(event: Event) {
     event.preventDefault(); // Evita la recarga de la página
     this.mostrarRegistro = !this.mostrarRegistro;
   }
+  /**
+  * Cierra sesión y redirige a la página principal.
+  */
 
   logout() {
     this.authService.logout();

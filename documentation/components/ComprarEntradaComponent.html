@@ -1,0 +1,1242 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>explora-museos-sevilla-fronted documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">explora-museos-sevilla-fronted documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ComprarEntradaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/comprar-entrada/comprar-entrada.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-comprar-entrada</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CardModule</code>
+                            <code>ButtonModule</code>
+                            <code>MessageModule</code>
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./comprar-entrada.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./comprar-entrada.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cantidad" >cantidad</a>
+                            </li>
+                            <li>
+                                <a href="#exposicion" >exposicion</a>
+                            </li>
+                            <li>
+                                <a href="#exposicionId" >exposicionId</a>
+                            </li>
+                            <li>
+                                <a href="#mensajeError" >mensajeError</a>
+                            </li>
+                            <li>
+                                <a href="#mensajeExito" >mensajeExito</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarPaypal" >mostrarPaypal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#comprarEntrada" >comprarEntrada</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#obtenerExposicion" >obtenerExposicion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, exposicionesService: <a href="../injectables/ExposicionesService.html" target="_self">ExposicionesService</a>, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para acceder a parámetros de la ruta activa</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de autenticación para validar usuario</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>exposicionesService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExposicionesService.html" target="_self" >ExposicionesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para obtener datos de exposiciones</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para navegación entre rutas</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="comprarEntrada"></a>
+                    <span class="name">
+                        <span ><b>comprarEntrada</b></span>
+                        <a href="#comprarEntrada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>comprarEntrada()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicia el proceso de compra de entradas.
+Valida que el usuario esté autenticado y la cantidad sea correcta.
+Muestra el botón de PayPal para proceder con el pago.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método que se ejecuta al inicializar el componente.
+Obtiene el ID de la exposición y carga sus datos.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="obtenerExposicion"></a>
+                    <span class="name">
+                        <span ><b>obtenerExposicion</b></span>
+                        <a href="#obtenerExposicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>obtenerExposicion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Solicita al backend los datos de la exposición por su ID.
+Muestra mensaje de error si el ID es inválido o falla la petición.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cantidad"></a>
+                    <span class="name">
+                        <span ><b>cantidad</b></span>
+                        <a href="#cantidad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cantidad de entradas que desea comprar el usuario</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exposicion"></a>
+                    <span class="name">
+                        <span ><b>exposicion</b></span>
+                        <a href="#exposicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Datos de la exposición cargada desde el backend</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exposicionId"></a>
+                    <span class="name">
+                        <span ><b>exposicionId</b></span>
+                        <a href="#exposicionId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ID de la exposición obtenida de la URL</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeError"></a>
+                    <span class="name">
+                        <span ><b>mensajeError</b></span>
+                        <a href="#mensajeError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error para mostrar al usuario</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeExito"></a>
+                    <span class="name">
+                        <span ><b>mensajeExito</b></span>
+                        <a href="#mensajeExito"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de éxito para mostrar al usuario tras la compra</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarPaypal"></a>
+                    <span class="name">
+                        <span ><b>mostrarPaypal</b></span>
+                        <a href="#mostrarPaypal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/comprar-entrada/comprar-entrada.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si se debe mostrar el botón de PayPal</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+import { ExposicionesService } from &#x27;app/services/exposiciones.service&#x27;;
+import { CardModule } from &#x27;primeng/card&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { MessageModule } from &#x27;primeng/message&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+
+declare var paypal: any;
+
+@Component({
+  selector: &#x27;app-comprar-entrada&#x27;,
+  standalone: true,
+  templateUrl: &#x27;./comprar-entrada.component.html&#x27;,
+  styleUrls: [&#x27;./comprar-entrada.component.css&#x27;],
+  imports: [CardModule, ButtonModule, MessageModule, CommonModule, FormsModule]
+})
+export class ComprarEntradaComponent implements OnInit {
+  /**
+   * ID de la exposición obtenida de la URL
+   */
+  exposicionId: string | null &#x3D; null;
+
+  /**
+   * Datos de la exposición cargada desde el backend
+   */
+  exposicion: any;
+
+  /**
+   * Mensaje de error para mostrar al usuario
+   */
+  mensajeError: string | null &#x3D; null;
+
+  /**
+   * Mensaje de éxito para mostrar al usuario tras la compra
+   */
+  mensajeExito: string | null &#x3D; null;
+
+  /**
+   * Cantidad de entradas que desea comprar el usuario
+   */
+  cantidad: number &#x3D; 1;
+
+  /**
+   * Indica si se debe mostrar el botón de PayPal
+   */
+  mostrarPaypal: boolean &#x3D; false;
+
+  /**
+   * Constructor del componente
+   * @param route Servicio para acceder a parámetros de la ruta activa
+   * @param authService Servicio de autenticación para validar usuario
+   * @param exposicionesService Servicio para obtener datos de exposiciones
+   * @param router Servicio para navegación entre rutas
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private exposicionesService: ExposicionesService,
+    private router: Router
+  ) {}
+
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   * Obtiene el ID de la exposición y carga sus datos.
+   */
+  ngOnInit(): void {
+    this.exposicionId &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;);
+    if (this.exposicionId) {
+      this.obtenerExposicion();
+    }
+  }
+
+  /**
+   * Solicita al backend los datos de la exposición por su ID.
+   * Muestra mensaje de error si el ID es inválido o falla la petición.
+   */
+  obtenerExposicion(): void {
+    const idNumber &#x3D; Number(this.exposicionId);
+    if (!isNaN(idNumber)) {
+      this.exposicionesService.getExposicionById(idNumber).subscribe({
+        next: (res) &#x3D;&gt; {
+          this.exposicion &#x3D; res;
+        },
+        error: () &#x3D;&gt; {
+          this.mensajeError &#x3D; &#x27;No se pudo obtener la exposición&#x27;;
+        }
+      });
+    } else {
+      this.mensajeError &#x3D; &#x27;ID de exposición no válido&#x27;;
+    }
+  }
+
+  /**
+   * Inicia el proceso de compra de entradas.
+   * Valida que el usuario esté autenticado y la cantidad sea correcta.
+   * Muestra el botón de PayPal para proceder con el pago.
+   */
+  comprarEntrada(): void {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate([&#x27;/login&#x27;]);
+      return;
+    }
+
+    if (this.cantidad &lt; 1) {
+      this.mensajeError &#x3D; &#x27;Debes seleccionar al menos una entrada.&#x27;;
+      return;
+    }
+
+    this.mensajeError &#x3D; null;
+    this.mostrarPaypal &#x3D; true;
+
+    // Renderiza el botón PayPal tras pequeño retraso para asegurar que el div esté en el DOM
+    setTimeout(() &#x3D;&gt; {
+      paypal.Buttons({
+        createOrder: (_data: any, actions: any) &#x3D;&gt; {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: (this.cantidad * this.exposicion.precio).toFixed(2) // Precio total
+              }
+            }]
+          });
+        },
+        onApprove: (_data: any, actions: any) &#x3D;&gt; {
+          return actions.order.capture().then((details: any) &#x3D;&gt; {
+            this.mensajeExito &#x3D; &#x60;🎉 ¡Gracias por tu compra, ${details.payer.name.given_name}! Revisa tu email.&#x60;;
+            this.mostrarPaypal &#x3D; false;
+
+            // Aquí se podría llamar al backend para guardar la compra
+
+            setTimeout(() &#x3D;&gt; {
+              this.router.navigate([&#x27;/home&#x27;]);
+            }, 4000);
+          });
+        },
+        onError: (err: any) &#x3D;&gt; {
+          console.error(&#x27;Error en el pago&#x27;, err);
+          this.mensajeError &#x3D; &#x27;Error al procesar el pago con PayPal.&#x27;;
+          this.mostrarPaypal &#x3D; false;
+        }
+      }).render(&#x27;#paypal-button-container&#x27;);
+    }, 100);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;compra-container&quot;&gt;
+
+  &lt;p-message *ngIf&#x3D;&quot;mensajeError&quot; severity&#x3D;&quot;error&quot; [text]&#x3D;&quot;mensajeError&quot;&gt;&lt;/p-message&gt;
+
+  &lt;!-- Tarjeta de exposición --&gt;
+  &lt;p-card *ngIf&#x3D;&quot;exposicion &amp;&amp; !mensajeExito&quot; class&#x3D;&quot;exposicion-card&quot;&gt;
+    &lt;ng-template pTemplate&#x3D;&quot;header&quot;&gt;
+      
+      &lt;img *ngIf&#x3D;&quot;exposicion.imagen&quot; [src]&#x3D;&quot;exposicion.imagen&quot; alt&#x3D;&quot;Imagen de la exposición&quot; class&#x3D;&quot;exposicion-img&quot; /&gt;
+    &lt;/ng-template&gt;
+
+    &lt;ng-template pTemplate&#x3D;&quot;title&quot;&gt;
+      {{ exposicion.nombre }}
+    &lt;/ng-template&gt;
+
+    &lt;ng-template pTemplate&#x3D;&quot;subtitle&quot;&gt;
+      Museo: {{ exposicion.museo?.nombre }}
+    &lt;/ng-template&gt;
+
+    &lt;ng-template pTemplate&#x3D;&quot;content&quot;&gt;
+      &lt;p&gt;{{ exposicion.descripcion }}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Fecha de inicio:&lt;/strong&gt; {{ exposicion.fechaInicio | date:&#x27;longDate&#x27; }}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Fecha de fin:&lt;/strong&gt; {{ exposicion.fechaFin | date:&#x27;longDate&#x27; }}&lt;/p&gt;
+      &lt;div class&#x3D;&quot;boton-container&quot;&gt;
+        &lt;button pButton label&#x3D;&quot;Comprar Entrada(s)&quot; icon&#x3D;&quot;pi pi-ticket&quot; class&#x3D;&quot;p-button-success&quot;
+          (click)&#x3D;&quot;comprarEntrada()&quot; [disabled]&#x3D;&quot;mostrarPaypal&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;!-- Contenedor para renderizar el botón PayPal --&gt;
+      &lt;div id&#x3D;&quot;paypal-button-container&quot; [hidden]&#x3D;&quot;!mostrarPaypal&quot; class&#x3D;&quot;mt-4&quot;&gt;&lt;/div&gt;
+
+
+    &lt;/ng-template&gt;
+  &lt;/p-card&gt;
+
+  &lt;!-- Selector de cantidad de entradas --&gt;
+  &lt;div class&#x3D;&quot;mt-4&quot;&gt;
+    &lt;label for&#x3D;&quot;cantidad&quot;&gt;Cantidad de Entradas:&lt;/label&gt;
+    &lt;input id&#x3D;&quot;cantidad&quot; type&#x3D;&quot;number&quot; [(ngModel)]&#x3D;&quot;cantidad&quot; min&#x3D;&quot;1&quot; max&#x3D;&quot;10&quot; class&#x3D;&quot;p-inputtext p-component&quot;
+      [disabled]&#x3D;&quot;mostrarPaypal&quot; /&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Ticket de éxito --&gt;
+  &lt;div *ngIf&#x3D;&quot;mensajeExito&quot; class&#x3D;&quot;ticket-success animate-fade-in&quot;&gt;
+    &lt;p class&#x3D;&quot;ticket-title&quot;&gt;🎉 ¡Gracias por tu compra!&lt;/p&gt;
+    &lt;div class&#x3D;&quot;ticket-box&quot;&gt;
+      &lt;p&gt;&lt;strong&gt;Entrada para:&lt;/strong&gt; {{ exposicion?.nombre }}&lt;/p&gt;
+      &lt;p&gt;📧 Revisa tu correo para más detalles.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./comprar-entrada.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Contenedor principal */
+.compra-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #2a2a2a; /* Fondo gris oscuro */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más suave */
+    font-family: &#x27;Poppins&#x27;, sans-serif; /* Tipografía más moderna */
+    color: #f7fafc; /* Texto blanco para contraste */
+}
+
+/* Estilos para los mensajes de error y éxito */
+.mensaje-error, .mensaje-exito {
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Color de mensaje de error */
+.mensaje-error {
+    color: #ff4d4f;
+    background-color: #fff1f0;
+}
+
+/* Color de mensaje de éxito */
+.mensaje-exito {
+    color: #52c41a;
+    background-color: #f6ffed;
+}
+
+/* Estilo para la tarjeta de la exposición */
+.exposicion-card {
+    background-color: #333; /* Fondo oscuro para las tarjetas */
+    border-radius: 15px;  /* Bordes más redondeados */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  /* Sombra más suave */
+    padding: 2rem;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff; /* Texto blanco para las tarjetas */
+}
+
+/* Hover para la tarjeta de exposición */
+.exposicion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de la exposición */
+.exposicion-img {
+    width: 100%;
+    height: 220px;  /* Controla la altura de la imagen */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Añadir un hover para las imágenes */
+.exposicion-img:hover {
+    opacity: 0.9;
+}
+
+/* Información de la exposición */
+.exposicion-info {
+    margin-bottom: 1rem;  /* Separación entre el contenido */
+}
+.exposicion-info p {
+    font-size: 1rem;
+    color: #ddd;  /* Gris claro para los textos */
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para el precio de las entradas */
+.precio-entrada {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffbf00; /* Color dorado para destacar el precio */
+    margin-top: 1rem;
+}
+
+/* Botón de compra */
+button.p-button-success {
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    border: none;
+    background-color: #4caf50; /* Verde para botón */
+    color: #fff; /* Texto blanco */
+}
+
+/* Hover para el botón */
+button.p-button-success:hover, button.p-button-success:focus {
+    background-color: #388e3c; /* Verde más oscuro en hover */
+    border-color: #388e3c;
+    outline: none;
+    transform: scale(1.05);
+}
+
+/* Estilo de los títulos */
+h2 {
+    color: #f7fafc; /* Títulos en blanco */
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+/* Subtítulo del museo */
+span.text-sm {
+    font-size: 0.9rem;
+    color: #999; /* Gris oscuro para subtítulos */
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Caja de Ticket de Exito */
+.ticket-success {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #e8f5e9;
+    border: 2px dashed #4caf50;
+    border-radius: 12px;
+}
+
+.ticket-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #388e3c;
+    margin-bottom: 1rem;
+}
+
+.ticket-box {
+    font-size: 1.1rem;
+    color: #2e7d32;
+}
+
+/* Contenedor del botón */
+.boton-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+/* Fondo global de la web */
+body {
+    background-color: #d1d5db; /* Fondo gris claro para toda la página */
+    font-family: &#x27;Poppins&#x27;, sans-serif;
+    color: #333; /* Texto oscuro para contraste */
+}
+
+/* Input de cantidad */
+input[type&#x3D;&quot;number&quot;] {
+    font-size: 1rem;
+    padding: 0.60rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 10%;
+    margin-top: 2rem;
+    background-color: #444; /* Fondo oscuro en el input */
+    color: #fff; /* Texto blanco */
+
+}
+
+input[type&#x3D;&quot;number&quot;]:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+/* Estilo para los iconos de los botones */
+.pi-ticket {
+    margin-right: 0.5rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="compra-container">  <p-message *ngIf="mensajeError" severity="error" [text]="mensajeError"></p-message>  <!-- Tarjeta de exposición -->  <p-card *ngIf="exposicion && !mensajeExito" class="exposicion-card">    <ng-template pTemplate="header">            <img *ngIf="exposicion.imagen" [src]="exposicion.imagen" alt="Imagen de la exposición" class="exposicion-img" />    </ng-template>    <ng-template pTemplate="title">      {{ exposicion.nombre }}    </ng-template>    <ng-template pTemplate="subtitle">      Museo: {{ exposicion.museo?.nombre }}    </ng-template>    <ng-template pTemplate="content">      <p>{{ exposicion.descripcion }}</p>      <p><strong>Fecha de inicio:</strong> {{ exposicion.fechaInicio | date:\'longDate\' }}</p>      <p><strong>Fecha de fin:</strong> {{ exposicion.fechaFin | date:\'longDate\' }}</p>      <div class="boton-container">        <button pButton label="Comprar Entrada(s)" icon="pi pi-ticket" class="p-button-success"          (click)="comprarEntrada()" [disabled]="mostrarPaypal"></button>      </div>      <!-- Contenedor para renderizar el botón PayPal -->      <div id="paypal-button-container" [hidden]="!mostrarPaypal" class="mt-4"></div>    </ng-template>  </p-card>  <!-- Selector de cantidad de entradas -->  <div class="mt-4">    <label for="cantidad">Cantidad de Entradas:</label>    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" max="10" class="p-inputtext p-component"      [disabled]="mostrarPaypal" />  </div>  <!-- Ticket de éxito -->  <div *ngIf="mensajeExito" class="ticket-success animate-fade-in">    <p class="ticket-title">🎉 ¡Gracias por tu compra!</p>    <div class="ticket-box">      <p><strong>Entrada para:</strong> {{ exposicion?.nombre }}</p>      <p>📧 Revisa tu correo para más detalles.</p>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ComprarEntradaComponent', 'selector': 'app-comprar-entrada'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ExposicionAdminComponent', 'selector': 'app-exposicion-admin'},{'name': 'ExposicionesComponent', 'selector': 'app-exposiciones'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MensajesAdminComponent', 'selector': 'app-mensajes-admin'},{'name': 'MuseosComponent', 'selector': 'app-museos'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ComprarEntradaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ComprarEntradaComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

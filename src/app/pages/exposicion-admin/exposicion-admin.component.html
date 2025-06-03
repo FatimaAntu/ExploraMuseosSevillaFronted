@@ -2,84 +2,81 @@
   <!-- Diálogos globales -->
   <p-confirmDialog></p-confirmDialog>
   <p-toast position="top-right" key="main"></p-toast>
-  
-<p-toast></p-toast>
+
+  <p-toast></p-toast>
 
   <!-- Título principal -->
   <h2 class="titulo">Administrar Exposiciones</h2>
 
   <!-- Formulario de exposición -->
   <form [formGroup]="exposicionForm" (ngSubmit)="onSubmit()" class="formulario">
-    
+
     <div class="campo">
       <label for="nombre" class="label">Nombre</label>
-      <input pInputText id="nombre" formControlName="nombre" [ngClass]="{ 'p-invalid': isInvalid('nombre') }" class="input-rectangulo"/>
+      <input pInputText id="nombre" formControlName="nombre" [ngClass]="{ 'p-invalid': isInvalid('nombre') }"
+        class="input-rectangulo" />
       <small class="p-error" *ngIf="isInvalid('nombre')">El nombre es obligatorio</small>
     </div>
 
     <div class="campo">
       <label for="descripcion" class="label">Descripción</label>
-      <input pInputText id="descripcion" formControlName="descripcion" [ngClass]="{ 'p-invalid': isInvalid('descripcion') }" class="input-rectangulo"/>
+      <input pInputText id="descripcion" formControlName="descripcion"
+        [ngClass]="{ 'p-invalid': isInvalid('descripcion') }" class="input-rectangulo" />
       <small class="p-error" *ngIf="isInvalid('descripcion')">La descripción es obligatoria</small>
     </div>
 
     <div class="campo">
       <label for="museo" class="label">Museo</label>
-      <p-dropdown 
-        inputId="museo"
-        [options]="museos"
-        optionLabel="nombre"
-        optionValue="id"
-        placeholder="Seleccione un museo"
-        formControlName="museoId"
-        appendTo="body"
+      <p-dropdown inputId="museo" [options]="museos" optionLabel="nombre" optionValue="id"
+        placeholder="Seleccione un museo" formControlName="museoId" appendTo="body"
         [ngClass]="{ 'p-invalid': isInvalid('museoId') }">
       </p-dropdown>
       <small class="p-error" *ngIf="isInvalid('museoId')">Debe seleccionar un museo</small>
     </div>
 
     <div class="campo">
-  <label for="fechaInicio" class="label">Fecha de Inicio</label>
-  <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio" [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo"/>
- 
-</div>
+      <label for="fechaInicio" class="label">Fecha de Inicio</label>
+      <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio"
+        [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo" />
+
+    </div>
 
 
 
     <div class="campo">
       <label for="fechaFin" class="label">Fecha de Fin</label>
-      <input type="date" pInputText id="fechaFin" formControlName="fechaFin" [ngClass]="{ 'p-invalid': isInvalid('fechaFin') }" class="input-rectangulo"/>
+      <input type="date" pInputText id="fechaFin" formControlName="fechaFin"
+        [ngClass]="{ 'p-invalid': isInvalid('fechaFin') }" class="input-rectangulo" />
       <small class="p-error" *ngIf="isInvalid('fechaFin')">Fecha de fin requerida</small>
     </div>
-    
+
     <div class="campo">
-  <label for="precio" class="label">Precio (€)</label>
-  <input type="number" pInputText id="precio" formControlName="precio" min="0" step="0.01"
-         [ngClass]="{ 'p-invalid': isInvalid('precio') }" class="input-rectangulo"/>
-  <small class="p-error" *ngIf="isInvalid('precio')">El precio es obligatorio y debe ser mayor o igual a 0</small>
-</div>
+      <label for="precio" class="label">Precio (€)</label>
+      <input type="number" pInputText id="precio" formControlName="precio" min="0" step="0.01"
+        [ngClass]="{ 'p-invalid': isInvalid('precio') }" class="input-rectangulo" />
+      <small class="p-error" *ngIf="isInvalid('precio')">El precio es obligatorio y debe ser mayor o igual a 0</small>
+    </div>
 
 
-<div class="campo">
-  <label for="imagen" class="label">Imagen</label>
-  <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*" />
-  <small class="p-error" *ngIf="imagenError">{{ imagenError }}</small>
-  
+    <div class="campo">
+      <label for="imagen" class="label">Imagen</label>
+      <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*" />
+      <small class="p-error" *ngIf="imagenError">{{ imagenError }}</small>
 
-  <!-- Vista previa de la imagen -->
-  <div *ngIf="imagenPreview" class="preview-container">
-    <p class="label mt-2">Vista previa:</p>
-    <img [src]="imagenPreview" alt="Vista previa de la imagen" 
-         style="max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
-  </div>
-</div>
+
+      <!-- Vista previa de la imagen -->
+      <div *ngIf="imagenPreview" class="preview-container">
+        <p class="label mt-2">Vista previa:</p>
+        <img [src]="imagenPreview" alt="Vista previa de la imagen"
+          style="max-width: 200px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+      </div>
+    </div>
 
 
     <!-- Botón Agregar/Actualizar -->
     <div class="boton">
-      <button pButton type="submit" 
-      [label]="exposicionEditada ? 'Actualizar Exposición' : 'Agregar Exposición'" 
-      [disabled]="exposicionForm.invalid" class="p-button-success boton-enviar"></button>
+      <button pButton type="submit" [label]="exposicionEditada ? 'Actualizar Exposición' : 'Agregar Exposición'"
+        [disabled]="exposicionForm.invalid" class="p-button-success boton-enviar"></button>
     </div>
   </form>
 
@@ -110,22 +107,22 @@
             Desde: {{ exposicion?.fechaInicio | date:'dd/MM/yyyy' }} |
             Hasta: {{ exposicion?.fechaFin | date:'dd/MM/yyyy' }}
           </td>
+          <td>{{ exposicion?.precio | number:'1.2-2' }} €</td>
           <td>
- <img *ngIf="exposicion?.imagen" 
-     [src]="'http://localhost:8080/uploads/' + exposicion.imagen" 
-     alt="Imagen de la exposición" 
-       style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
-     
-
-</td>
-           <td>{{ exposicion?.precio | number:'1.2-2' }} €</td> 
+            <img *ngIf="exposicion?.imagen" [src]="'http://localhost:8080/uploads/' + exposicion.imagen"
+              alt="Imagen de la exposición"
+              style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);" />
+          </td>
           <td class="acciones">
-           
-            <button pButton icon="pi pi-pencil" label="Editar" (click)="editarExposicion(exposicion)" class="btn-editar"></button>
-            <button pButton icon="pi pi-trash" label="Eliminar" (click)="eliminarExposicion(exposicion.id)" class="btn-eliminar p-button-danger"></button>
+            <button pButton icon="pi pi-pencil" label="Editar" (click)="editarExposicion(exposicion)"
+              class="btn-editar"></button>
+            <button pButton icon="pi pi-trash" label="Eliminar" (click)="eliminarExposicion(exposicion.id)"
+              class="btn-eliminar p-button-danger"></button>
           </td>
         </tr>
       </tbody>
+
+
     </table>
   </div>
 </div>

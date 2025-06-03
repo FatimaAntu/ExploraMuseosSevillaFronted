@@ -1,0 +1,945 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>explora-museos-sevilla-fronted documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">explora-museos-sevilla-fronted documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NavbarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/navbar/navbar.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente NavbarComponent</p>
+<p>Barra de navegación principal de la aplicación.
+Muestra el estado de autenticación del usuario (logueado o no).
+Permite cerrar sesión y navegar a la gestión administrativa.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-navbar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>RouterModule</code>
+                            <code>ButtonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./navbar.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./navbar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#usuario" >usuario</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToAdminDashboard" >navigateToAdminDashboard</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/navbar/navbar.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para manejar autenticación y sesión</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para navegación entre rutas</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cierra la sesión del usuario y navega a la página principal.
+Además, limpia la variable local que guarda el usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToAdminDashboard"></a>
+                    <span class="name">
+                        <span ><b>navigateToAdminDashboard</b></span>
+                        <a href="#navigateToAdminDashboard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToAdminDashboard()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Función que primero navega a la página de inicio y luego, tras un
+pequeño retraso, redirige a la gestión de exposiciones (panel admin).
+Esto permite que la navegación funcione correctamente en la SPA.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente suscribiéndose al observable de usuario
+para actualizar la variable local cada vez que cambie la sesión.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuario"></a>
+                    <span class="name">
+                        <span ><b>usuario</b></span>
+                        <a href="#usuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Usuario | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/navbar/navbar.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario actualmente autenticado o null si no hay sesión</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterModule, Router } from &#x27;@angular/router&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;; 
+import { Usuario } from &#x27;../../models/usuario.model&#x27;; 
+
+/**
+ * Componente NavbarComponent
+ * 
+ * Barra de navegación principal de la aplicación.
+ * Muestra el estado de autenticación del usuario (logueado o no).
+ * Permite cerrar sesión y navegar a la gestión administrativa.
+ * 
+ * @standalone
+ * @selector app-navbar
+ * @imports CommonModule, RouterModule, ButtonModule
+ */
+@Component({
+  selector: &#x27;app-navbar&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterModule, ButtonModule],
+  templateUrl: &#x27;./navbar.component.html&#x27;,
+  styleUrls: [&#x27;./navbar.component.css&#x27;]
+})
+export class NavbarComponent implements OnInit {
+  /** Usuario actualmente autenticado o null si no hay sesión */
+  usuario: Usuario | null &#x3D; null;
+
+  /**
+   * Constructor del componente
+   * 
+   * @param authService Servicio para manejar autenticación y sesión
+   * @param router Servicio para navegación entre rutas
+   */
+  constructor(private authService: AuthService, private router: Router) {}
+
+  /**
+   * Inicializa el componente suscribiéndose al observable de usuario
+   * para actualizar la variable local cada vez que cambie la sesión.
+   */
+  ngOnInit(): void {
+    this.authService.usuario$.subscribe(user &#x3D;&gt; {
+      this.usuario &#x3D; user;
+    });
+  }
+
+  /**
+   * Cierra la sesión del usuario y navega a la página principal.
+   * Además, limpia la variable local que guarda el usuario.
+   */
+  logout(): void {
+    this.authService.logout(); 
+    this.usuario &#x3D; null;
+    this.router.navigate([&#x27;/&#x27;]);
+  }
+
+  /**
+   * Función que primero navega a la página de inicio y luego, tras un
+   * pequeño retraso, redirige a la gestión de exposiciones (panel admin).
+   * Esto permite que la navegación funcione correctamente en la SPA.
+   */
+  navigateToAdminDashboard(): void {
+    this.router.navigate([&#x27;/home&#x27;]);  // Redirige al inicio
+    setTimeout(() &#x3D;&gt; {
+      this.router.navigate([&#x27;/admin/exposiciones&#x27;]);  // Luego redirige a admin
+    }, 300);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;nav class&#x3D;&quot;navbar&quot;&gt;
+  &lt;!-- Logo --&gt;
+  &lt;div class&#x3D;&quot;navbar-logo&quot;&gt;
+    &lt;img src&#x3D;&quot;logo.png&quot; alt&#x3D;&quot;Logo&quot; class&#x3D;&quot;logo&quot; /&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Enlaces --&gt;
+  &lt;div class&#x3D;&quot;navbar-links&quot;&gt;
+    &lt;a pRipple routerLink&#x3D;&quot;/&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Inicio&lt;/a&gt;
+    &lt;a pRipple routerLink&#x3D;&quot;/museos&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Museos&lt;/a&gt;
+    &lt;a pRipple routerLink&#x3D;&quot;/contacto&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Contacto&lt;/a&gt;
+  &lt;/div&gt;
+
+
+    &lt;!-- Área de usuario / login --&gt;
+    &lt;div class&#x3D;&quot;navbar-login flex align-items-center gap-3&quot;&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;usuario; else loginLink&quot;&gt;
+        &lt;span class&#x3D;&quot;welcome-msg&quot; *ngIf&#x3D;&quot;usuario.rol !&#x3D;&#x3D; &#x27;ADMIN&#x27;&quot;&gt;
+          Bienvenido/a, {{ usuario.nombre }}
+        &lt;/span&gt;
+
+        &lt;button *ngIf&#x3D;&quot;usuario.rol &#x3D;&#x3D;&#x3D; &#x27;ADMIN&#x27;&quot; pButton label&#x3D;&quot;Admin&quot; icon&#x3D;&quot;pi pi-cog&quot;
+          class&#x3D;&quot;p-button-sm custom-login-button&quot; (click)&#x3D;&quot;navigateToAdminDashboard()&quot;&gt;&lt;/button&gt;
+
+        &lt;button pButton class&#x3D;&quot;p-button-sm custom-login-button&quot; (click)&#x3D;&quot;logout()&quot;&gt;
+          Cerrar Sesión
+        &lt;/button&gt;
+      &lt;/ng-container&gt;
+
+      &lt;ng-template #loginLink&gt;
+        &lt;a pButton routerLink&#x3D;&quot;/login&quot; class&#x3D;&quot;p-button-sm custom-login-button&quot; style&#x3D;&quot;text-decoration: none&quot;&gt;
+          Iniciar Sesión
+        &lt;/a&gt;
+      &lt;/ng-template&gt;
+    &lt;/div&gt;
+ 
+&lt;/nav&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./navbar.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* NAVBAR GENERAL */
+.navbar {
+  padding: 30px 60px; /* Aumenta el padding lateral */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: linear-gradient(90deg, #000000, #000000);
+  border-bottom: 3px solid white;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* LOGO */
+.navbar-logo .logo {
+  height: 150px;
+  width: auto;
+}
+
+/* ENLACES */
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  font-family: &#x27;Poppins&#x27;, sans-serif;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-links a.active {
+  color: #a0dfe7;
+  border-bottom: 2px solid #a0dfe7;
+}
+
+.navbar-links a:hover {
+  color: #f6feff;
+  border-bottom: 2px solid #f6feff;
+}
+
+/* ICONOS */
+.icon-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.pi {
+  font-size: 1.5rem;
+  color: gray;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.pi:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+/* MENSAJE BIENVENIDA */
+.welcome-msg {
+  background-color: #4e7e94;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-right: 10px;
+  cursor: default; /* El puntero NO cambia */
+}
+
+.welcome-msg:hover {
+  background-color: #00a0b0;
+  transform: scale(1.05);
+}
+
+/* GRUPOS CON SEPARACIÓN */
+.navbar-login {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* BOTONES ADMIN, INICIAR SESIÓN Y CERRAR SESIÓN */
+::ng-deep .custom-login-button.p-button {
+  background-color: #1a6385 !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+::ng-deep .custom-login-button.p-button:hover {
+  background-color: #00a0b0 !important;
+  transform: scale(1.05);
+  color: white !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .navbar-links a {
+    font-size: 18px;
+  }
+
+  .navbar-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .navbar-login {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .welcome-msg {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+.navbar::after {
+  content: &quot;&quot;;
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(to right, #00f5ff, #00a0b0, #00f5ff);
+  animation: lineGlow 5s linear infinite;
+}
+
+@keyframes lineGlow {
+  0% { background-position: 0% }
+  100% { background-position: 100% }
+}
+
+.pi {
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.pi:hover {
+  color: #a0dfe7;
+  transform: rotate(5deg) scale(1.1);
+}
+::ng-deep .custom-login-button.p-button {
+  backdrop-filter: blur(6px);
+  background: rgba(26, 99, 133, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+.navbar {
+  animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><nav class="navbar">  <!-- Logo -->  <div class="navbar-logo">    <img src="logo.png" alt="Logo" class="logo" />  </div>  <!-- Enlaces -->  <div class="navbar-links">    <a pRipple routerLink="/" routerLinkActive="active">Inicio</a>    <a pRipple routerLink="/museos" routerLinkActive="active">Museos</a>    <a pRipple routerLink="/contacto" routerLinkActive="active">Contacto</a>  </div>    <!-- Área de usuario / login -->    <div class="navbar-login flex align-items-center gap-3">      <ng-container *ngIf="usuario; else loginLink">        <span class="welcome-msg" *ngIf="usuario.rol !== \'ADMIN\'">          Bienvenido/a, {{ usuario.nombre }}        </span>        <button *ngIf="usuario.rol === \'ADMIN\'" pButton label="Admin" icon="pi pi-cog"          class="p-button-sm custom-login-button" (click)="navigateToAdminDashboard()"></button>        <button pButton class="p-button-sm custom-login-button" (click)="logout()">          Cerrar Sesión        </button>      </ng-container>      <ng-template #loginLink>        <a pButton routerLink="/login" class="p-button-sm custom-login-button" style="text-decoration: none">          Iniciar Sesión        </a>      </ng-template>    </div> </nav></div>'
+    var COMPONENTS = [{'name': 'AdminPanelComponent', 'selector': 'app-admin-panel'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ComprarEntradaComponent', 'selector': 'app-comprar-entrada'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ExposicionAdminComponent', 'selector': 'app-exposicion-admin'},{'name': 'ExposicionesComponent', 'selector': 'app-exposiciones'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MensajesAdminComponent', 'selector': 'app-mensajes-admin'},{'name': 'MuseosComponent', 'selector': 'app-museos'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NavbarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
