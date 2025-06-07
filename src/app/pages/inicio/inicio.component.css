@@ -108,12 +108,12 @@ button:hover {
 
 /* Exposiciones actuales */
 .exposiciones-actuales {
-    background-color: #1a1a1a;
+    background-color: #1b3a52;
     padding: 4rem 2rem;
 }
 
 .exposiciones-actuales h2 {
-    color: #38b2ac;
+    color: #ffffff;
     text-align: center;
     font-size: 3rem;
     margin-bottom: 2rem;
@@ -124,7 +124,7 @@ button:hover {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    background-color: #444;
+    background-color: #000000;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(105, 105, 105, 0.3);
     margin: 0 auto 3rem auto;
@@ -136,10 +136,18 @@ button:hover {
     width: 35%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
-    border-left: 4px solid #38b2ac;
+    object-position: 40% 10%; /* Ajusta aquí el foco según cada imagen */
+    border-left: 6px solid #38b2ac;
     border-radius: 15px 0 0 15px;
+    box-shadow: 2px 0 10px rgba(56, 178, 172, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.exposicion-card img:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 0 20px rgba(56, 178, 172, 0.7);
+}
+
 
 /* Contenido textual de la exposición */
 .exposicion-card-content {
@@ -148,6 +156,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+      padding: 1.5rem 1.5rem 1.5rem 3rem;
 }
 
 .exposicion-card-content h3 {
@@ -162,22 +171,36 @@ button:hover {
     margin-bottom: 0.5rem;
 }
 
-.exposicion-card-content button {
-    align-self: start;
+.exposicion-card-content button {/*boton comprar*/
+    display: inline-block;
+     align-self: start;       /* Que quede al inicio horizontalmente */
+    margin-top: -1rem;      /* Lo sube un poco */
+    margin-left: 50%;        /* Lo mueve hacia la derecha (ajusta el % a tu gusto) */
+    background-color: #079a93;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
 }
+
 
 /* Galería de obras destacadas */
 .gallery {
-    background-color: #f7f7f7;
+    background-color: #a3b2d1;
     padding: 3rem 2rem;
     border-radius: 10px;
 }
 
 .gallery h2 {
-    color: #2c3e50;
+    color: #093c6e;
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 2rem;
+
 }
 
 /* Grid de obras */
@@ -190,7 +213,7 @@ button:hover {
 
 /* Tarjeta individual de obra */
 .gallery-item {
-    background-color: #ffffff;
+    background-color: #cccacf;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -217,14 +240,14 @@ button:hover {
 
 .gallery-item h3 {
     font-size: 1.5rem;
-    color: #2c3e50;
+    color: #022d58;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
 
 .gallery-item p {
     font-size: 1rem;
-    color: #656969;
+    color: #000000;
     margin-bottom: 1rem;
 }
 

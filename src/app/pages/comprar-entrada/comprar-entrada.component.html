@@ -1,14 +1,10 @@
 <div class="compra-container">
 
+  <!-- Mensaje de error -->
   <p-message *ngIf="mensajeError" severity="error" [text]="mensajeError"></p-message>
 
-  <!-- Tarjeta de exposición -->
+  <!-- Tarjeta de la exposición -->
   <p-card *ngIf="exposicion && !mensajeExito" class="exposicion-card">
-    <ng-template pTemplate="header">
-      
-      <img *ngIf="exposicion.imagen" [src]="exposicion.imagen" alt="Imagen de la exposición" class="exposicion-img" />
-    </ng-template>
-
     <ng-template pTemplate="title">
       {{ exposicion.nombre }}
     </ng-template>
@@ -20,31 +16,43 @@
     <ng-template pTemplate="content">
       <p>{{ exposicion.descripcion }}</p>
       <p><strong>Fecha de inicio:</strong> {{ exposicion.fechaInicio | date:'longDate' }}</p>
-      <p><strong>Fecha de fin:</strong> {{ exposicion.fechaFin | date:'longDate' }}</p>
-      <div class="boton-container">
-        <button pButton label="Comprar Entrada(s)" icon="pi pi-ticket" class="p-button-success"
-          (click)="comprarEntrada()" [disabled]="mostrarPaypal"></button>
+      <p><strong>Fecha de finalización:</strong> {{ exposicion.fechaFin | date:'longDate' }}</p>
+
+      <!-- Imagen de la exposición -->
+      <div class="exposicion-img-container" *ngIf="exposicion.imagen">
+        <img [src]="getImagenUrl(exposicion.imagen)" [alt]="exposicion.nombre" class="exposicion-img" />
       </div>
-      <!-- Contenedor para renderizar el botón PayPal -->
+      <!-- Precio de la entrada -->
+      <div class="precio-entrada">
+        Precio: {{ exposicion.precio }} €
+      </div>
+
+
+      <!-- Botón de compra -->
+      <div class="boton-container">
+        <button pButton label="Comprar entrada(s)" icon="pi pi-ticket" class="p-button-success"
+          (click)="comprarEntrada()" [disabled]="mostrarPaypal">
+        </button>
+      </div>
+
+      <!-- Contenedor del botón de PayPal -->
       <div id="paypal-button-container" [hidden]="!mostrarPaypal" class="mt-4"></div>
-
-
     </ng-template>
   </p-card>
 
   <!-- Selector de cantidad de entradas -->
   <div class="mt-4">
-    <label for="cantidad">Cantidad de Entradas:</label>
+    <label for="cantidad">Cantidad de entradas:</label>
     <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" max="10" class="p-inputtext p-component"
       [disabled]="mostrarPaypal" />
   </div>
 
-  <!-- Ticket de éxito -->
+  <!-- Ticket de confirmación de compra -->
   <div *ngIf="mensajeExito" class="ticket-success animate-fade-in">
     <p class="ticket-title">🎉 ¡Gracias por tu compra!</p>
     <div class="ticket-box">
-      <p><strong>Entrada para:</strong> {{ exposicion?.nombre }}</p>
-      <p>📧 Revisa tu correo para más detalles.</p>
+      <p><strong>Has adquirido entrada(s) para:</strong> {{ exposicion?.nombre }}</p>
+      <p>📧 Revisa tu correo electrónico para más información.</p>
     </div>
   </div>
 

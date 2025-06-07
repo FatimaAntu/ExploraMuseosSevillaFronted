@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<div class="hero-section bg-cover bg-center h-96 relative" style="background-image: url('hero-image.jpg');">
+<div class="hero-section bg-cover bg-center h-96 relative" ><!--style="background-image: url('hero-image.jpg');"-->
   <div class="absolute inset-0 bg-black opacity-50"></div>
   <div class="relative z-10 text-center text-white">
     <h1 class="text-4xl font-bold">¡DESCUBRE EL ARTE QUE VIVE EN SEVILLA!</h1>
@@ -43,39 +43,26 @@
 <section id="exposiciones" class="exposiciones-actuales p-8">
   <h2 class="text-3xl font-bold text-white mb-6">Exposiciones Actuales</h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div 
-      class="exposicion-card bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105" 
-      *ngFor="let exposicion of exposicionesFiltradas">
-
-      <!-- Solo mostrar una imagen por exposición -->
+  <div class="exposiciones-lista">
+    <div class="exposicion-card" *ngFor="let exposicion of exposicionesFiltradas">
       <img 
         [src]="getImagenUrl(exposicion.imagen)" 
         [alt]="exposicion.nombre" 
-        class="w-full h-48 object-cover" 
       />
-    
+      <div class="exposicion-card-content">
+        <h3>{{ exposicion.nombre }}</h3>
+        <p>{{ exposicion.museo.nombre }}</p>
+        <p>Del {{ exposicion.fechaInicio | date:'dd/MM/yyyy' }} al {{ exposicion.fechaFin | date:'dd/MM/yyyy' }}</p>
+        <p>{{ exposicion.descripcion }}</p>
 
-
-      <div class="p-4">
-        <h3 class="text-xl font-semibold text-black">{{ exposicion.nombre }}</h3>
-        <p class="text-gray-700 text-sm mb-2">{{ exposicion.museo.nombre }}</p>
-        <p class="text-gray-500 text-sm">
-          Del {{ exposicion.fechaInicio | date:'dd/MM/yyyy' }} al {{ exposicion.fechaFin | date:'dd/MM/yyyy' }}
-        </p>
-        <p class="text-gray-600 mt-2">{{ exposicion.descripcion }}</p>
-
-        <div class="mt-4 flex justify-end">
-          <button 
-            (click)="comprarEntrada(exposicion.id)" 
-            class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700">
-            Comprar Entrada
-          </button>
-        </div>
+        <button (click)="comprarEntrada(exposicion.id)">
+          Comprar Entrada
+        </button>
       </div>
     </div>
   </div>
 </section>
+
 
 
 <!-- Mini Galería de Obras Destacadas -->

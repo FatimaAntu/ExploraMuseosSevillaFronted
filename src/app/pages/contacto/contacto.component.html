@@ -1,19 +1,26 @@
-<form (ngSubmit)="enviarMensaje()" #form="ngForm" class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg shadow-lg text-white" novalidate>
+<form #form="ngForm" (ngSubmit)="enviarMensaje(form)" novalidate
+      class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg shadow-lg text-white">
+
   <h2 class="text-3xl font-bold mb-6 text-center">Contacto</h2>
 
   <div class="mb-4">
     <label for="nombre" class="block mb-2 font-semibold">Nombre</label>
     <input
-      type="text"
       id="nombre"
       name="nombre"
+      type="text"
       [(ngModel)]="nombre"
       required
       #nombreInput="ngModel"
-      [class.border-red-500]="nombreInput.invalid && (nombreInput.touched || formSubmitAttempt)"
-      class="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:border-teal-500 transition"
+      [ngClass]="{
+        'border border-red-500': nombreInput.invalid && (nombreInput.touched || formSubmitAttempt),
+        'border border-gray-700': !(nombreInput.invalid && (nombreInput.touched || formSubmitAttempt))
+      }"
+      class="w-full px-3 py-2 rounded bg-gray-800 text-white focus:outline-none focus:border-teal-500 transition"
+      autocomplete="off"
     />
-    <div *ngIf="nombreInput.invalid && (nombreInput.touched || formSubmitAttempt)" class="text-red-500 text-sm mt-1">
+    <div *ngIf="nombreInput.invalid && (nombreInput.touched || formSubmitAttempt)" 
+         class="text-red-500 text-sm mt-1">
       El nombre es obligatorio.
     </div>
   </div>
@@ -21,17 +28,22 @@
   <div class="mb-4">
     <label for="email" class="block mb-2 font-semibold">Email</label>
     <input
-      type="email"
       id="email"
       name="email"
+      type="email"
       [(ngModel)]="email"
       required
       email
       #emailInput="ngModel"
-      [class.border-red-500]="emailInput.invalid && (emailInput.touched || formSubmitAttempt)"
-      class="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:border-teal-500 transition"
+      [ngClass]="{
+        'border border-red-500': emailInput.invalid && (emailInput.touched || formSubmitAttempt),
+        'border border-gray-700': !(emailInput.invalid && (emailInput.touched || formSubmitAttempt))
+      }"
+      class="w-full px-3 py-2 rounded bg-gray-800 text-white focus:outline-none focus:border-teal-500 transition"
+      autocomplete="off"
     />
-    <div *ngIf="emailInput.invalid && (emailInput.touched || formSubmitAttempt)" class="text-red-500 text-sm mt-1">
+    <div *ngIf="emailInput.invalid && (emailInput.touched || formSubmitAttempt)" 
+         class="text-red-500 text-sm mt-1">
       Por favor, introduce un email válido.
     </div>
   </div>
@@ -45,10 +57,14 @@
       [(ngModel)]="mensaje"
       required
       #mensajeInput="ngModel"
-      [class.border-red-500]="mensajeInput.invalid && (mensajeInput.touched || formSubmitAttempt)"
-      class="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:border-teal-500 resize-none transition"
+      [ngClass]="{
+        'border border-red-500': mensajeInput.invalid && (mensajeInput.touched || formSubmitAttempt),
+        'border border-gray-700': !(mensajeInput.invalid && (mensajeInput.touched || formSubmitAttempt))
+      }"
+      class="w-full px-3 py-2 rounded bg-gray-800 text-white focus:outline-none focus:border-teal-500 resize-none transition"
     ></textarea>
-    <div *ngIf="mensajeInput.invalid && (mensajeInput.touched || formSubmitAttempt)" class="text-red-500 text-sm mt-1">
+    <div *ngIf="mensajeInput.invalid && (mensajeInput.touched || formSubmitAttempt)" 
+         class="text-red-500 text-sm mt-1">
       El mensaje es obligatorio.
     </div>
   </div>
@@ -63,7 +79,8 @@
     <span *ngIf="enviando">Enviando...</span>
   </button>
 
-  <div *ngIf="mensajeEnviado" class="mt-6 bg-green-700 text-green-100 p-4 rounded shadow text-center font-semibold">
+  <div *ngIf="mensajeEnviado" 
+       class="mt-6 bg-green-700 text-green-100 p-4 rounded shadow text-center font-semibold">
     ¡Gracias por tu mensaje! Te responderemos pronto.
   </div>
 </form>

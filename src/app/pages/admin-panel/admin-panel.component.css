@@ -1,62 +1,68 @@
-
-/* Panel de administración principal */
 .admin-panel {
   padding: 2rem;
-  background-color: #111827; /* gris oscuro */
-  color: #f9fafb;
-  border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  max-width: 1000px;
-  margin: 2rem auto;
-}
-
-/* Título principal */
-.admin-panel h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
   text-align: center;
-  color: #e5e7eb;
+  background: linear-gradient(to bottom right, #bcd2e7, #ffffff);
+  min-height: 100vh;
 }
-
-/* Contenedores de secciones individuales */
 .admin-section {
-  background-color: #2c3747; /* gris más claro */
-  padding: 1.5rem;
+  background: linear-gradient(to top, #e0f2ff, #ffffff);
   border-radius: 1rem;
-  box-shadow: 0 2px 10px rgba(69, 69, 69, 0.25);
-  margin-bottom: 2rem;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .admin-section:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Subtítulos */
 .admin-section h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1e40af;
+}
+
+.admin-section p {
+  color: #475569;
   margin-bottom: 1rem;
-  color: #f3f4f6;
 }
 
-/* Botones */
-.admin-section button {
-  background-color: #10b981;
-  color: white;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 0.75rem;
-  transition: background-color 0.3s ease;
+button {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
   font-weight: 500;
+  color: #fff;
+  background-color: #3b82f6;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.admin-section button:hover {
+button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Verde para botones específicos, si quieres añadir más estilos según la tarjeta */
+button.green {
+  background-color: #10b981;
+}
+
+button.green:hover {
   background-color: #059669;
 }
 
-html {
-  scroll-behavior: smooth;
+.admin-panel > h2 {
+  font-size: 2.75rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #266ee2, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 2px 4px rgba(16, 185, 129, 0.25);
+  margin-bottom: 3rem;
+  letter-spacing: 0.04em;
 }

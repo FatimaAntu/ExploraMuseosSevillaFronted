@@ -144,4 +144,10 @@ export class ComprarEntradaComponent implements OnInit {
       }).render('#paypal-button-container');
     }, 100);
   }
+  getImagenUrl(imagen?: string): string {
+    if (!imagen) return 'assets/placeholder.jpg';
+    return `http://localhost:8080/uploads/${imagen}`;
+  }
 }
+
+

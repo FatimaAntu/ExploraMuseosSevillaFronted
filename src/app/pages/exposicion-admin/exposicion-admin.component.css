@@ -7,12 +7,12 @@
 
 /* Título principal */
 .titulo {
-  font-size: 1.75rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #266ee2, #10b981);
+  letter-spacing: 0.03em;
+  font-weight: 1000;
   text-align: center;
-  color:  #2b5db4;
   margin-bottom: 2rem;
-  text-transform: uppercase;
 }
 
 /* Título de lista */
@@ -20,8 +20,12 @@
   font-size: 1.50rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #2b5db4;
+  color: #103f91;
   text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 /* Estilo del formulario */
@@ -29,12 +33,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
-  background-color: rgb(230, 219, 219);
+  background-color: rgb(198, 193, 231);
   padding: 2rem;
   border-radius: 1.5rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(86, 40, 211, 0.1);
   position: relative;
-  overflow: visible; 
+  overflow: visible;
   z-index: 1;
 }
 
@@ -99,20 +103,22 @@ textarea {
   grid-column: span 3;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2b5db4;
+  color: #1b4ca0;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   align-self: start;
 }
 
 .boton button {
-  background-color: #2b5db4;
+  background-color: #1d56b9;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.75rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1.25rem;
+
 }
 
 .boton button:hover {
@@ -140,7 +146,7 @@ textarea {
 
 .p-dropdown-item {
   font-size: 1rem;
-  color:#2d3748;
+  color: #2d3748;
 }
 
 .p-dropdown-item:hover {
@@ -176,12 +182,12 @@ textarea {
   padding: 1rem;
 }
 
-.card-body > *:not(:last-child) {
+.card-body>*:not(:last-child) {
   margin-bottom: 0.5rem;
 }
 
 .descripcion {
-  color:#4a5568;
+  color: #4a5568;
 }
 
 .fechas {
@@ -193,10 +199,15 @@ textarea {
 /* Contenedor de tarjetas con diseño responsive */
 .lista-exposiciones {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* columnas mínimas un poco más anchas */
+  gap: 2rem;
+  /* un poco más de espacio entre tarjetas */
+  margin-top: 2.5rem;
+  padding: 0 1rem;
+  /* un poco de padding lateral para no pegarse al borde */
 }
+
 
 /* Contenedor de acciones (botones de editar y eliminar) */
 .acciones {
@@ -205,58 +216,63 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   margin-top: 1rem;
+
+
 }
 
 /* Estilo común para los botones de acción (editar y eliminar) */
-.acciones button {
-  min-width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1rem;
+.acciones {
   display: flex;
-  justify-content: center;
+  gap: 1rem;
+  justify-content: flex-start;
   align-items: center;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  padding: 0.5rem; 
+  margin-top: 0.5rem;
 }
 
-/* Botones editar (verde) */
-.btn-editar {
-  background-color: #28a745;
+.acciones button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
   color: white;
+}
+
+/* Botón editar: verde con efecto hover */
+.btn-editar {
+  background-color: #22c55e;
+  /* verde brillante */
 }
 
 .btn-editar:hover {
-  background-color: #218838;
+  background-color: #16a34a;
+  box-shadow: 0 4px 8px rgba(22, 163, 74, 0.4);
 }
 
-.btn-editar:active {
-  background-color: #1e7e34;
-}
-
-/* Botones eliminar (rojo) */
+/* Botón eliminar: rojo con efecto hover */
 .btn-eliminar {
-  background-color: #dc3545;
-  color: white;
+  background-color: #ef4444;
+  /* rojo */
 }
 
 .btn-eliminar:hover {
-  background-color: #c82333;
-}
-
-.btn-eliminar:active {
-  background-color: #bd2130;
+  background-color: #b91c1c;
+  box-shadow: 0 4px 8px rgba(185, 28, 28, 0.4);
 }
 
 /* Validaciones y mensajes de error */
 .p-invalid {
-  border-color:  #e53e3e !important;
+  border-color: #e53e3e !important;
 }
 
 .p-error {
-  color:  #e53e3e;
+  color: #e53e3e;
   font-size: 0.875rem;
 }
 
@@ -290,7 +306,8 @@ textarea {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 1rem;
   text-align: left;
   border: 1px solid #e2e8f0;
@@ -307,13 +324,26 @@ td {
 
 /* Tabla con filas alternas */
 th {
-  padding: 0.75rem;
-  color: black;
-  font-weight: bold;
+  padding: 0.75rem 1rem;
+  color: #1e40af;
+  /* azul oscuro */
+  font-weight: 700;
   text-align: left;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  background-color: #e0e7ff;
+  /* fondo azul muy claro */
+  border-bottom: 3px solid #3b82f6;
+  /* línea de separación debajo */
+  user-select: none;
+  /* evita selección accidental del texto */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-left-color: #3b82f6;
+  border-right-color: #3b82f6;
+
 }
+
 
 td {
   padding: 0.75rem;
@@ -324,7 +354,7 @@ td {
 /* Personalización del Toast */
 .ui-toast {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 5px;
 }
 
@@ -357,14 +387,15 @@ td {
     grid-template-columns: 1fr;
   }
 
-  .titulo, .titulo-lista {
+  .titulo,
+  .titulo-lista {
     font-size: 1.25rem;
   }
 
   .ui-dialog {
     z-index: 9999 !important;
   }
-  
+
   .ui-overlay {
     z-index: 9998 !important;
   }
@@ -375,7 +406,7 @@ td {
     object-fit: cover;
     border-radius: 8px;
   }
-  
+
 }
 
 .imagen-preview {

@@ -3,15 +3,20 @@
     max-width: 900px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #2a2a2a; /* Fondo gris oscuro */
+    background-color: #5a5a5a;
+    /* Fondo gris oscuro */
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más suave */
-    font-family: 'Poppins', sans-serif; /* Tipografía más moderna */
-    color: #f7fafc; /* Texto blanco para contraste */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    /* Sombra más suave */
+    font-family: 'Poppins', sans-serif;
+    /* Tipografía más moderna */
+    color: #f7fafc;
+    /* Texto blanco para contraste */
 }
 
 /* Estilos para los mensajes de error y éxito */
-.mensaje-error, .mensaje-exito {
+.mensaje-error,
+.mensaje-exito {
     margin-bottom: 1rem;
     border-radius: 5px;
     padding: 1rem;
@@ -32,16 +37,20 @@
 
 /* Estilo para la tarjeta de la exposición */
 .exposicion-card {
-    background-color: #333; /* Fondo oscuro para las tarjetas */
-    border-radius: 15px;  /* Bordes más redondeados */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);  /* Sombra más suave */
+    background-color: #333;
+    /* Fondo oscuro para las tarjetas */
+    border-radius: 15px;
+    /* Bordes más redondeados */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* Sombra más suave */
     padding: 2rem;
     transition: all 0.3s ease;
     animation: fadeIn 0.8s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #fff; /* Texto blanco para las tarjetas */
+    color: #fff;
+    /* Texto blanco para las tarjetas */
 }
 
 /* Hover para la tarjeta de exposición */
@@ -51,27 +60,57 @@
 }
 
 /* Imagen de la exposición */
-.exposicion-img {
-    width: 100%;
-    height: 220px;  /* Controla la altura de la imagen */
-    object-fit: cover;
+.exposicion-img-container {
+    width: 180px;
+    height: 120px;
+    margin: 0 auto 1rem auto;
+    /* Centrado con margen inferior */
+    border: 2px solid #4caf50;
+    /* Borde verde que delimita el recuadro */
     border-radius: 10px;
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+    overflow: hidden;
+    /* Para que la imagen no se salga del recuadro */
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+    /* Sombra suave verde */
+    background-color: #222;
+    /* Fondo oscuro dentro del recuadro */
+    display: flex;
+    position: relative;
+    /* Para posicionar la imagen dentro del contenedor */
 }
 
-/* Añadir un hover para las imágenes */
-.exposicion-img:hover {
-    opacity: 0.9;
+.exposicion-img {
+    width: 180%;
+    height: 120%;
+    object-fit: cover;
+    object-position: right top;
+    /* imagen a la derecha y arriba */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
 }
+
+
+.exposicion-img:hover {
+    transform: scale(1.05);
+}
+
+
 
 /* Información de la exposición */
 .exposicion-info {
-    margin-bottom: 1rem;  /* Separación entre el contenido */
+    margin-bottom: 1rem;
+    /* Separación entre el contenido */
+    text-align: center;
+    /* Centrado del texto */
+    padding: 1rem;
+   
 }
+
 .exposicion-info p {
-    font-size: 1rem;
-    color: #ddd;  /* Gris claro para los textos */
+    font-size: 2rem;
+    color: #ddd;
+    /* Gris claro para los textos */
     line-height: 1.5;
     margin-bottom: 1rem;
 }
@@ -80,7 +119,8 @@
 .precio-entrada {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffbf00; /* Color dorado para destacar el precio */
+    color: #ad8305;
+    /* Color dorado para destacar el precio */
     margin-top: 1rem;
 }
 
@@ -92,13 +132,17 @@ button.p-button-success {
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
     border: none;
-    background-color: #4caf50; /* Verde para botón */
-    color: #fff; /* Texto blanco */
+    background-color: #4caf50;
+    /* Verde para botón */
+    color: #fff;
+    /* Texto blanco */
 }
 
 /* Hover para el botón */
-button.p-button-success:hover, button.p-button-success:focus {
-    background-color: #388e3c; /* Verde más oscuro en hover */
+button.p-button-success:hover,
+button.p-button-success:focus {
+    background-color: #388e3c;
+    /* Verde más oscuro en hover */
     border-color: #388e3c;
     outline: none;
     transform: scale(1.05);
@@ -106,7 +150,8 @@ button.p-button-success:hover, button.p-button-success:focus {
 
 /* Estilo de los títulos */
 h2 {
-    color: #f7fafc; /* Títulos en blanco */
+    color: #0b3049;
+    /* Títulos en blanco */
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
@@ -114,8 +159,9 @@ h2 {
 
 /* Subtítulo del museo */
 span.text-sm {
-    font-size: 0.9rem;
-    color: #999; /* Gris oscuro para subtítulos */
+    font-size: 1rem;
+    color: #999;
+    /* Gris oscuro para subtítulos */
 }
 
 /* Animación de desvanecimiento */
@@ -124,6 +170,7 @@ span.text-sm {
         opacity: 0;
         transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -161,9 +208,11 @@ span.text-sm {
 
 /* Fondo global de la web */
 body {
-    background-color: #d1d5db; /* Fondo gris claro para toda la página */
+    background-color: #d1d5db;
+    /* Fondo gris claro para toda la página */
     font-family: 'Poppins', sans-serif;
-    color: #333; /* Texto oscuro para contraste */
+    color: #333333;
+    /* Texto oscuro para contraste */
 }
 
 /* Input de cantidad */
@@ -174,8 +223,10 @@ input[type="number"] {
     border: 1px solid #ddd;
     width: 10%;
     margin-top: 2rem;
-    background-color: #444; /* Fondo oscuro en el input */
-    color: #fff; /* Texto blanco */
+    background-color: #646464;
+    /* Fondo oscuro en el input */
+    color: #fff;
+    /* Texto blanco */
 
 }
 

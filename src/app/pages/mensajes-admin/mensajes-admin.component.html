@@ -9,7 +9,11 @@
     No hay mensajes por el momento.
   </div>
 
-  <div *ngFor="let msg of mensajes" class="mensaje mb-6">
+  <div *ngFor="let msg of mensajes"
+       [class.mensaje]="true"
+       [class.respondido]="msg.respondido"
+       class="mb-6">
+
     <div class="mensaje-header flex justify-between items-center mb-2">
       <h3 class="mensaje-nombre font-bold text-lg text-cyan-400">{{ msg.nombre }}</h3>
       <span class="mensaje-email text-sm text-gray-400">{{ msg.email }}</span>
@@ -17,27 +21,18 @@
 
     <p class="mensaje-texto text-gray-200 mb-4">{{ msg.mensaje }}</p>
 
-    <div *ngIf="msg.respuesta" class="respuesta-admin">
-      <strong>Respuesta:</strong>
-      <br />
-      {{ msg.respuesta }}
+    <div *ngIf="msg.respondido" class="mensaje-confirmacion text-green-500 mb-4">
+      Respuesta enviada correctamente.
     </div>
 
-    <!-- Textarea para responder -->
-    <textarea
-      [(ngModel)]="msg.respuestaTemporal"
-      placeholder="Escribe tu respuesta aquí..."
-      rows="3"
-      class="respuesta-form-textarea"
-    ></textarea>
-
-    <!-- Mensaje de error -->
-    <div *ngIf="msg.errorRespuesta" class="text-red-500 text-sm mb-2">
-      {{ msg.errorRespuesta }}
-    </div>
-
-    <button (click)="enviarRespuesta(msg)" class="respuesta-form-button">
-      Enviar Respuesta
+    <button
+      *ngIf="!msg.respondido"
+      (click)="abrirClienteCorreo(msg.email, msg.nombre, msg.mensaje, msg)"
+      class="respuesta-form-button"
+    >
+      Responder por email
     </button>
+
+
   </div>
 </div>

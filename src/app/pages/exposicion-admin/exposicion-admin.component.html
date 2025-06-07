@@ -1,3 +1,4 @@
+
 <div class="admin-exposiciones">
   <!-- Diálogos globales -->
   <p-confirmDialog></p-confirmDialog>
@@ -26,28 +27,26 @@
     </div>
 
     <div class="campo">
-      <label for="museo" class="label">Museo</label>
-      <p-dropdown inputId="museo" [options]="museos" optionLabel="nombre" optionValue="id"
-        placeholder="Seleccione un museo" formControlName="museoId" appendTo="body"
-        [ngClass]="{ 'p-invalid': isInvalid('museoId') }">
-      </p-dropdown>
-      <small class="p-error" *ngIf="isInvalid('museoId')">Debe seleccionar un museo</small>
-    </div>
-
-    <div class="campo">
       <label for="fechaInicio" class="label">Fecha de Inicio</label>
       <input type="date" pInputText id="fechaInicio" formControlName="fechaInicio"
         [ngClass]="{ 'p-invalid': isInvalid('fechaInicio') }" class="input-rectangulo" />
 
     </div>
 
-
-
     <div class="campo">
       <label for="fechaFin" class="label">Fecha de Fin</label>
       <input type="date" pInputText id="fechaFin" formControlName="fechaFin"
         [ngClass]="{ 'p-invalid': isInvalid('fechaFin') }" class="input-rectangulo" />
       <small class="p-error" *ngIf="isInvalid('fechaFin')">Fecha de fin requerida</small>
+    </div>
+
+      <div class="campo">
+      <label for="museo" class="label">Museo</label>
+      <p-dropdown inputId="museo" [options]="museos" optionLabel="nombre" optionValue="id"
+        placeholder="Seleccione un museo" formControlName="museoId" appendTo="body"
+        [ngClass]="{ 'p-invalid': isInvalid('museoId') }">
+      </p-dropdown>
+      <small class="p-error" *ngIf="isInvalid('museoId')">Debe seleccionar un museo</small>
     </div>
 
     <div class="campo">
@@ -121,8 +120,6 @@
           </td>
         </tr>
       </tbody>
-
-
     </table>
   </div>
 </div>

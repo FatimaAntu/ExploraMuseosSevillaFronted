@@ -5,12 +5,12 @@
   </div>
 
   <!-- Enlaces -->
-  <div class="navbar-links">
-    <a pRipple routerLink="/" routerLinkActive="active">Inicio</a>
-    <a pRipple routerLink="/museos" routerLinkActive="active">Museos</a>
-    <a pRipple routerLink="/contacto" routerLinkActive="active">Contacto</a>
-  </div>
+  <div class="navbar-links" *ngIf="!usuario || usuario.rol !== 'ADMIN'">
+  <a pRipple routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+<a pRipple routerLink="/museos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Museos</a>
+<a pRipple routerLink="/contacto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contacto</a>
 
+</div>
 
     <!-- Área de usuario / login -->
     <div class="navbar-login flex align-items-center gap-3">

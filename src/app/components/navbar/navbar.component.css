@@ -80,10 +80,7 @@
   cursor: default; /* El puntero NO cambia */
 }
 
-.welcome-msg:hover {
-  background-color: #00a0b0;
-  transform: scale(1.05);
-}
+
 
 /* GRUPOS CON SEPARACIÓN */
 .navbar-login {

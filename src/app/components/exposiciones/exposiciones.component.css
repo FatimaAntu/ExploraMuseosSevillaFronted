@@ -32,6 +32,7 @@
   flex: 0 0 280px;
   max-width: 280px;
   margin-right: 1rem;
+  
 }
 
 :host ::ng-deep .p-card .p-image img {

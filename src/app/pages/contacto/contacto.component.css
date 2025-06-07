@@ -1,4 +1,4 @@
-/* Estilos mejorados para el formulario de contacto */
+/* Fondo y estilo general */
 form {
   max-width: 420px;
   margin: 3rem auto;
@@ -12,7 +12,9 @@ form {
   border: 1px solid #374151;
 }
 
+/* Título */
 form h2 {
+  
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 800;
@@ -21,6 +23,7 @@ form h2 {
   letter-spacing: 0.5px;
 }
 
+/* Etiquetas */
 label {
   display: block;
   margin-bottom: 0.5rem;
@@ -28,6 +31,7 @@ label {
   color: #d1d5db;
 }
 
+/* Inputs y textarea sin borde por defecto para dejar que Tailwind lo gestione */
 input[type="text"],
 input[type="email"],
 textarea {
@@ -57,7 +61,8 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.3);
 }
 
-.error-message {
+/* Mensajes de error */
+.text-red-500 {
   color: #f87171;
   font-size: 0.85rem;
   margin-top: -0.75rem;
@@ -65,6 +70,7 @@ textarea:focus {
   display: block;
 }
 
+/* Botón */
 button[type="submit"] {
   width: 100%;
   background: linear-gradient(135deg, #14b8a6, #0f766e);
@@ -87,3 +93,17 @@ button[type="submit"]:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* Animación spinner */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
