@@ -6,6 +6,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { TableModule } from 'primeng/table';
 import { FooterComponent } from './footer/footer.component';
 
+
 /**
  * Interfaz que representa un museo.
  * 

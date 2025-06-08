@@ -52,8 +52,9 @@
       <div class="exposicion-card-content">
         <h3>{{ exposicion.nombre }}</h3>
         <p>{{ exposicion.museo.nombre }}</p>
+         <p>{{ exposicion.descripcion }}</p>
         <p>Del {{ exposicion.fechaInicio | date:'dd/MM/yyyy' }} al {{ exposicion.fechaFin | date:'dd/MM/yyyy' }}</p>
-        <p>{{ exposicion.descripcion }}</p>
+       
 
         <button (click)="comprarEntrada(exposicion.id)">
           Comprar Entrada

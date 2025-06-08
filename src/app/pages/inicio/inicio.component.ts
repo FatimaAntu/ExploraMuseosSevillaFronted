@@ -4,6 +4,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { ExposicionesService } from '../../services/exposiciones.service';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 /**
  * Componente que representa la página de inicio de la aplicación.
@@ -16,7 +18,8 @@ import { ExposicionesService } from '../../services/exposiciones.service';
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CommonModule, CarouselModule],
+  imports: [CommonModule, CarouselModule, ConfirmDialogModule],
+  providers: [ConfirmationService],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
