@@ -1,0 +1,14 @@
+<div class="entradas-container" *ngIf="entradas.length > 0; else sinEntradas">
+  <div class="entrada-card" *ngFor="let entrada of entradas">
+    <div class="entrada-info">
+      <div class="entrada-exposicion">{{ entrada.exposicion.nombre }}</div>
+      <div class="entrada-fechaCompra">Comprado el: {{ entrada.fechaCompra | date:'medium' }}</div>
+      <div class="entrada-cantidad">Cantidad: {{ entrada.cantidad }}</div>
+    </div>
+    <div class="entrada-precioTotal">€ {{ entrada.totalPagado.toFixed(2) }}</div>
+  </div>
+</div>
+
+<ng-template #sinEntradas>
+  <div class="no-entradas-msg">No tienes entradas compradas aún.</div>
+</ng-template>

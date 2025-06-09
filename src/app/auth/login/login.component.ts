@@ -73,21 +73,22 @@ export class LoginComponent {
         this.loginForm.reset();
 
         // Verifica si hay una entrada pendiente de compra
+        // Verifica si hay una entrada pendiente de compra y que el usuario no sea admin
         const entradaPendiente = localStorage.getItem('entradaPendiente');
-        if (entradaPendiente) {
-          localStorage.removeItem('entradaPendiente');
-          this.router.navigate(['/comprar-entrada', entradaPendiente]);  // Redirige al proceso de compra de entradas
-        } else {
-          // Obtiene la URL original a la que el usuario quería acceder (si existe)
-          const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/home';
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/home';
 
-          // Redirige según el rol del usuario
+        if (entradaPendiente && res.rol !== 'ADMIN') {
+          localStorage.removeItem('entradaPendiente');
+          this.router.navigate(['/comprar-entrada', entradaPendiente]);
+        } else {
           if (res.rol === 'ADMIN') {
-            this.router.navigate([returnUrl]);  // Si es admin, redirige a la URL original o a '/admin/exposiciones'
+            // Redirige a la página de admin (puedes cambiarla si quieres)
+            this.router.navigate(['/admin']);
           } else {
-            this.router.navigate([returnUrl]);  // Si es usuario, redirige a la URL original o a '/home'
+            this.router.navigate([returnUrl]);
           }
         }
+
       },
       error: (err) => {
         this.mensajeError = 'Credenciales incorrectas';

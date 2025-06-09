@@ -176,4 +176,9 @@ export class ExposicionesService {
       this.selectedImage = file;
     }
   }
+
+   guardarCompra(compra: { usuarioId: number, exposicionId: number, cantidad: number, totalPagado: number }): Observable<any> {
+    // Cambia esta URL al endpoint real de tu backend para guardar compras
+    return this.http.post('http://localhost:8080/api/entradas/comprar', compra);
+  }
 }

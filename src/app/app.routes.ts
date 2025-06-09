@@ -10,6 +10,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ComprarEntradaComponent } from './pages/comprar-entrada/comprar-entrada.component'; 
 import { MensajesAdminComponent } from './pages/mensajes-admin/mensajes-admin.component';
 import { ExposicionAdminComponent } from './pages/exposicion-admin/exposicion-admin.component';
+import { MisEntradasComponent } from '../app/mis-entradas/mis-entradas.component'
+
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -28,6 +30,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/contacto/contacto.component').then(m => m.ContactoComponent)
   },
+  
+ 
+
   {
     path: 'admin',
     component: AdminPanelComponent,
@@ -49,6 +54,12 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+  path: 'mis-entradas',
+  component: MisEntradasComponent,
+  canActivate: [AuthGuard]  // si tienes un guard que protege rutas para usuarios logueados
+},
+
   { path: '**', redirectTo: '' }
 ];
 

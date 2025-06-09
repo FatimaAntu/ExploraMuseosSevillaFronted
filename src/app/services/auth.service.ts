@@ -118,4 +118,12 @@ export class AuthService {
   isAuthenticated(): boolean {
     return this.usuarioSubject.value !== null;
   }
+
+  getUsuarioId(): number | null {
+  const user = this.usuarioSubject.value;
+  return user ? user.id : null;  // Suponiendo que el usuario tiene un campo `id`
+}
+
+
+  
 }

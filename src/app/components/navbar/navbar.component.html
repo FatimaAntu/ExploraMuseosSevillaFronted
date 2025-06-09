@@ -9,7 +9,14 @@
   <a pRipple routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
 <a pRipple routerLink="/museos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Museos</a>
 <a pRipple routerLink="/contacto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Contacto</a>
+<a pRipple routerLink="/mis-entradas" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Mis Entradas</a>
+  </div>
 
+  <!-- Enlaces de administrador -->
+  <div class="navbar-admin-links" *ngIf="usuario && usuario.rol === 'ADMIN'">
+    <a pRipple routerLink="/admin/museos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Museos</a>
+    <a pRipple routerLink="/admin/exposiciones" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Exposiciones</a>
+    <a pRipple routerLink="/admin/entradas" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Entradas</a>
 </div>
 
     <!-- Área de usuario / login -->
