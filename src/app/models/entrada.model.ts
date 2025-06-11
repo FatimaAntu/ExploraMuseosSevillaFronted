@@ -3,7 +3,7 @@ export interface Entrada {
   id: number;
   cantidad: number;
   totalPagado: number;
-  fechaCompra: string; // o Date si haces conversión
+  fechaCompra: string; 
   exposicion: {
     id: number;
     nombre: string;

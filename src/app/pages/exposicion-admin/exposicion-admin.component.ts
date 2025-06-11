@@ -87,7 +87,7 @@ museoFiltro: number | null = null;
       id: [null],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fechaInicio: ['', Validators.required],
+      fechaInicio: ['', [Validators.required, this.fechaNoPasadaValidator]],
       fechaFin: ['', Validators.required],
       museoId: [null, Validators.required],
       precio: [null, [Validators.required, Validators.min(0)]],
@@ -128,14 +128,15 @@ museoFiltro: number | null = null;
    * @param control Control del formulario con la fecha a validar
    * @returns Error si la fecha es anterior a hoy, o null si es válida
    */
-  fechaNoPasadaValidator(control: AbstractControl): ValidationErrors | null {
-    if (!control.value) return null;
-    const fechaSeleccionada = new Date(control.value);
-    const hoy = new Date();
-    fechaSeleccionada.setHours(0, 0, 0, 0);
-    hoy.setHours(0, 0, 0, 0);
-    return fechaSeleccionada < hoy ? { fechaPasada: true } : null;
-  }
+ fechaNoPasadaValidator = (control: AbstractControl): ValidationErrors | null => {
+  if (!control.value) return null;
+  const fechaSeleccionada = new Date(control.value);
+  const hoy = new Date();
+  fechaSeleccionada.setHours(0, 0, 0, 0);
+  hoy.setHours(0, 0, 0, 0);
+  return fechaSeleccionada < hoy ? { fechaPasada: true } : null;
+}
+
 
 
   /**

@@ -453,3 +453,35 @@ td {
 .p-dropdown-clear-icon:hover {
   color: #e53e3e;
 }
+
+/* Botón Reset integrado al estilo del formulario */
+.boton-reset {
+  margin-top: 1rem;
+  grid-column: span 3; /* ocupa todo el ancho del formulario */
+  justify-self: start; /* alineado a la izquierda, cambiar a center o end si prefieres */
+  background-color: #e0e7ff; /* mismo tono que el fondo de th */
+  color: #1e40af; /* azul oscuro similar a los textos importantes */
+  border: 2px solid #3b82f6; /* borde azul similar */
+  border-radius: 0.375rem; /* mismo border-radius que inputs */
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(59, 130, 246, 0.3);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 100px;
+  height: 38px;
+}
+
+.boton-reset:hover {
+  background-color: #3b82f6; /* azul vivo */
+  color: white;
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
+}
+
+.boton-reset:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.6);
+}
+

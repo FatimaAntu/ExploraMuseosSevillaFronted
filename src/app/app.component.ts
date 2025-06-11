@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { MuseoService } from './services/museo.service';
 import { NavbarComponent } from "./components/navbar/navbar.component"; 
 import { TableModule } from 'primeng/table';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 /**

@@ -10,7 +10,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ComprarEntradaComponent } from './pages/comprar-entrada/comprar-entrada.component'; 
 import { MensajesAdminComponent } from './pages/mensajes-admin/mensajes-admin.component';
 import { ExposicionAdminComponent } from './pages/exposicion-admin/exposicion-admin.component';
-import { MisEntradasComponent } from '../app/mis-entradas/mis-entradas.component'
+import { MisEntradasComponent } from './pages/mis-entradas/mis-entradas.component'
 
 
 export const routes: Routes = [

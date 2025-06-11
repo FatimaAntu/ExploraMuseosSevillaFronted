@@ -168,7 +168,7 @@
 :host ::ng-deep .p-dialog {
   border-radius: 1rem; /* 16px */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  background-color: #134980; /* color azul oscuro */
+  background-color: #4070a0; /* color azul oscuro */
   color: #111827; /* gris oscuro */
   max-width: 400px;
   width: 90%;

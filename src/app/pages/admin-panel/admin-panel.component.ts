@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule]
 })
 export class AdminPanelComponent implements OnInit {
+  
   /**
    * Indica si el usuario actual tiene rol de administrador
    */
@@ -17,6 +18,7 @@ export class AdminPanelComponent implements OnInit {
 
   /**
    * Constructor del componente AdminPanelComponent
+   * 
    * @param authService Servicio de autenticación para obtener datos del usuario actual
    */
   constructor(private authService: AuthService) {}
@@ -30,11 +32,16 @@ export class AdminPanelComponent implements OnInit {
     const currentUser = this.authService.getCurrentUser();
     this.isAdmin = currentUser && currentUser.rol === 'ADMIN';
   }
-   scrollToSection(id: string) {
+
+  /**
+   * Realiza un desplazamiento suave hacia una sección de la página.
+   * 
+   * @param id Identificador del elemento HTML al que se desea desplazar.
+   */
+  scrollToSection(id: string) {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-  
 }
