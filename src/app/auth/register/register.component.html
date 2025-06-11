@@ -18,13 +18,14 @@
       Ingresa un email válido
     </div>
 
+    
     <input type="password" formControlName="password" placeholder="Contraseña" />
     <div
-      *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched"
-      class="error-message"
-    >
-      La contraseña debe tener al menos 6 caracteres
-    </div>
+  *ngIf="registroForm.get('password')?.value?.length > 0 && registroForm.get('password')?.value?.length < 6"
+  class="warning-message"
+>
+  La contraseña debe tener al menos 6 caracteres
+</div>
 
     <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
   </form>

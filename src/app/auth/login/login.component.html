@@ -1,11 +1,26 @@
-
 <div class="container-login">
   <h2>Iniciar sesión</h2>
 
   <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <!-- Email -->
     <input formControlName="email" placeholder="Email" type="email" />
+
+    <!-- Mensajes de validación de email -->
+    <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error">
+      <small *ngIf="loginForm.get('email')?.errors?.['required']">El email es obligatorio</small>
+      <small *ngIf="loginForm.get('email')?.errors?.['email']">El formato de email no es válido</small>
+    </div>
+
+    <!-- Contraseña -->
     <input formControlName="password" placeholder="Contraseña" type="password" />
-    <button type="submit">Login</button>
+
+    <!-- Mensajes de validación de contraseña -->
+    <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error">
+      <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria</small>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
 
   <div *ngIf="welcomeMessage">
@@ -18,5 +33,4 @@
   <a href="javascript:void(0);" (click)="toggleRegistro($event)">¿No tienes cuenta? Regístrate</a>
 
   <app-register *ngIf="mostrarRegistro"></app-register>
-
 </div>

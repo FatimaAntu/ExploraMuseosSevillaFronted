@@ -226,6 +226,11 @@ export class ComprarEntradaComponent implements OnInit {
     try {
       const logoBase64 = await this.convertirLogoABase64('logo.png');
       doc.addImage(logoBase64, 'PNG', 20, 10, 40, 40);
+
+         // QR (
+    const qrBase64 = await this.convertirLogoABase64('qr.png');
+    // Añadir QR al PDF, abajo a la derecha
+    doc.addImage(qrBase64, 'PNG', 150, 200, 40, 40);
     } catch (error) {
       console.error('No se pudo cargar el logo:', error);
     }

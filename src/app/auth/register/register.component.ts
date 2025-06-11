@@ -88,4 +88,10 @@ export class RegisterComponent {
       }
     });
   }
+  mostrarPassword: boolean = false;
+
+togglePassword() {
+  this.mostrarPassword = !this.mostrarPassword;
+}
+
 }

@@ -115,3 +115,13 @@ app-registro {
   margin-top: 2rem;
   width: 100%;
 }
+
+/* Estilo para los pequeños mensajes de validación */
+input + div.error small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #c62828;
+  text-align: left;
+  padding-left: 0.5rem;
+}
