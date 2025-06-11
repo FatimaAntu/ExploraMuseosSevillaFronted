@@ -1,68 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';  
 import { RouterModule } from '@angular/router';
 import { ExposicionesService, Exposicion } from 'app/services/exposiciones.service';
 import { CardModule } from 'primeng/card';
 import { ImageModule } from 'primeng/image';
-import { MuseoService, Museo } from 'app/services/museo.service';
+import { MuseoService } from 'app/services/museo.service';
+import { DialogModule } from 'primeng/dialog';
+import { AuthService } from 'app/services/auth.service'; 
 
-/**
- * Componente ExposicionesComponent
- * 
- * Muestra la lista de exposiciones de un museo específico.
- * Obtiene el ID del museo desde la URL y carga sus exposiciones.
- * También carga y muestra el nombre del museo.
- * Utiliza PrimeNG para mostrar las exposiciones en tarjetas con imágenes.
- * 
- * @standalone
- * @selector app-exposiciones
- * @imports CommonModule, RouterModule, CardModule, ImageModule
- */
 @Component({
   selector: 'app-exposiciones',
-  standalone: true, 
-  imports: [CommonModule, RouterModule, CardModule, ImageModule], 
+  standalone: true,
+  imports: [CommonModule, RouterModule, CardModule, ImageModule, DialogModule],
   templateUrl: './exposiciones.component.html',
-  styleUrls: ['./exposiciones.component.css']
+  styleUrls: ['./exposiciones.component.css'],
+  
 })
 export class ExposicionesComponent implements OnInit {
-  /** ID del museo obtenido de la URL */
   museoId: number = 0;
-
-  /** Lista de exposiciones del museo */
   exposiciones: Exposicion[] = [];
-
-  /** Nombre del museo para mostrar en la interfaz */
   nombreMuseo: string = '';
-
-  /**
-   * Constructor del componente
-   * 
-   * @param route Para acceder a parámetros de la ruta activa (museoId)
-   * @param exposicionesService Servicio para obtener datos de exposiciones
-   * @param museoService Servicio para obtener datos de museos
-   */
+  displayAuthPrompt: boolean = false;
+  pendingExpoId: number | null = null;
+ 
   constructor(
     private route: ActivatedRoute,
     private exposicionesService: ExposicionesService,
-    private museoService: MuseoService 
+    private museoService: MuseoService,
+    private router: Router,
+    private authService: AuthService ,
   ) {}
 
-  /**
-   * Método que se ejecuta al inicializar el componente
-   * Obtiene el ID del museo de la URL, carga las exposiciones y el nombre del museo
-   */
   ngOnInit(): void {
     this.museoId = Number(this.route.snapshot.paramMap.get('id'));
     this.cargarMuseo(this.museoId);
     this.cargarExposiciones(this.museoId);
   }
 
-  /**
-   * Carga las exposiciones del museo mediante el servicio de exposiciones
-   * @param museoId ID del museo para filtrar las exposiciones
-   */
   cargarExposiciones(museoId: number): void {
     this.exposicionesService.getExposicionesPorMuseo(museoId).subscribe({
       next: expos => {
@@ -72,11 +47,7 @@ export class ExposicionesComponent implements OnInit {
       error: err => console.error(err.message)
     });
   }
-  
-  /**
-   * Carga el museo por ID para obtener su nombre mediante el servicio de museos
-   * @param museoId ID del museo a cargar
-   */
+
   cargarMuseo(museoId: number): void {
     this.museoService.getMuseoById(museoId).subscribe({
       next: museo => {
@@ -86,4 +57,35 @@ export class ExposicionesComponent implements OnInit {
       error: err => console.error(err.message)
     });
   }
+
+  estaLogueado(): boolean {
+    return this.authService.isAuthenticated(); 
+  }
+
+  comprarEntrada(exposicionId: number) {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/comprar-entrada', exposicionId]);
+    } else {
+      this.pendingExpoId = exposicionId;
+      this.displayAuthPrompt = true;
+    }
+  }
+irRegistro() {
+  if (this.pendingExpoId !== null) {
+    this.authService.setRedirectExposicionId(this.pendingExpoId);
+  }
+  this.displayAuthPrompt = false;
+  this.router.navigate(['/register']);
+}
+
+irLogin() {
+  if (this.pendingExpoId !== null) {
+    this.authService.setRedirectExposicionId(this.pendingExpoId);
+  }
+  this.displayAuthPrompt = false;
+  this.router.navigate(['/login']);
+}
+    handleDialogClose(): void {
+  this.displayAuthPrompt = false;
+}
 }

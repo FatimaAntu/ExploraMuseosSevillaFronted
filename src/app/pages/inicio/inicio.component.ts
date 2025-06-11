@@ -4,7 +4,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { ExposicionesService } from '../../services/exposiciones.service';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
 import { ConfirmationService } from 'primeng/api';
 
 /**
@@ -18,7 +18,7 @@ import { ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CommonModule, CarouselModule, ConfirmDialogModule],
+  imports: [CommonModule, CarouselModule, DialogModule],
   providers: [ConfirmationService],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
@@ -48,6 +48,16 @@ export class InicioComponent {
    * Array dinámico que almacena las exposiciones obtenidas del backend.
    */
   exposiciones: any[] = [];
+
+  /**
+   * Controla la visibilidad del diálogo para autenticación.
+   */
+  displayAuthPrompt: boolean = false;
+
+  /**
+   * Guarda el ID de la exposición pendiente para compra.
+   */
+  pendingExpoId: number | null = null;
 
   /**
    * Constructor con inyección de dependencias para Router, servicios de autenticación y exposiciones.
@@ -92,7 +102,7 @@ export class InicioComponent {
         (new Date(exp.fechaInicio) >= hoy && new Date(exp.fechaInicio) <= fechaLimite) ||
         (new Date(exp.fechaFin) >= hoy && new Date(exp.fechaFin) <= fechaLimite)
       )
-      .slice(0, 4);
+      .slice(0, 6);
   }
 
   /**
@@ -104,18 +114,35 @@ export class InicioComponent {
   }
 
   /**
-   * Navega a la ruta de compra de entrada para la exposición dada.
-   * Si el usuario no está autenticado, lo redirige al registro y guarda la compra pendiente.
+   * Método para manejar la compra de entrada.
+   * Si el usuario está autenticado, navega a la compra.
+   * Si no, muestra un diálogo para que el usuario elija registrarse o iniciar sesión.
    * @param exposicionId Identificador de la exposición para la compra
    */
   comprarEntrada(exposicionId: number) {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/comprar-entrada', exposicionId]);
     } else {
-      localStorage.setItem('entradaPendiente', exposicionId.toString());
-      this.router.navigate(['/register']);
+      this.pendingExpoId = exposicionId;
+      this.displayAuthPrompt = true;
     }
   }
+
+  irRegistro() {
+  if (this.pendingExpoId !== null) {
+    this.authService.setRedirectExposicionId(this.pendingExpoId);
+  }
+  this.displayAuthPrompt = false;
+  this.router.navigate(['/register']);
+}
+
+irLogin() {
+  if (this.pendingExpoId !== null) {
+    this.authService.setRedirectExposicionId(this.pendingExpoId);
+  }
+  this.displayAuthPrompt = false;
+  this.router.navigate(['/login']);
+}
 
   /**
    * Navega a la página con las exposiciones de un museo específico.
@@ -144,4 +171,9 @@ export class InicioComponent {
     if (!imagen) return 'assets/placeholder.jpg';
     return `http://localhost:8080/uploads/${imagen}`;
   }
+
+  handleDialogClose(): void {
+  this.displayAuthPrompt = false;
+}
+
 }

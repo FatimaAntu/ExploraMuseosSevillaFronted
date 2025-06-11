@@ -124,6 +124,19 @@ export class AuthService {
   return user ? user.id : null;  // Suponiendo que el usuario tiene un campo `id`
 }
 
+private redirectExposicionId: number | null = null;
+
+setRedirectExposicionId(id: number) {
+  this.redirectExposicionId = id;
+}
+
+getRedirectExposicionId(): number | null {
+  return this.redirectExposicionId;
+}
+
+clearRedirectExposicionId() {
+  this.redirectExposicionId = null;
+}
 
   
 }

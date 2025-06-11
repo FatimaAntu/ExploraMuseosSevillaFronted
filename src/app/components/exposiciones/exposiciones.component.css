@@ -142,3 +142,98 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.p-card .p-button {
+  width: 100%;
+  font-weight: 600;
+}
+
+.sin-exposiciones-message {
+  color: #6b7280; /* gris medio (similar a text-gray-500 de Tailwind) */
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600; /* seminegra */
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background-color: #f3f4f6; /* gris muy claro */
+  border: 1px solid #d1d5db; /* borde gris claro */
+  border-radius: 0.75rem; /* esquinas redondeadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* sombra suave */
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilo base para el diálogo */
+:host ::ng-deep .p-dialog {
+  border-radius: 1rem; /* 16px */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  background-color: #134980; /* color azul oscuro */
+  color: #111827; /* gris oscuro */
+  max-width: 400px;
+  width: 90%;
+  padding: 1.5rem 2rem;
+}
+
+/* Encabezado del diálogo */
+:host ::ng-deep .p-dialog-header {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #28aca5; /* color aqua */
+  border-bottom: 2px solid #38b2ac;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  user-select: none;
+  color: #0f0f0f; /* igual que texto del diálogo */
+}
+
+/* Contenido del diálogo */
+:host ::ng-deep .p-dialog-content {
+  font-size: 1.1rem;
+  color: #0f0f0f; /* texto oscuro */
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  user-select: text;
+}
+
+/* Botones personalizados dentro del diálogo */
+:host ::ng-deep .p-dialog button {
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #38b2ac;
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(56, 178, 172, 0.5);
+  margin-left: 0.5rem;
+}
+
+:host ::ng-deep .p-dialog button:hover {
+  background-color: #2c9f8a;
+}
+
+:host ::ng-deep .p-dialog button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.6);
+}
+
+:host ::ng-deep .p-dialog button:active {
+  background-color: #2c9f8a;
+  transform: scale(0.97);
+}
+
+/* Icono de cierre del diálogo */
+:host ::ng-deep .p-dialog .p-dialog-header-icon {
+  color: #6b7280; /* gris medio */
+  transition: color 0.2s ease;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header-icon:hover {
+  color: #111827; /* más oscuro al pasar el ratón */
+}
+
+
+

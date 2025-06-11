@@ -81,6 +81,20 @@
 
   <p-divider></p-divider>
 
+  <div class="filtro-container">
+  <p-dropdown 
+    [options]="museos" 
+    optionLabel="nombre" 
+    optionValue="id" 
+    [(ngModel)]="museoFiltro"
+    placeholder="Filtrar por museo"
+    [showClear]="true"
+    class="dropdown-filtro">
+  </p-dropdown>
+</div>
+
+
+
   <!-- Lista de exposiciones -->
   <h3 class="titulo-lista">Lista de Exposiciones</h3>
 
@@ -98,7 +112,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let exposicion of exposiciones">
+        <tr *ngFor="let exposicion of exposicionesFiltradas">
           <td>{{ exposicion?.nombre }}</td>
           <td>{{ exposicion?.descripcion }}</td>
           <td>{{ exposicion?.museo?.nombre }}</td>

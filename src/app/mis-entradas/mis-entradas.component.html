@@ -5,10 +5,10 @@
       <div class="entrada-fechaCompra">Comprado el: {{ entrada.fechaCompra | date:'medium' }}</div>
       <div class="entrada-cantidad">Cantidad: {{ entrada.cantidad }}</div>
     </div>
-    <div class="entrada-precioTotal">€ {{ entrada.totalPagado.toFixed(2) }}</div>
+    <div class="entrada-precioTotal">TOTAL : {{ entrada.totalPagado.toFixed(2)}}€</div>
   </div>
 </div>
 
 <ng-template #sinEntradas>
-  <div class="no-entradas-msg">No tienes entradas compradas aún.</div>
+  <div class="no-entradas-msg">Aún no tienes entradas compradas.</div>
 </ng-template>

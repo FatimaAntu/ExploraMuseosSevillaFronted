@@ -63,6 +63,10 @@ export class ExposicionAdminComponent implements OnInit {
   /** URL para vista previa de la imagen seleccionada */
   imagenPreview: string | null = null;
 
+  /** ID del museo seleccionado para filtrar las exposiciones */
+museoFiltro: number | null = null;
+
+
 
   /**
    * Constructor que inyecta servicios necesarios y configura el formulario reactivo.
@@ -320,4 +324,11 @@ export class ExposicionAdminComponent implements OnInit {
       this.imagenPreview = null;
     }
   }
+  get exposicionesFiltradas(): any[] {
+  if (!this.museoFiltro) {
+    return this.exposiciones;
+  }
+  return this.exposiciones.filter(e => e.museo?.id === this.museoFiltro);
+}
+
 }

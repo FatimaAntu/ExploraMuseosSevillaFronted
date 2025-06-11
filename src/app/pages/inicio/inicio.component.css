@@ -255,3 +255,44 @@ button:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Fondo claro y texto oscuro para modo normal */
+::ng-deep .p-dialog {
+  background-color: #134980;
+  color: #111827; /* gris oscuro */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+}
+
+/* Texto dentro del diálogo */
+::ng-deep .p-dialog .p-dialog-content,
+::ng-deep .p-dialog .p-dialog-header {
+  color: #0f0f0f;
+  font-size: 1rem;
+}
+
+/* Modo oscuro */
+.dark ::ng-deep .p-dialog {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.dark ::ng-deep .p-dialog .p-dialog-content,
+.dark ::ng-deep .p-dialog .p-dialog-header {
+  color: #ffffff;
+}
+
+/* Botones personalizados */
+::ng-deep .p-dialog button {
+  font-size: 1rem;
+  font-weight: 500;
+}
+::ng-deep .p-dialog .p-dialog-header-icon {
+  color: #6b7280; /* gris medio */
+  transition: color 0.2s ease;
+}
+
+::ng-deep .p-dialog .p-dialog-header-icon:hover {
+  color: #111827; /* más oscuro al pasar el ratón */
+}
+

@@ -38,11 +38,6 @@ export class RegisterComponent {
 
   /**
    * Constructor del componente
-   * 
-   * @param fb FormBuilder para crear el formulario
-   * @param http HttpClient para hacer peticiones al backend
-   * @param router Router para navegación programada
-   * @param authService Servicio para manejar autenticación y estado del usuario
    */
   constructor(
     private fb: FormBuilder,
@@ -50,7 +45,6 @@ export class RegisterComponent {
     private router: Router,
     private authService: AuthService
   ) {
-    // Inicializa el formulario con controles y validaciones
     this.registroForm = this.fb.group({
       nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -59,10 +53,7 @@ export class RegisterComponent {
   }
 
   /**
-   * Método que envía los datos del formulario para registrar un usuario.
-   * Valida el formulario antes de enviar.
-   * Muestra mensajes y redirige tras éxito.
-   * Captura errores y los muestra al usuario.
+   * Registra al usuario y redirige dependiendo del estado anterior
    */
   registrar() {
     if (this.registroForm.invalid) return;
@@ -76,24 +67,22 @@ export class RegisterComponent {
         this.error = null;
         this.registroForm.reset();
 
-        // Iniciar sesión automáticamente con el usuario registrado
+        // Inicia sesión automática tras el registro
         this.authService.setCurrentUser(user);
 
-        // Comprobar si hay compra pendiente almacenada localmente
-        const pendiente = localStorage.getItem('entradaPendiente');
-
-        // Esperar 2 segundos para mostrar el mensaje antes de redirigir
+        // Esperar 2 segundos para mostrar mensaje y redirigir
         setTimeout(() => {
-          if (pendiente) {
-            localStorage.removeItem('entradaPendiente');
-            this.router.navigate(['/comprar-entrada', pendiente]);
+          const redirectId = this.authService.getRedirectExposicionId();
+
+          if (redirectId !== null) {
+            this.authService.clearRedirectExposicionId();
+            this.router.navigate(['/comprar-entrada', redirectId]);
           } else {
-            this.router.navigate(['/comprar-entrada']);
+            this.router.navigate(['/']);
           }
         }, 2000);
       },
       error: (err) => {
-        // Mostrar mensaje de error recibido del backend o uno genérico
         this.error = err.error?.message || 'Error al registrar usuario';
         this.mensaje = null;
       }

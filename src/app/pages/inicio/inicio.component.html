@@ -38,6 +38,31 @@
     </ng-template>
   </p-carousel>
 </section>
+<p-dialog 
+  header="Acción requerida" 
+  [(visible)]="displayAuthPrompt" 
+  [modal]="true" 
+  [closable]="true"
+  [style]="{width: '350px'}"
+  class="text-center"
+  (onHide)="handleDialogClose()">
+
+  <p class="text-lg mb-4">Debes iniciar sesión o registrarte para comprar entradas.</p>
+
+  <div class="flex justify-center gap-4">
+    <button 
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+      (click)="irLogin()">
+      Iniciar sesión
+    </button>
+    <button 
+      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+      (click)="irRegistro()">
+      Registrarse
+    </button>
+  </div>
+</p-dialog>
+
 
 <!-- Exposiciones Actuales -->
 <section id="exposiciones" class="exposiciones-actuales p-8">
@@ -110,5 +135,4 @@
     </div>
   </div>
   
-
 </section>

@@ -74,42 +74,30 @@ export class LoginComponent {
 
         // Verifica si hay una entrada pendiente de compra
         // Verifica si hay una entrada pendiente de compra y que el usuario no sea admin
-        const entradaPendiente = localStorage.getItem('entradaPendiente');
-        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/home';
-
-        if (entradaPendiente && res.rol !== 'ADMIN') {
-          localStorage.removeItem('entradaPendiente');
-          this.router.navigate(['/comprar-entrada', entradaPendiente]);
+         // ✅ Manejo de redirección tras login
+        const redirectId = this.authService.getRedirectExposicionId();
+        if (redirectId !== null && res.rol !== 'ADMIN') {
+          this.authService.clearRedirectExposicionId();
+          this.router.navigate(['/comprar-entrada', redirectId]);
+        } else if (res.rol === 'ADMIN') {
+          this.router.navigate(['/admin']);
         } else {
-          if (res.rol === 'ADMIN') {
-            // Redirige a la página de admin (puedes cambiarla si quieres)
-            this.router.navigate(['/admin']);
-          } else {
-            this.router.navigate([returnUrl]);
-          }
+          const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+          this.router.navigate([returnUrl]);
         }
-
       },
-      error: (err) => {
+      error: () => {
         this.mensajeError = 'Credenciales incorrectas';
         this.mensajeExito = null;
         this.loginForm.reset();
       }
     });
   }
-  /**
- * Alterna la visibilidad del formulario de registro.
- * 
- * @param event Evento click para evitar el comportamiento por defecto
- */
 
   toggleRegistro(event: Event) {
-    event.preventDefault(); // Evita la recarga de la página
+    event.preventDefault();
     this.mostrarRegistro = !this.mostrarRegistro;
   }
-  /**
-  * Cierra sesión y redirige a la página principal.
-  */
 
   logout() {
     this.authService.logout();

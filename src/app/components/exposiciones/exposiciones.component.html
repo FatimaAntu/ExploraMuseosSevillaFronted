@@ -1,15 +1,18 @@
 <div class="exposiciones p-8">
-    
-    <h2 class="nombre-museo text-3xl font-bold mb-4 text-center">
+  <h2 class="nombre-museo text-3xl font-bold mb-4 text-center">
     Exposiciones: {{ nombreMuseo }}
   </h2>
 
-  <div *ngIf="exposiciones.length > 0; else sinExposiciones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div *ngIf="exposiciones.length > 0; else sinExposiciones"
+       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
     <p-card *ngFor="let expo of exposiciones" class="shadow-md">
       <ng-template pTemplate="header">
-        <p-image [src]="'http://localhost:8080/uploads/' + expo.imagen" [alt]="expo.nombre" styleClass="w-full h-48 object-cover" preview></p-image>
-
-       
+        <p-image [src]="'http://localhost:8080/uploads/' + expo.imagen"
+                 [alt]="expo.nombre"
+                 styleClass="w-full h-48 object-cover"
+                 preview>
+        </p-image>
       </ng-template>
 
       <ng-template pTemplate="title">
@@ -22,17 +25,34 @@
 
       <ng-template pTemplate="content">
         <p>{{ expo.descripcion }}</p>
+        <p class="mt-2 font-semibold">Precio: €{{ expo.precio | number:'1.2-2' }}</p>
       </ng-template>
-      <ng-template pTemplate="content">
-  <p>{{ expo.descripcion }}</p>
-  <p class="mt-2 font-semibold">Precio: €{{ expo.precio | number:'1.2-2' }}</p>
-</ng-template>
 
-      
+      <ng-template pTemplate="footer">
+       <button *ngIf="estaLogueado"
+        class="p-button"
+        (click)="comprarEntrada(expo.id)">
+  Comprar Entrada
+</button>
+
+      </ng-template>
     </p-card>
   </div>
 
   <ng-template #sinExposiciones>
-    <p class="text-gray-600">Este museo no tiene exposiciones actualmente.</p>
+    <p class="text-center mt-4 text-gray-600 text-lg">
+      Este museo no tiene exposiciones actualmente.
+    </p>
   </ng-template>
+
+  <!-- Diálogo para usuarios no logueados -->
+  <p-dialog header="Iniciar sesión" [(visible)]="displayAuthPrompt" [modal]="true" [closable]="true" (onHide)="handleDialogClose()">
+  <p class="mb-4">Debes iniciar sesión o registrarte para comprar entradas.</p>
+  <div class="flex justify-end gap-4">
+   <button type="button" class="p-button p-button-text" (click)="irLogin()">Iniciar Sesión</button>
+<button type="button" class="p-button p-button-success" (click)="irRegistro()">Registrarse</button>
+
+  </div>
+</p-dialog>
+
 </div>
