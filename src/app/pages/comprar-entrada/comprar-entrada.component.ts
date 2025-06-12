@@ -169,7 +169,7 @@ export class ComprarEntradaComponent implements OnInit {
 
             setTimeout(() => {
               this.router.navigate(['/home']);
-            }, 4000);
+            }, 9000);
           });
         },
         onError: (err: any) => {
@@ -230,7 +230,7 @@ export class ComprarEntradaComponent implements OnInit {
          // QR (
     const qrBase64 = await this.convertirLogoABase64('qr.png');
     // Añadir QR al PDF, abajo a la derecha
-    doc.addImage(qrBase64, 'PNG', 150, 200, 40, 40);
+    doc.addImage(qrBase64, 'PNG', 150, 90, 40, 40);
     } catch (error) {
       console.error('No se pudo cargar el logo:', error);
     }

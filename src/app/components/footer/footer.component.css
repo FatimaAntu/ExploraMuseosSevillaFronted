@@ -60,8 +60,8 @@
 .icon {
   width: 26px;
   height: 26px;
-  fill: currentColor;
-  transition: fill 0.3s ease;
+  fill: 5dd3f4;
+   transform: scale(1.1);
 }
 
 .footer-bottom {
@@ -70,7 +70,7 @@
   padding-top: 1.5rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #94a3b8;
   font-style: italic;
 }
 .footer-container {
@@ -120,5 +120,16 @@
 .footer-social {
   flex: 1 1 300px;
 }
+
+.footer-logo img {
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 4px rgba(93, 211, 244, 0.3));
+}
+
+.footer * {
+  transition: all 0.3s ease;
+}
+
+
 
 
