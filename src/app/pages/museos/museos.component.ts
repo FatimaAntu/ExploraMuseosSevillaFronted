@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 /**
  * Componente que muestra un listado estático de museos de Sevilla,
  * con su nombre, descripción, dirección, horario e imagen representativa.

@@ -78,10 +78,23 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem; /* más razonable y responsivo */
+  gap: 2rem;
 }
 
-/* Las secciones del footer ocuparán 100% en móviles */
+/* Para empujar el logo a la derecha */
+.logo {
+  margin-left: auto; /* esto lo separa y lo pone a la derecha */
+  order: 3; /* para que quede al final en orden visual */
+}
+
+.footer-logo img {
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 4px rgba(93, 211, 244, 0.3));
+  max-width: 120px;
+  display: block;
+}
+
+/* Ajusta para que las secciones tengan tamaño mínimo */
 .footer-about,
 .footer-contact,
 .footer-social {
@@ -89,12 +102,18 @@
   min-width: 250px;
 }
 
-/* Footer responsive: para pantallas menores a 768px */
+/* Responsive para móviles: columna vertical */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: flex-start;
-    gap: 2rem;
+  }
+
+  .logo {
+    margin-left: 0;
+    order: 0;
+    align-self: flex-end; /* que el logo quede a la derecha incluso en vertical */
+    margin-top: 1rem;
   }
 
   .footer-about,
@@ -103,33 +122,9 @@
     width: 100%;
   }
 
-  .footer {
-    padding: 2rem 1rem;
-    text-align: left;
-  }
-
   .footer-bottom {
-    text-align: center;
-    font-size: 0.85rem;
     margin-top: 2rem;
+    font-size: 0.8rem;
   }
+  
 }
-
-
-.footer-contact,
-.footer-social {
-  flex: 1 1 300px;
-}
-
-.footer-logo img {
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 0 4px rgba(93, 211, 244, 0.3));
-}
-
-.footer * {
-  transition: all 0.3s ease;
-}
-
-
-
-

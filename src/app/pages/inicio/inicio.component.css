@@ -168,12 +168,13 @@ button:hover {
 /* Contenido textual de la exposición */
 .exposicion-card-content {
     width: 65%;
-    padding: 1.5rem;
+    padding: 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
       padding: 1.5rem 1.5rem 1.5rem 3rem;
       font-family: 'Calibri', sans-serif;
+      font-size: 16px;
       
       
 }
@@ -186,17 +187,17 @@ button:hover {
 
 .exposicion-card-content p {
     color: #e0e0e0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
     
 }
 
 .exposicion-card-content button {/*boton comprar*/
     display: inline-block;
-     align-self: start;       /* Que quede al inicio horizontalmente */
-    margin-top: -1rem;      /* Lo sube un poco */
-    margin-left: 50%;        /* Lo mueve hacia la derecha (ajusta el % a tu gusto) */
-    background-color: #079a93;
+     align-self: start;       
+    margin-top: -1rem;     
+    margin-left: 50%;       
+    background-color: #06827c;
     color: white;
     padding: 0.5rem 1rem;
     font-weight: 600;
@@ -204,6 +205,7 @@ button:hover {
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
     
 }
 

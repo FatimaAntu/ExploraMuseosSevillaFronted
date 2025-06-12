@@ -86,3 +86,8 @@
   user-select: none;
 }
 
+:host {
+  display: block;
+  min-height: calc(100vh - 200px); 
+  padding-bottom: 2rem; 
+}

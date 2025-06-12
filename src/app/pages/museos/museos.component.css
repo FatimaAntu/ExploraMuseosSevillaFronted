@@ -1,7 +1,7 @@
 /* Contenedor general */
-div.contenedor-museos {
+.contenedor-museos {
   padding: 3rem 2rem;
-  background-color: #f1f5f9; /* más claro y limpio */
+  background-color: #f9fafb; /* más claro y limpio */
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   display: flex;
@@ -20,7 +20,7 @@ div.contenedor-museos {
   flex-direction: row;
   overflow: hidden;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  color: #1e293b;
+  color: #1f2937;
 }
 
 .museo-tarjeta:hover {

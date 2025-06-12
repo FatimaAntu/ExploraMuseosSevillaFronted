@@ -14,7 +14,7 @@
 .mensaje:hover {
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   box-shadow: 0 15px 25px rgba(14, 165, 233, 0.1);
-  transform: translateY(-4px);
+  
 }
 
 /* Encabezado del mensaje */
@@ -79,17 +79,18 @@
 }
 
 .respuesta-form-textarea {
-  width: 100%;
+    width: 100%;
   border-radius: 0.75rem;
-  border: 1.5px solid #334155;
-  background-color: #0f172a;
-  color: #f1f5f9;
+  border: 1.5px solid #475569; /* un gris azulado más suave que #334155 */
+  background-color: #1e293b; /* un fondo más oscuro y menos saturado que #0f172a */
+  color: #cbd5e1; /* texto más suave que el blanco puro */
   padding: 0.75rem 1.25rem;
   font-size: 1.125rem;
   resize: vertical;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.1); /* sombra más tenue */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .respuesta-form-textarea::placeholder {
@@ -122,9 +123,9 @@
 }
 
 .respuesta-form-button:hover {
-  background: linear-gradient(90deg, #3b82f6, #06b6d4);
-  box-shadow: 0 12px 25px rgba(14, 165, 233, 0.7);
-  transform: translateY(-3px);
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  box-shadow: 0 6px 12px rgba(14, 165, 233, 0.2);
+  transform: translateY(-1px);
 }
 
 .respuesta-form-button:active {

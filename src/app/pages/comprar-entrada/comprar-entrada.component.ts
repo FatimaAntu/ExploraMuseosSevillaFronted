@@ -169,7 +169,7 @@ export class ComprarEntradaComponent implements OnInit {
 
             setTimeout(() => {
               this.router.navigate(['/home']);
-            }, 9000);
+            }, 15000);
           });
         },
         onError: (err: any) => {

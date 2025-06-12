@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<div class="hero-section bg-cover bg-center h-96 relative" ><!--style="background-image: url('hero-image.jpg');"-->
+<div class="hero-section bg-cover bg-center h-96 relative"><!--style="background-image: url('hero-image.jpg');"-->
   <div class="absolute inset-0 bg-black opacity-50"></div>
   <div class="relative z-10 text-center text-white">
     <h1 class="text-4xl font-bold">¡DESCUBRE EL ARTE QUE VIVE EN SEVILLA!</h1>
@@ -8,28 +8,25 @@
 
 <!-- Carrusel de Museos -->
 <section class="p-8 bg-gray-100 dark:bg-gray-900">
-  <p-carousel 
-    [value]="museos" 
-    [numVisible]="3" 
-    [numScroll]="1" 
-    [responsiveOptions]="responsiveOptions" 
+  <p-carousel [value]="museos" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions"
     circular="false">
 
     <ng-template pTemplate="item" let-museo>
-      <div class="museum-card shadow-lg rounded-2xl overflow-hidden bg-white dark:bg-gray-800 transition hover:scale-105">
+      <div
+        class="museum-card shadow-lg rounded-2xl overflow-hidden bg-white dark:bg-gray-800 transition hover:scale-105">
         <img [src]="museo.imagen" alt="{{ museo.nombre }}" class="museum-image w-full h-60 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">{{ museo.nombre }}</h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">{{ museo.descripcion }}</p>
           <div class="flex flex-wrap gap-2">
-            <button 
-              (click)="verExposiciones(museo.id)" 
-              class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition" style="font-size: 0.95rem;">
+            <button (click)="verExposiciones(museo.id)"
+              class="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition"
+              style="font-size: 0.95rem;">
               🎨 Ver exposiciones
             </button>
-            <button 
-              (click)="abrirEnGoogleMaps(museo.nombre)" 
-              class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition " style="font-size: 0.95rem;">
+            <button (click)="abrirEnGoogleMaps(museo.nombre)"
+              class="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition "
+              style="font-size: 0.95rem;">
               📍 Google Maps
             </button>
           </div>
@@ -38,26 +35,17 @@
     </ng-template>
   </p-carousel>
 </section>
-<p-dialog 
-  header="Acción requerida" 
-  [(visible)]="displayAuthPrompt" 
-  [modal]="true" 
-  [closable]="true"
-  [style]="{width: '350px'}"
-  class="text-center"
-  (onHide)="handleDialogClose()">
+<p-dialog header="Acción requerida" [(visible)]="displayAuthPrompt" [modal]="true" [closable]="true"
+  [style]="{width: '350px'}" contentStyleClass="custom-dialog-content" styleClass="custom-dialog-container"
+  class="text-center" (onHide)="handleDialogClose()">
 
   <p class="text-lg mb-4">Debes iniciar sesión o registrarte para comprar entradas.</p>
 
   <div class="flex justify-center gap-4">
-    <button 
-      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-      (click)="irLogin()">
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" (click)="irLogin()">
       Iniciar sesión
     </button>
-    <button 
-      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-      (click)="irRegistro()">
+    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition" (click)="irRegistro()">
       Registrarse
     </button>
   </div>
@@ -69,21 +57,18 @@
   <h2 class="text-3xl font-bold text-white mb-6">Exposiciones Actuales</h2>
 
   <p class="filtro-info">
-  Éstas son las exposiciones disponibles en los próximos 20 días.
-</p>
+    Disponibles en los próximos 20 días.
+  </p>
 
   <div class="exposiciones-lista">
     <div class="exposicion-card" *ngFor="let exposicion of exposicionesFiltradas">
-      <img 
-        [src]="getImagenUrl(exposicion.imagen)" 
-        [alt]="exposicion.nombre" 
-      />
+      <img [src]="getImagenUrl(exposicion.imagen)" [alt]="exposicion.nombre" />
       <div class="exposicion-card-content">
         <h3>{{ exposicion.nombre }}</h3>
         <p>{{ exposicion.museo.nombre }}</p>
-         <p>{{ exposicion.descripcion }}</p>
+        <p>{{ exposicion.descripcion }}</p>
         <p>Del {{ exposicion.fechaInicio | date:'dd/MM/yyyy' }} al {{ exposicion.fechaFin | date:'dd/MM/yyyy' }}</p>
-       
+
 
         <button (click)="comprarEntrada(exposicion.id)">
           Comprar Entrada
@@ -104,15 +89,18 @@
       <img src="miniGaleria/cigarreras.jpg" alt="Las Cigarreras" class="w-full h-60 object-contain">
       <div class="p-4">
         <h3 class="text-xl font-semibold text-black">LAS CIGARRERAS - Museo Bellas Artes</h3>
-        <p class="text-gray-600">Obra de Gonzalo de Bilbao que retrata con realismo y sensibilidad a las trabajadoras de la fábrica de tabacos de Sevilla.</p>
+        <p class="text-gray-600">Obra de Gonzalo de Bilbao que retrata con realismo y sensibilidad a las trabajadoras de
+          la fábrica de tabacos de Sevilla.</p>
       </div>
     </div>
 
     <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
-      <img src="miniGaleria/documentomagallanes.jpg" alt="Docuemntpo original de Magallanes" class="w-full h-60 object-cover">
+      <img src="miniGaleria/documentomagallanes.jpg" alt="Docuemntpo original de Magallanes"
+        class="w-full h-60 object-cover">
       <div class="p-4">
         <h3 class="text-xl font-semibold text-black">DOCUMENTO MAGALLANES - Archivo de Indias</h3>
-        <p class="text-gray-600">Este documento relata los detalles de su expedición, incluyendo rutas, descubrimientos y acuerdos con la Corona, y es clave para entender la primera vuelta al mundo.</p>
+        <p class="text-gray-600">Este documento relata los detalles de su expedición, incluyendo rutas, descubrimientos
+          y acuerdos con la Corona, y es clave para entender la primera vuelta al mundo.</p>
       </div>
     </div>
 
@@ -120,23 +108,29 @@
       <img src="miniGaleria/arqueologicoDiana.jpg" alt="Diana" class="w-full h-60 object-cover">
       <div class="p-4">
         <h3 class="text-xl font-semibold text-black">DIANA - Museo Arqueológico</h3>
-        <p class="text-gray-600">La escultura de Diana, en el Museo Arqueológico de Sevilla, representa a la diosa romana de la caza con gran detalle y elegancia, destacando por su estado de conservación y belleza clásica.</p>
+        <p class="text-gray-600">La escultura de Diana, en el Museo Arqueológico de Sevilla, representa a la diosa
+          romana de la caza con gran detalle y elegancia, destacando por su estado de conservación y belleza clásica.
+        </p>
       </div>
     </div>
-      <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
+    <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
       <img src="miniGaleria/patio.jpg" alt="Patio Principal" class="w-full h-60  object-contain">
       <div class="p-4">
         <h3 class="text-xl font-semibold text-black">PATIO PRINCIPAL - Casa Pilatos</h3>
-        <p class="text-gray-600">Combina elementos mudéjares, góticos y renacentistas. Destaca por su armoniosa arquitectura, con arcos de medio punto, azulejos sevillanos y una fuente central que aporta serenidad y frescura, convirtiéndolo en un espacio emblemático de la nobleza sevillana y un referente del patrimonio histórico-artístico de la ciudad.</p>
+        <p class="text-gray-600">Combina elementos mudéjares, góticos y renacentistas. Destaca por su armoniosa
+          arquitectura, con arcos de medio punto, azulejos sevillanos y una fuente central que aporta serenidad y
+          frescura, convirtiéndolo en un espacio emblemático de la nobleza sevillana y un referente del patrimonio
+          histórico-artístico de la ciudad.</p>
       </div>
     </div>
-     <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
+    <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
       <img src="miniGaleria/CAAC.jpg" alt="Alicia" class="w-full h-60 object-cover">
       <div class="p-4">
         <h3 class="text-xl font-semibold text-black">ALICIA - CAAC</h3>
-        <p class="text-gray-600">Escultura en dos piezas de grandes dimensiones,inspirada en el famoso personaje literario de Lewis Carroll, fue creada expresamente para la exposición colectiva El patio de mi casa.</p>
+        <p class="text-gray-600">Escultura en dos piezas de grandes dimensiones,inspirada en el famoso personaje
+          literario de Lewis Carroll, fue creada expresamente para la exposición colectiva El patio de mi casa.</p>
       </div>
     </div>
   </div>
-  
+
 </section>
